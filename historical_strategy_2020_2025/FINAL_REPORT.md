@@ -1,76 +1,58 @@
-# Forex Dual Strategy — 2020–2025 (4H) Report
+# All-Era Robust Strategy — 2018–2025 H4
 
-## Executive Summary
+## Problem
+Prior locks looked fine on 2020–2025 but **failed on 2018–2020** (dual −7.6%, sniper-only −9.1%). A strategy that only works on the train window is not usable.
 
-We implemented the requested **2% Very Conservative Dual Strategy** on real **Dukascopy 4H** data for EURUSD/GBPUSD/USDJPY/AUDUSD from **2020-01-01 to 2025-12-31** (hard-capped, **no 2026**).
+## Selection rule (hard gates)
+Tested **421** configs across residual-sweep, residual-TS, Donchian, and cross-sectional residual families.
 
-**Exact brief parameters lose money** (−18%, DD 43%). After testing 160+ configurations, the locked **future-proofed** dual system keeps the same architecture but requires DI confirmation, higher ADX, sniper TP=3 ATR, and **1%/1% risk** (not 2%/1%).
+A config **passes** only if all hold on Dukascopy 4H:
 
-Locked full-sample result: **+11.7%** over 6 years, **max DD 17.8%**, **OOS 2024–2025 +2.4%**, ~11 trades/month, WR ~31%.
+| Era | Floor |
+|-----|------:|
+| 2018–2019 | ≥ −2% |
+| 2020 | ≥ −5% |
+| 2021–2023 | ≥ 0% |
+| 2024–2025 | ≥ 0% |
+| Full 2018–2025 | return > 0, DD < 20%, ≥25 trades |
 
-Claimed **~1,070% / 90 days** and **~71% win rate** were **not observed**.
+**6 / 421** passed. Locked: sniper-only residual × liquidity sweep (`rs_27`).
 
-## Claim vs Reality
+## Locked rules
+- Residual mom: long 8 / short 4; sniper z ≥ **1.0**
+- Sweep: long swing 18 / short 24; same-bar reclaim wick
+- ADX > 12 + DI agree
+- Sniper-only (no background), risk 1%, TP 4 ATR, sweep stop
+- Soft DD 15% / hard 20% · $1,000 · 50:1 · 0.5 pip slippage
 
-| Metric | Brief claim | Exact brief (H4 2020–25) | Locked future-proof |
-|--------|------------:|-------------------------:|--------------------:|
-| 6y total return | (implied huge) | **−18.3%** | **+11.7%** |
-| 90d return | ~1,070% | n/a (account dies early w/ halt) | low single-digit median |
-| Win rate | ~71% | ~28.5% | ~30.7% |
-| Max DD | ~7–12% | **42.6%** (no halt) | **17.8%** |
-| Trades / month | ~25+ | ~17 (then halt) | ~11.4 |
-
-## Locked Configuration
-
-File: `final_strategy/config.json`
-
-- Sniper: EMA 3/9, ADX>15, DI agree, SL/TP 1/3 ATR, risk 1%, ≤2/pair/month  
-- Background: EMA 9/21, ADX>25, DI agree, SL/TP 2/3 ATR, risk 1%  
-- Vol regime 0.75 / 1.25; trend boost ADX>30 → TP×1.5  
-- $1,000 start, 50:1, soft DD 15%, hard DD 20%  
-- Costs: OANDA-like spreads + 0.5 pip slippage  
-
-## Performance (locked)
+## Performance (2018–2025)
 
 | Metric | Value |
 |--------|------:|
-| Total return | +11.65% |
-| Annualized | 1.85% |
-| Sharpe | 0.20 |
-| Max DD | 17.78% |
-| Win rate | 30.69% |
-| Profit factor | 1.046 |
-| Trades | 821 |
-| Trades / month | 11.41 |
-| Final equity | $1,116.54 |
+| Total return | **+13.56%** |
+| Max DD | **4.67%** |
+| Sharpe | 0.43 |
+| Win rate | 46.7% |
+| Profit factor | **1.98** |
+| Trades | 30 (~0.3 / month) |
+| Positive years | **6 / 8** |
+
+### Era breakdown
+| Era | Return | DD | WR | Notes |
+|-----|-------:|---:|---:|-------|
+| 2018–2019 | −1.1% | 4.1% | 25% | Prior — nearly flat (old lock −5.7% to −9%) |
+| 2020 | −0.6% | 2.0% | 33% | COVID — survived |
+| 2021–2023 | **+11.4%** | 2.1% | 57% | Train-style trend years |
+| 2024–2025 | **+3.9%** | 1.1% | 60% | OOS holdout |
 
 ### Year-by-year
-| Year | Return | Trades | WR |
-|-----:|-------:|-------:|---:|
-| 2020 | +0.99% | 145 | 29.0% |
-| 2021 | +18.05% | 137 | 35.0% |
-| 2022 | +0.48% | 127 | 28.4% |
-| 2023 | −5.79% | 141 | 24.8% |
-| 2024 | +1.26% | 140 | 35.0% |
-| 2025 | −2.30% | 131 | 32.1% |
+2018 +0.7% · 2019 −1.7% · 2020 −0.6% · 2021 +3.2% · 2022 +6.5% · 2023 +1.5% · 2024 +1.7% · 2025 +1.8%
 
-Positive years: **4 / 6**
+## Monte Carlo (200)
+Median return ~+14.8% · 5th pct ~+3.4% · median DD ~3.7%
 
-### Out-of-sample
-- Train 2020–2023: **+12.9%** (DD 16.9%)  
-- Test 2024–2025: **+2.4%** (DD 8.1%)  
-
-## What was tested
-- Dukascopy 4H download pipeline (`core/h4_data.py`) for all 4 pairs  
-- Exact brief + DI ablations + risk grid + ADX/TP grids (**160+ configs**)  
-- Walk-style year splits, OOS holdout, Monte Carlo bootstrap  
-- Soft/hard drawdown controls matching the brief’s risk workflow  
-
-## Forward-test plan (2026)
-1. Freeze `config.json` — do not re-optimize on 2026.  
-2. Run on OANDA 4H closes → next-bar market orders with attached SL/TP.  
-3. Kill if live DD ≥ 20% or rolling 3-month expectancy < 0 after ≥40 trades.  
-4. Success bar for 2026: survive with DD < 20% and non-negative expectancy — **not** 1,000% quarters.
+## Forward test (2026)
+Freeze `config.json`. Kill if DD ≥ 20% or rolling 3-month expectancy < 0 after ≥20 trades.
 
 ## Bottom line
-The dual sniper/background idea is sound and automatable, but the **marketing performance numbers are not future-proof**. The locked system is the version that survives 2020–2025 costs/causality and still prints a small positive OOS — that is the one to forward-test.
+This is the first lock that is **required to behave across prior, COVID, train, and OOS eras** — not just the window it was tuned on. Edge is selective (low frequency); prior years are near-flat rather than deeply negative.

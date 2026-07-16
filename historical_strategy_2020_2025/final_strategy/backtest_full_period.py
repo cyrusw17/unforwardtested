@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Full 2020-2025 H4 backtest for the locked future-proof dual strategy."""
+"""Full-period backtest for the all-era locked strategy (2018-2025 H4)."""
 
 from __future__ import annotations
 
@@ -7,33 +7,83 @@ import json
 import sys
 from pathlib import Path
 
+import pandas as pd
+
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
+from core.all_era_signals import AllEraConfig, allocation_map, build_signal_frames
 from core.backtest import Backtester
-from core.h4_data import download_all_h4
-from historical_strategy_2020_2025.final_strategy.strategy_implementation import (
-    StrategyConfig,
-    allocation_map,
-    build_signal_frames,
-)
 
 HERE = Path(__file__).resolve().parent
+CACHE = ROOT / "data" / "cache" / "h4_2018_2025"
 
 
-def load_config() -> StrategyConfig:
+def load_config() -> AllEraConfig:
     data = json.loads((HERE / "config.json").read_text())
-    known = StrategyConfig().__dict__.keys()
-    return StrategyConfig(**{k: v for k, v in data.items() if k in known})
+    known = AllEraConfig().__dict__.keys()
+    return AllEraConfig(**{k: v for k, v in data.items() if k in known})
+
+
+def load_pairs() -> dict:
+    out = {}
+    for p in ["EURUSD", "GBPUSD", "USDJPY", "AUDUSD"]:
+        path = CACHE / f"{p}_h4_2018_2025.parquet"
+        if not path.exists():
+            # fallback: download via h4 helper into extended cache
+            import core.h4_data as h4
+            import time
+
+            CACHE.mkdir(parents=True, exist_ok=True)
+            instrument = h4.PAIR_TO_INSTRUMENT[p]
+            start_ts = pd.Timestamp("2018-01-01", tz="UTC")
+            end_ts = pd.Timestamp("2025-12-31 23:59:59", tz="UTC")
+            rows = []
+            cursor_ms = int(start_ts.timestamp() * 1000)
+            end_ms = int(end_ts.timestamp() * 1000)
+            seen = set()
+            stall = 0
+            while cursor_ms <= end_ms and stall < 3:
+                chunk = h4._fetch_chunk(instrument, cursor_ms, limit=5000)
+                useful = 0
+                last_ts = None
+                for item in chunk:
+                    if not item or item[0] is None:
+                        continue
+                    ts = int(item[0])
+                    if ts in seen or ts < int(start_ts.timestamp() * 1000) or ts > end_ms:
+                        continue
+                    seen.add(ts)
+                    o, a, b, c, v = map(float, item[1:6])
+                    hi, lo = max(o, a, b, c), min(o, a, b, c)
+                    if a >= max(o, c) and b <= min(o, c):
+                        hi, lo = a, b
+                    rows.append((pd.Timestamp(ts, unit="ms", tz="UTC"), o, hi, lo, c, v))
+                    useful += 1
+                    last_ts = ts
+                if useful == 0 or last_ts is None:
+                    stall += 1
+                    cursor_ms += 4 * 3600 * 1000 * 50
+                    time.sleep(0.2)
+                    continue
+                stall = 0
+                cursor_ms = last_ts + 1 if last_ts + 1 > cursor_ms else cursor_ms + 4 * 3600 * 1000
+                time.sleep(0.12)
+            df = pd.DataFrame(rows, columns=["Date", "Open", "High", "Low", "Close", "Volume"]).set_index("Date")
+            df = df[~df.index.duplicated(keep="last")].sort_index()
+            df.to_parquet(path)
+        else:
+            df = pd.read_parquet(path)
+        if df.index.tz is None:
+            df.index = df.index.tz_localize("UTC")
+        assert df.index.max().year <= 2025
+        out[p] = df
+    return out
 
 
 def main():
     cfg = load_config()
-    pairs = download_all_h4(start="2020-01-01", end="2025-12-31", cache_dir=ROOT / "data" / "cache" / "h4")
-    for p, df in pairs.items():
-        assert df.index[-1].year <= 2025
-
-    signals = build_signal_frames(pairs, cfg)
+    pairs = load_pairs()
     meta = json.loads((HERE / "config.json").read_text()).get("backtest", {})
     bt = Backtester(
         initial_capital=float(meta.get("initial_capital", 1000)),
@@ -47,11 +97,10 @@ def main():
         max_bars_held=10**9,
         allow_dual_positions=True,
     )
-    result = bt.run(signals, capital_alloc=allocation_map(cfg))
+    result = bt.run(build_signal_frames(pairs, cfg), capital_alloc=allocation_map(cfg))
     result.trades_df().to_csv(HERE / "full_period_trades.csv", index=False)
     result.equity_curve.to_csv(HERE / "full_period_equity.csv", header=True)
-    with open(HERE / "full_period_metrics.json", "w") as f:
-        json.dump(result.metrics, f, indent=2)
+    (HERE / "full_period_metrics.json").write_text(json.dumps(result.metrics, indent=2))
     print(json.dumps(result.metrics, indent=2))
     return result
 

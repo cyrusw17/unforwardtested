@@ -1,4 +1,4 @@
-"""Download and cache Dukascopy 4H forex bars for 2020-2025 (hard-capped, no 2026)."""
+"""Download and cache Dukascopy 4H forex bars (hard-capped at 2025-12-31, no 2026)."""
 
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ import pandas as pd
 import requests
 
 MAX_ALLOWED = pd.Timestamp("2025-12-31 23:59:59", tz="UTC")
-MIN_ALLOWED = pd.Timestamp("2020-01-01 00:00:00", tz="UTC")
+MIN_ALLOWED = pd.Timestamp("2018-01-01 00:00:00", tz="UTC")
 
 PAIR_TO_INSTRUMENT = {
     "EURUSD": "EUR/USD",

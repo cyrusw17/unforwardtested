@@ -1,0 +1,39 @@
+{
+  "picked": "ml8_ms4_sl18_ss24_sz1.25_bz0.75_tp4.0/2.5_r1.5_p2",
+  "params": {
+    "mom_lookback": 8,
+    "mom_lookback_short": 4,
+    "swing_lookback": 18,
+    "swing_lookback_short": 24,
+    "sniper_resid_z": 1.25,
+    "bg_resid_z": 0.75,
+    "sniper_tp_atr": 4.0,
+    "bg_tp_atr": 2.5,
+    "sniper_risk_pct": 1.5,
+    "bg_risk_pct": 1.0,
+    "use_sweep_stop": true,
+    "bg_persist": 2
+  },
+  "metrics": {
+    "ret": 13.54,
+    "dd": 4.76,
+    "sharpe": 0.443,
+    "wr": 36.84,
+    "tpm": 1.32,
+    "pf": 1.543,
+    "trades": 95.0,
+    "pos_years": 5.0,
+    "train": 8.91,
+    "oos": 4.25,
+    "oos_dd": 2.47,
+    "oos_sharpe": 0.63
+  },
+  "yearly": {
+    "2020": -2.031510049533658,
+    "2021": 2.0353753621505932,
+    "2022": 2.8448508257896243,
+    "2023": 5.940254839021852,
+    "2024": 2.305813920432631,
+    "2025": 1.89996484398125
+  }
+}

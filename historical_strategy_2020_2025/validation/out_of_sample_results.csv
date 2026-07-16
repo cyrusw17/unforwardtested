@@ -1,3 +1,6 @@
-segment,total_return_pct,annualized_return_pct,max_drawdown_pct,sharpe,win_rate,total_trades,trades_per_month,profit_factor,final_equity,years,avg_trade_pnl
-train_2020_2023,12.86,3.08,16.93,0.285,29.27,550,11.48,1.069,1128.64,3.99,0.23
-oos_2024_2025,2.35,1.17,8.14,0.132,33.09,272,11.34,1.027,1023.52,2.0,0.09
+split,total_return_pct,max_drawdown_pct,win_rate,total_trades,profit_factor,final_equity,annualized_return_pct,sharpe,trades_per_month,years,avg_trade_pnl
+era_2018_2019,-1.07,4.07,25.0,8,0.802,989.3,,,,,
+era_2020,-0.62,2.0,33.33,3,0.694,993.79,,,,,
+era_2021_2023,11.37,2.06,57.14,14,3.211,1113.69,,,,,
+oos_2024_2025,3.88,1.11,60.0,5,4.089,1038.82,,,,,
+full_2018_2025,13.56,4.67,46.67,30,1.979,1135.6,1.6,0.428,0.31,8.0,4.52

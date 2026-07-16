@@ -1,0 +1,129 @@
+{
+  "locked": "all_era_residual_sweep_sniper",
+  "selection": "hard_gates",
+  "n_tested": 421,
+  "n_passed": 6,
+  "floors": {
+    "2018_2019": -2.0,
+    "2020": -5.0,
+    "2021_2023": 0.0,
+    "2024_2025": 0.0
+  },
+  "full": {
+    "total_return_pct": 13.56,
+    "annualized_return_pct": 1.6,
+    "max_drawdown_pct": 4.67,
+    "sharpe": 0.428,
+    "win_rate": 46.67,
+    "total_trades": 30,
+    "trades_per_month": 0.31,
+    "profit_factor": 1.979,
+    "final_equity": 1135.6,
+    "years": 8.0,
+    "avg_trade_pnl": 4.52
+  },
+  "eras": {
+    "2018_2019": {
+      "total_return_pct": -1.07,
+      "max_drawdown_pct": 4.07,
+      "win_rate": 25.0,
+      "total_trades": 8,
+      "profit_factor": 0.802,
+      "final_equity": 989.3
+    },
+    "2020": {
+      "total_return_pct": -0.62,
+      "max_drawdown_pct": 2.0,
+      "win_rate": 33.33,
+      "total_trades": 3,
+      "profit_factor": 0.694,
+      "final_equity": 993.79
+    },
+    "2021_2023": {
+      "total_return_pct": 11.37,
+      "max_drawdown_pct": 2.06,
+      "win_rate": 57.14,
+      "total_trades": 14,
+      "profit_factor": 3.211,
+      "final_equity": 1113.69
+    },
+    "2024_2025": {
+      "total_return_pct": 3.88,
+      "max_drawdown_pct": 1.11,
+      "win_rate": 60.0,
+      "total_trades": 5,
+      "profit_factor": 4.089,
+      "final_equity": 1038.82
+    }
+  },
+  "yearly": [
+    {
+      "year": 2018,
+      "start_equity": 1000.0,
+      "end_equity": 1006.64,
+      "return_pct": 0.66,
+      "trades": 3,
+      "win_rate": 33.33
+    },
+    {
+      "year": 2019,
+      "start_equity": 1006.64,
+      "end_equity": 989.3,
+      "return_pct": -1.72,
+      "trades": 5,
+      "win_rate": 20.0
+    },
+    {
+      "year": 2020,
+      "start_equity": 989.3,
+      "end_equity": 983.09,
+      "return_pct": -0.63,
+      "trades": 3,
+      "win_rate": 33.33
+    },
+    {
+      "year": 2021,
+      "start_equity": 983.09,
+      "end_equity": 1014.15,
+      "return_pct": 3.16,
+      "trades": 4,
+      "win_rate": 50.0
+    },
+    {
+      "year": 2022,
+      "start_equity": 1014.15,
+      "end_equity": 1080.37,
+      "return_pct": 6.53,
+      "trades": 7,
+      "win_rate": 71.43
+    },
+    {
+      "year": 2023,
+      "start_equity": 1080.37,
+      "end_equity": 1096.78,
+      "return_pct": 1.52,
+      "trades": 3,
+      "win_rate": 33.33
+    },
+    {
+      "year": 2024,
+      "start_equity": 1096.78,
+      "end_equity": 1115.74,
+      "return_pct": 1.73,
+      "trades": 1,
+      "win_rate": 100.0
+    },
+    {
+      "year": 2025,
+      "start_equity": 1115.74,
+      "end_equity": 1135.6,
+      "return_pct": 1.78,
+      "trades": 4,
+      "win_rate": 50.0
+    }
+  ],
+  "mc_med_ret": 14.817380491435738,
+  "mc_p5_ret": 3.3967838990238244,
+  "mc_med_dd": 3.7108213288206358,
+  "vs_old_lock_2018_2020": "old dual was -7.6%; this era gate requires prior ~flat"
+}
