@@ -1,0 +1,48 @@
+{
+  "picked": "c1_r1_1_tp3_a15_25",
+  "note": "Causal DI-before-shift selection from final_candidates.csv. Older r1_1_tp3_a15_22 +94% pick was invalidated by look-ahead DI bug.",
+  "params": {
+    "name": "very_conservative_2pct_dual_futureproof",
+    "sniper_fast": 3,
+    "sniper_slow": 9,
+    "sniper_adx": 15,
+    "sniper_sl_atr": 1.0,
+    "sniper_tp_atr": 3.0,
+    "sniper_risk_pct": 1.0,
+    "sniper_max_per_month": 2,
+    "bg_fast": 9,
+    "bg_slow": 21,
+    "bg_adx": 25,
+    "bg_sl_atr": 2.0,
+    "bg_tp_atr": 3.0,
+    "bg_risk_pct": 1.0,
+    "bg_max_per_month": 0,
+    "use_di_filter": true,
+    "sniper_alloc": 0.6,
+    "background_alloc": 0.4
+  },
+  "full_halt20": {
+    "total_return_pct": 11.65,
+    "annualized_return_pct": 1.85,
+    "max_drawdown_pct": 17.78,
+    "sharpe": 0.199,
+    "win_rate": 30.69,
+    "total_trades": 821,
+    "trades_per_month": 11.41,
+    "profit_factor": 1.046,
+    "final_equity": 1116.54,
+    "years": 6.0
+  },
+  "train_2020_2023": {
+    "total_return_pct": 12.86,
+    "max_drawdown_pct": 16.93,
+    "sharpe": 0.285
+  },
+  "oos_2024_2025": {
+    "total_return_pct": 2.35,
+    "max_drawdown_pct": 8.14,
+    "sharpe": 0.132
+  },
+  "reference_claim_90d_pct": 1070,
+  "reference_claim_wr": 71
+}

@@ -1,0 +1,28 @@
+{
+  "train_2020_2023": {
+    "total_return_pct": 12.86,
+    "annualized_return_pct": 3.08,
+    "max_drawdown_pct": 16.93,
+    "sharpe": 0.285,
+    "win_rate": 29.27,
+    "total_trades": 550,
+    "trades_per_month": 11.48,
+    "profit_factor": 1.069,
+    "final_equity": 1128.64,
+    "years": 3.99,
+    "avg_trade_pnl": 0.23
+  },
+  "oos_2024_2025": {
+    "total_return_pct": 2.35,
+    "annualized_return_pct": 1.17,
+    "max_drawdown_pct": 8.14,
+    "sharpe": 0.132,
+    "win_rate": 33.09,
+    "total_trades": 272,
+    "trades_per_month": 11.34,
+    "profit_factor": 1.027,
+    "final_equity": 1023.52,
+    "years": 2.0,
+    "avg_trade_pnl": 0.09
+  }
+}
