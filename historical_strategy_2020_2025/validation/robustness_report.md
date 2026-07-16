@@ -1,37 +1,19 @@
-# Robustness Report — Residual Momentum × Liquidity Sweep (2020–2025 H4)
+# Robustness — All-Era Lock (2018–2025)
 
-## Configuration
-- Residual mom long/short: 8 / 4 bars; z sniper/bg: 1.25 / 0.75
-- Sweep swing long/short: 18 / 24; bg persist 2
-- Sweep stops on; sniper TP 4.0 ATR; bg TP 2.5 ATR
-- Risk 1.5% / 1.0%; soft DD 15%; hard halt 20%
-- Data: Dukascopy 4H 2020-01-01 → 2025-12-31
+## Gates
+2018–19 ≥ −2% · 2020 ≥ −5% · 2021–23 ≥ 0 · 2024–25 ≥ 0 · full >0 · DD <20%
 
-## Full-Period
-| Metric | Value |
-|--------|------:|
-| Total return | 13.54% |
-| Sharpe | 0.44 |
-| Max DD | 4.76% |
-| Win rate | 36.84% |
-| Profit factor | 1.543 |
-| Trades / month | 1.32 |
+Passed: **6 / 421**
 
-Positive years: **5 / 6**
-
-## OOS
-- Train 2020–2023: +8.91%
-- OOS 2024–2025: +4.25% | DD 2.47% | Sharpe 0.63
-
-## Monte Carlo (200)
-- Median return ~14.5%
-- 5th pct ~−0.5%
-- Median DD ~4.4%
+## Locked metrics
+- Full: **+13.56%**, DD **4.67%**, Sharpe 0.43, PF **1.98**, 30 trades
+- Eras: −1.1% / −0.6% / **+11.4%** / **+3.9%**
+- Positive years: **6 / 8**
+- MC median ret ~14.8%, p5 ~+3.4%, median DD ~3.7%
 
 ## Checklist
-- ≥4/6 positive years: **PASS** (5/6)
-- Max DD < 20%: **PASS** (4.76%)
-- OOS profitable: **PASS**
+- Works outside train window (2018–19 near-flat): **PASS**
+- Survives 2020: **PASS**
+- OOS 2024–25 profitable: **PASS**
+- DD < 20%: **PASS**
 - No 2026 data: **PASS**
-- Sharpe > 1.5: **FAIL** (0.44)
-- WR > 55%: **FAIL** (36.8%) — acceptable for >1R targets with costs

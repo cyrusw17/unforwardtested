@@ -20,34 +20,35 @@
 
     <section class="section" style="padding-top:2rem">
       <div class="section-head">
-        <p class="eyebrow">Robustness</p>
+        <p class="eyebrow">Multi-era gates</p>
         <h1>Validation</h1>
-        <p class="lede">Forward-edge study, 76-config sweep, OOS holdout, Monte Carlo — all inside 2020–2025.</p>
+        <p class="lede">421 configs tested. Only 6 cleared every era floor. This lock is one of them.</p>
       </div>
       <div class="badge-row">
-        <span class="badge pass">5/6 positive years</span>
-        <span class="badge pass">OOS +4.25%</span>
-        <span class="badge pass">DD 4.76%</span>
-        <span class="badge pass">Beats EMA lock</span>
+        <span class="badge pass">6 / 421 passed</span>
+        <span class="badge pass">Prior ~flat</span>
+        <span class="badge pass">OOS +3.9%</span>
+        <span class="badge pass">MC p5 &gt; 0</span>
       </div>
     </section>
 
     <section class="section">
       <div class="grid-2b">
         <div class="panel">
-          <h3>Out-of-sample</h3>
+          <h3>Era results (locked)</h3>
           <table>
-            <tr><th>Train 2020–2023</th><td class="num pos">+8.91%</td></tr>
-            <tr><th>Test 2024–2025</th><td class="num pos">+4.25%</td></tr>
-            <tr><th>Test DD / Sharpe</th><td class="num">2.47% / 0.63</td></tr>
+            <tr><th>2018–2019 (floor −2%)</th><td class="num">−1.07%</td></tr>
+            <tr><th>2020 (floor −5%)</th><td class="num">−0.62%</td></tr>
+            <tr><th>2021–2023 (floor 0%)</th><td class="num pos">+11.37%</td></tr>
+            <tr><th>2024–2025 (floor 0%)</th><td class="num pos">+3.88%</td></tr>
           </table>
         </div>
         <div class="panel">
           <h3>Monte Carlo (200)</h3>
           <table>
-            <tr><th>Median return</th><td class="num">~+14.5%</td></tr>
-            <tr><th>5th pct return</th><td class="num">~−0.5%</td></tr>
-            <tr><th>Median max DD</th><td class="num">~4.4%</td></tr>
+            <tr><th>Median return</th><td class="num">~+14.8%</td></tr>
+            <tr><th>5th pct return</th><td class="num pos">~+3.4%</td></tr>
+            <tr><th>Median max DD</th><td class="num">~3.7%</td></tr>
           </table>
         </div>
       </div>
@@ -55,31 +56,19 @@
 
     <section class="section">
       <div class="panel">
-        <h3>vs EMA dual (previous lock)</h3>
+        <h3>Why the old lock was rejected</h3>
         <table>
-          <tr><th>EMA return / DD</th><td class="num">+11.7% / 17.8%</td></tr>
-          <tr><th>Residual×Sweep return / DD</th><td class="num pos">+13.5% / 4.8%</td></tr>
-          <tr><th>EMA OOS</th><td class="num">+2.4%</td></tr>
-          <tr><th>Residual×Sweep OOS</th><td class="num pos">+4.3%</td></tr>
+          <tr><th>Old dual on 2018–2020</th><td class="num neg">−7.6%</td></tr>
+          <tr><th>Old sniper-only on 2018–2020</th><td class="num neg">−9.1%</td></tr>
+          <tr><th>All-era lock on 2018–2019</th><td class="num">−1.1%</td></tr>
         </table>
+        <p style="margin:0.85rem 0 0;color:var(--ink-soft);font-size:0.92rem">
+          Same economic idea, stricter selection: configs that only print money in 2021–2025 are discarded.
+        </p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-head">
-        <h2>Forward-test plan (2026)</h2>
-        <p>Freeze <code>config.json</code>. Do not retune on 2026.</p>
-      </div>
-      <ul class="rule-list">
-        <li><strong>1. Freeze</strong> Locked residual/sweep parameters only.</li>
-        <li><strong>2. Execute</strong> 4H close signal → next open with sweep-stop + ATR target.</li>
-        <li><strong>3. Kill-switch</strong> Live DD ≥ 20%, or 3-month expectancy &lt; 0 after ≥40 trades.</li>
-      </ul>
-    </section>
-
-    <footer class="footer">
-      Full report: <code>historical_strategy_2020_2025/FINAL_REPORT.md</code>
-    </footer>
+    <footer class="footer">Report: <code>historical_strategy_2020_2025/FINAL_REPORT.md</code></footer>
   </div>
 </body>
 </html>

@@ -1,8 +1,8 @@
 """
 OANDA-ready signal bridge (paper/live wiring stub).
 
-This module converts the locked dual strategy into broker-agnostic order intents.
-It does not place orders; integrate with the OANDA REST/streaming client separately.
+Converts the locked all-era strategy into broker-agnostic order intents.
+Does not place orders.
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ from historical_strategy_2020_2025.final_strategy.strategy_implementation import
 class OrderIntent:
     pair: str
     strategy: str
-    side: str  # buy / sell
+    side: str
     units: float
     stop_loss: float
     take_profit: float
@@ -51,26 +51,22 @@ def latest_intents(
     equity: float,
     cfg: Optional[StrategyConfig] = None,
 ) -> List[OrderIntent]:
-    """
-    Build order intents from the latest completed bar signals.
-
-    `pair_frames` must already include the newest closed candle only through
-    dates <= today; never pass unfinished bars.
-    """
     cfg = cfg or load_config()
     intents: List[OrderIntent] = []
-    for pair, df in pair_frames.items():
-        sig = prepare_pair_signals(df, cfg)
+    signal_frames = build_signal_frames(pair_frames, cfg)
+    for pair, sig in signal_frames.items():
         row = sig.iloc[-1]
         for strat, alloc, sig_col in [
             ("sniper", cfg.sniper_alloc, "sniper_signal"),
             ("background", cfg.background_alloc, "background_signal"),
         ]:
+            if cfg.sniper_only and strat != "sniper":
+                continue
             signal = int(row[sig_col])
             if signal == 0:
                 continue
             atr = float(row["atr"])
-            entry = float(row["Close"])  # approximate; live should use next open / quote
+            entry = float(row["Close"])
             sl_mult = float(row[f"{strat}_sl_atr_mult"])
             tp_mult = float(row[f"{strat}_tp_atr_mult"])
             risk_pct = float(row[f"{strat}_risk_pct"])

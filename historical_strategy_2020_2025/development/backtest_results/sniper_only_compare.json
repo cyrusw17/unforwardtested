@@ -1,0 +1,152 @@
+[
+  {
+    "label": "2018-2020 sniper-only",
+    "total_return_pct": -9.12,
+    "annualized_return_pct": -3.14,
+    "max_drawdown_pct": 9.12,
+    "sharpe": -1.198,
+    "win_rate": 0.0,
+    "total_trades": 7,
+    "trades_per_month": 0.19,
+    "profit_factor": 0.0,
+    "final_equity": 908.84,
+    "avg_trade_pnl": -13.02,
+    "yearly": {
+      "2018": -1.7,
+      "2019": -3.17,
+      "2020": -4.52
+    },
+    "n_sniper": 7,
+    "n_bg": 0
+  },
+  {
+    "label": "2018-2019 sniper-only",
+    "total_return_pct": -4.81,
+    "annualized_return_pct": -2.44,
+    "max_drawdown_pct": 4.81,
+    "sharpe": -1.055,
+    "win_rate": 0.0,
+    "total_trades": 4,
+    "trades_per_month": 0.17,
+    "profit_factor": 0.0,
+    "final_equity": 951.89,
+    "avg_trade_pnl": -12.03,
+    "yearly": {
+      "2018": -1.7,
+      "2019": -3.17
+    },
+    "n_sniper": 4,
+    "n_bg": 0
+  },
+  {
+    "label": "2020 sniper-only (from prior cache)",
+    "total_return_pct": -4.52,
+    "max_drawdown_pct": 4.52,
+    "win_rate": 0.0,
+    "total_trades": 3,
+    "trades_per_month": 0.25,
+    "profit_factor": 0.0,
+    "final_equity": 954.77,
+    "yearly": {
+      "2020": -4.52
+    },
+    "n_sniper": 3,
+    "n_bg": 0
+  },
+  {
+    "label": "2020-2025 sniper-only",
+    "total_return_pct": 17.17,
+    "annualized_return_pct": 2.68,
+    "max_drawdown_pct": 4.52,
+    "sharpe": 0.504,
+    "win_rate": 47.37,
+    "total_trades": 19,
+    "trades_per_month": 0.26,
+    "profit_factor": 2.438,
+    "final_equity": 1171.67,
+    "avg_trade_pnl": 9.04,
+    "yearly": {
+      "2020": -4.52,
+      "2021": 3.45,
+      "2022": 8.46,
+      "2023": 2.38,
+      "2024": 2.65,
+      "2025": 4.08
+    },
+    "n_sniper": 19,
+    "n_bg": 0
+  },
+  {
+    "label": "2024-2025 OOS sniper-only",
+    "total_return_pct": 6.83,
+    "annualized_return_pct": 3.36,
+    "max_drawdown_pct": 1.52,
+    "sharpe": 0.777,
+    "win_rate": 60.0,
+    "total_trades": 5,
+    "trades_per_month": 0.21,
+    "profit_factor": 5.062,
+    "final_equity": 1068.31,
+    "avg_trade_pnl": 13.66,
+    "yearly": {
+      "2024": 2.65,
+      "2025": 4.08
+    },
+    "n_sniper": 5,
+    "n_bg": 0
+  },
+  {
+    "label": "2020-2023 train sniper-only",
+    "total_return_pct": 9.68,
+    "annualized_return_pct": 2.34,
+    "max_drawdown_pct": 4.52,
+    "sharpe": 0.411,
+    "win_rate": 42.86,
+    "total_trades": 14,
+    "trades_per_month": 0.29,
+    "profit_factor": 1.959,
+    "final_equity": 1096.75,
+    "avg_trade_pnl": 6.91,
+    "yearly": {
+      "2020": -4.52,
+      "2021": 3.45,
+      "2022": 8.46,
+      "2023": 2.38
+    },
+    "n_sniper": 14,
+    "n_bg": 0
+  },
+  {
+    "label": "2018-2020 dual (ref)",
+    "total_return_pct": -7.58,
+    "max_drawdown_pct": 8.73,
+    "sharpe": -0.897,
+    "win_rate": 29.55,
+    "total_trades": 44,
+    "profit_factor": 0.463,
+    "final_equity": 924.15,
+    "yearly": {
+      "2018": -1.42,
+      "2019": -4.31,
+      "2020": -2.03
+    }
+  },
+  {
+    "label": "2020-2025 dual (ref)",
+    "total_return_pct": 13.54,
+    "max_drawdown_pct": 4.76,
+    "sharpe": 0.443,
+    "win_rate": 36.84,
+    "total_trades": 95,
+    "profit_factor": 1.543,
+    "final_equity": 1135.42,
+    "yearly": {
+      "2020": -2.03,
+      "2021": 2.04,
+      "2022": 2.84,
+      "2023": 5.94,
+      "2024": 2.31,
+      "2025": 1.9
+    }
+  }
+]

@@ -21,65 +21,31 @@
     <section class="section" style="padding-top:2rem">
       <div class="section-head">
         <p class="eyebrow">Specification</p>
-        <h1>Residual momentum × liquidity sweep</h1>
-        <p class="lede">No EMA cross. Entries require idiosyncratic residual strength plus a reclaimed swing sweep.</p>
+        <h1>All-era residual × sweep</h1>
+        <p class="lede">Sniper-only confluence entry. Selected under multi-era hard gates on 2018–2025.</p>
       </div>
-
       <div class="grid-2b">
         <div class="panel">
-          <h3>Residual momentum</h3>
+          <h3>Entry</h3>
           <table>
-            <tr><th>Factor</th><td>Equal-weight majors log-return</td></tr>
-            <tr><th>Residual</th><td>r − β·factor (β=60)</td></tr>
-            <tr><th>Long mom / z</th><td>8-bar sum · sniper z≥1.25 · bg z≥0.75</td></tr>
-            <tr><th>Short mom / z</th><td>4-bar sum · sniper z≤−1.25 · bg z≤−0.75</td></tr>
+            <tr><th>Residual</th><td>Basket-residualized mom (8/4) · z ≥ 1.0</td></tr>
+            <tr><th>Sweep</th><td>Swing 18/24 pierce + reclaim wick</td></tr>
+            <tr><th>Filter</th><td>ADX &gt; 12 · DI agrees</td></tr>
+            <tr><th>Sleeve</th><td>Sniper only (no background)</td></tr>
           </table>
         </div>
         <div class="panel">
-          <h3>Liquidity sweep</h3>
+          <h3>Risk</h3>
           <table>
-            <tr><th>Long swing</th><td>18-bar prior low pierce + reclaim</td></tr>
-            <tr><th>Short swing</th><td>24-bar prior high pierce + reclaim</td></tr>
-            <tr><th>Wick quality</th><td>≥ 0.1 ATR rejection</td></tr>
-            <tr><th>Persistence</th><td>Sniper same-bar · Background 2 bars</td></tr>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="grid-2b">
-        <div class="panel">
-          <h3>Sniper (60%)</h3>
-          <table>
-            <tr><th>Risk</th><td>1.5% of sleeve</td></tr>
-            <tr><th>Stop</th><td>Beyond sweep wick (cap 2.25 ATR)</td></tr>
-            <tr><th>Target</th><td>4.0 ATR × regime</td></tr>
-            <tr><th>Cap</th><td>≤3 / pair / month</td></tr>
-          </table>
-        </div>
-        <div class="panel">
-          <h3>Background (40%)</h3>
-          <table>
-            <tr><th>Risk</th><td>1.0% of sleeve</td></tr>
+            <tr><th>Risk / trade</th><td>1.0%</td></tr>
             <tr><th>Stop</th><td>Beyond sweep wick</td></tr>
-            <tr><th>Target</th><td>2.5 ATR × regime</td></tr>
-            <tr><th>Cap</th><td>None</td></tr>
+            <tr><th>Target</th><td>4.0 ATR × regime</td></tr>
+            <tr><th>DD controls</th><td>Soft 15% · Hard 20%</td></tr>
           </table>
         </div>
       </div>
     </section>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>Execution</h2>
-        <p>4H close signal → next open fill. Soft DD 15% halves risk; hard halt at 20%.</p>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <a href="performance.html">Next: Performance charts →</a>
-    </footer>
+    <footer class="footer"><a href="performance.html">Next: Performance →</a></footer>
   </div>
 </body>
 </html>

@@ -1,28 +1,47 @@
 {
-  "train_2020_2023": {
-    "total_return_pct": 8.91,
-    "annualized_return_pct": 2.16,
-    "max_drawdown_pct": 4.76,
-    "sharpe": 0.4,
-    "win_rate": 33.8,
-    "total_trades": 71,
-    "trades_per_month": 1.48,
-    "profit_factor": 1.456,
-    "final_equity": 1089.13,
-    "years": 3.99,
-    "avg_trade_pnl": 1.26
+  "era_2018_2019": {
+    "total_return_pct": -1.07,
+    "max_drawdown_pct": 4.07,
+    "win_rate": 25.0,
+    "total_trades": 8,
+    "profit_factor": 0.802,
+    "final_equity": 989.3
+  },
+  "era_2020": {
+    "total_return_pct": -0.62,
+    "max_drawdown_pct": 2.0,
+    "win_rate": 33.33,
+    "total_trades": 3,
+    "profit_factor": 0.694,
+    "final_equity": 993.79
+  },
+  "era_2021_2023": {
+    "total_return_pct": 11.37,
+    "max_drawdown_pct": 2.06,
+    "win_rate": 57.14,
+    "total_trades": 14,
+    "profit_factor": 3.211,
+    "final_equity": 1113.69
   },
   "oos_2024_2025": {
-    "total_return_pct": 4.25,
-    "annualized_return_pct": 2.1,
-    "max_drawdown_pct": 2.47,
-    "sharpe": 0.63,
-    "win_rate": 45.83,
-    "total_trades": 24,
-    "trades_per_month": 1.0,
-    "profit_factor": 1.86,
-    "final_equity": 1042.5,
-    "years": 2.0,
-    "avg_trade_pnl": 1.77
+    "total_return_pct": 3.88,
+    "max_drawdown_pct": 1.11,
+    "win_rate": 60.0,
+    "total_trades": 5,
+    "profit_factor": 4.089,
+    "final_equity": 1038.82
+  },
+  "full_2018_2025": {
+    "total_return_pct": 13.56,
+    "annualized_return_pct": 1.6,
+    "max_drawdown_pct": 4.67,
+    "sharpe": 0.428,
+    "win_rate": 46.67,
+    "total_trades": 30,
+    "trades_per_month": 0.31,
+    "profit_factor": 1.979,
+    "final_equity": 1135.6,
+    "years": 8.0,
+    "avg_trade_pnl": 4.52
   }
 }

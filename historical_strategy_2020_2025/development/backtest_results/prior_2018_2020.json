@@ -1,0 +1,90 @@
+[
+  {
+    "label": "2018-2020 (full prior ask)",
+    "bars_start": "2018-01-01 20:00:00+00:00",
+    "bars_end": "2020-12-31 20:00:00+00:00",
+    "total_return_pct": -7.58,
+    "annualized_return_pct": -2.6,
+    "max_drawdown_pct": 8.73,
+    "sharpe": -0.897,
+    "win_rate": 29.55,
+    "total_trades": 44,
+    "trades_per_month": 1.22,
+    "profit_factor": 0.463,
+    "final_equity": 924.15,
+    "years": 3.0,
+    "avg_trade_pnl": -1.72,
+    "yearly": {
+      "2018": -1.42,
+      "2019": -4.31,
+      "2020": -2.03
+    },
+    "n_sniper": 7,
+    "n_bg": 37
+  },
+  {
+    "label": "2018-2019 (pure prior OOS)",
+    "total_return_pct": -5.67,
+    "max_drawdown_pct": 6.84,
+    "win_rate": 32.26,
+    "total_trades": 31,
+    "trades_per_month": 1.29,
+    "profit_factor": 0.374,
+    "final_equity": 943.29,
+    "sharpe": -1.235,
+    "yearly": {
+      "2018": -1.42,
+      "2019": -4.25
+    },
+    "n_sniper": 4,
+    "n_bg": 27
+  },
+  {
+    "label": "2020 only (overlap with lock sample)",
+    "total_return_pct": -2.03,
+    "max_drawdown_pct": 3.71,
+    "win_rate": 23.08,
+    "total_trades": 13,
+    "trades_per_month": 1.08,
+    "profit_factor": 0.622,
+    "final_equity": 979.72,
+    "sharpe": -0.504,
+    "yearly": {
+      "2020": -2.03
+    },
+    "n_sniper": 3,
+    "n_bg": 10
+  },
+  {
+    "label": "2018 only",
+    "total_return_pct": -1.42,
+    "max_drawdown_pct": 2.64,
+    "win_rate": 37.5,
+    "total_trades": 16,
+    "trades_per_month": 1.33,
+    "profit_factor": 0.603,
+    "final_equity": 985.83,
+    "sharpe": -0.705,
+    "yearly": {
+      "2018": -1.42
+    },
+    "n_sniper": 2,
+    "n_bg": 14
+  },
+  {
+    "label": "2019 only",
+    "total_return_pct": -4.31,
+    "max_drawdown_pct": 4.31,
+    "win_rate": 26.67,
+    "total_trades": 15,
+    "trades_per_month": 1.25,
+    "profit_factor": 0.226,
+    "final_equity": 956.85,
+    "sharpe": -1.575,
+    "yearly": {
+      "2019": -4.31
+    },
+    "n_sniper": 2,
+    "n_bg": 13
+  }
+]

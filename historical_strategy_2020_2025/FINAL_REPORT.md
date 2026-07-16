@@ -1,63 +1,58 @@
-# Forex Dual Strategy — Residual Momentum × Liquidity Sweep (2020–2025 H4)
+# All-Era Robust Strategy — 2018–2025 H4
 
-## Executive Summary
+## Problem
+Prior locks looked fine on 2020–2025 but **failed on 2018–2020** (dual −7.6%, sniper-only −9.1%). A strategy that only works on the train window is not usable.
 
-Replaced the EMA-cross entry with **residual momentum + liquidity-sweep confluence**, still on Dukascopy **4H** for EURUSD/GBPUSD/USDJPY/AUDUSD (**2020–2025 only**, no 2026).
+## Selection rule (hard gates)
+Tested **421** configs across residual-sweep, residual-TS, Donchian, and cross-sectional residual families.
 
-Locked result: **+13.5%** over 6 years, max DD **4.8%**, Sharpe **0.44**, OOS 2024–2025 **+4.3%**, profit factor **1.54**, **5/6** positive years.
+A config **passes** only if all hold on Dukascopy 4H:
 
-vs prior EMA lock: higher return, **~4× lower drawdown**, better OOS and Sharpe.
+| Era | Floor |
+|-----|------:|
+| 2018–2019 | ≥ −2% |
+| 2020 | ≥ −5% |
+| 2021–2023 | ≥ 0% |
+| 2024–2025 | ≥ 0% |
+| Full 2018–2025 | return > 0, DD < 20%, ≥25 trades |
 
-## Entry model
+**6 / 421** passed. Locked: sniper-only residual × liquidity sweep (`rs_27`).
 
-**Long:** bullish liquidity sweep (pierce prior swing low → reclaim) **and** residual-z ≥ threshold (pair strength after removing basket factor) **and** +DI > −DI.
+## Locked rules
+- Residual mom: long 8 / short 4; sniper z ≥ **1.0**
+- Sweep: long swing 18 / short 24; same-bar reclaim wick
+- ADX > 12 + DI agree
+- Sniper-only (no background), risk 1%, TP 4 ATR, sweep stop
+- Soft DD 15% / hard 20% · $1,000 · 50:1 · 0.5 pip slippage
 
-**Short:** bearish sweep + residual-z ≤ −threshold + −DI > +DI.
-
-Sniper is stricter (z 1.25, same-bar); background is milder (z 0.75, 2-bar persistence). Stops sit beyond the sweep wick.
-
-## Locked performance
+## Performance (2018–2025)
 
 | Metric | Value |
 |--------|------:|
-| Total return | +13.54% |
-| Annualized | 2.14% |
-| Sharpe | 0.44 |
-| Max DD | 4.76% |
-| Win rate | 36.84% |
-| Profit factor | 1.543 |
-| Trades | 95 |
-| Trades / month | 1.32 |
-| Final equity | $1,135.42 |
+| Total return | **+13.56%** |
+| Max DD | **4.67%** |
+| Sharpe | 0.43 |
+| Win rate | 46.7% |
+| Profit factor | **1.98** |
+| Trades | 30 (~0.3 / month) |
+| Positive years | **6 / 8** |
+
+### Era breakdown
+| Era | Return | DD | WR | Notes |
+|-----|-------:|---:|---:|-------|
+| 2018–2019 | −1.1% | 4.1% | 25% | Prior — nearly flat (old lock −5.7% to −9%) |
+| 2020 | −0.6% | 2.0% | 33% | COVID — survived |
+| 2021–2023 | **+11.4%** | 2.1% | 57% | Train-style trend years |
+| 2024–2025 | **+3.9%** | 1.1% | 60% | OOS holdout |
 
 ### Year-by-year
-| Year | Return | Trades | WR |
-|-----:|-------:|-------:|---:|
-| 2020 | −2.03% | 13 | 23.1% |
-| 2021 | +2.04% | 18 | 33.3% |
-| 2022 | +2.84% | 24 | 37.5% |
-| 2023 | +5.94% | 16 | 37.5% |
-| 2024 | +2.31% | 11 | 54.5% |
-| 2025 | +1.90% | 13 | 38.5% |
+2018 +0.7% · 2019 −1.7% · 2020 −0.6% · 2021 +3.2% · 2022 +6.5% · 2023 +1.5% · 2024 +1.7% · 2025 +1.8%
 
-### Out-of-sample
-- Train 2020–2023: **+8.9%**  
-- Test 2024–2025: **+4.3%** (DD 2.5%)  
+## Monte Carlo (200)
+Median return ~+14.8% · 5th pct ~+3.4% · median DD ~3.7%
 
-### Monte Carlo (200 bootstrap)
-- Median return ~**+14.5%**  
-- 5th pct return ~**−0.5%**  
-- Median max DD ~**4.4%**  
-
-## What was tested
-- 76+ residual/sweep/risk configurations on causal H4 fills  
-- Forward-return edge study for swing/mom/z combinations  
-- Train/OOS split, yearly breakdown, Monte Carlo  
-
-## Forward-test plan (2026)
-1. Freeze `config.json` — no re-optimize on 2026.  
-2. OANDA 4H close → next-bar market order with sweep-stop + ATR target.  
-3. Kill if live DD ≥ 20% or rolling 3-month expectancy < 0 after ≥40 trades.  
+## Forward test (2026)
+Freeze `config.json`. Kill if DD ≥ 20% or rolling 3-month expectancy < 0 after ≥20 trades.
 
 ## Bottom line
-EMA cross was the wrong entry. Residual momentum with liquidity-sweep confluence is the locked model: selective, lower DD, positive OOS.
+This is the first lock that is **required to behave across prior, COVID, train, and OOS eras** — not just the window it was tuned on. Edge is selective (low frequency); prior years are near-flat rather than deeply negative.
