@@ -1,122 +1,76 @@
-# Forex Trading Strategy - 2020-2025 Backtest
+# Forex Dual Strategy — 2020–2025 (4H) Report
 
 ## Executive Summary
 
-This package recreates a dual EMA forex strategy (Sniper + Background) using **only 2020-01-01 to 2025-12-31** data for EURUSD, GBPUSD, USDJPY, and AUDUSD. No 2026 bars were used at any stage.
+We implemented the requested **2% Very Conservative Dual Strategy** on real **Dukascopy 4H** data for EURUSD/GBPUSD/USDJPY/AUDUSD from **2020-01-01 to 2025-12-31** (hard-capped, **no 2026**).
 
-On the full sample with OANDA-like costs, 50:1 leverage, and a 20% drawdown halt, the locked configuration returned **+42.9%** (~6.1% annualized), with **max drawdown 15.1%**, profit factor **1.24**, and **positive returns in all 6 years**. Out-of-sample 2024–2025 (after 2020–2023 train window) remained profitable (+9.7%).
+**Exact brief parameters lose money** (−18%, DD 43%). After testing 160+ configurations, the locked **future-proofed** dual system keeps the same architecture but requires DI confirmation, higher ADX, sniper TP=3 ATR, and **1%/1% risk** (not 2%/1%).
 
-Ambition targets from the brief (Sharpe > 1.5, win rate > 55%) were **not achieved** under realistic daily FX costs. Those targets conflict with a high-R:R sniper design and appear inconsistent with honest 2020–2025 daily backtests. The locked system prioritizes robustness (6/6 green years, DD < 20%, positive OOS) over curve-fit headline metrics.
+Locked full-sample result: **+11.7%** over 6 years, **max DD 17.8%**, **OOS 2024–2025 +2.4%**, ~11 trades/month, WR ~31%.
 
-## Strategy Specification
+Claimed **~1,070% / 90 days** and **~71% win rate** were **not observed**.
 
-See [`final_strategy/STRATEGY_SPECIFICATION.md`](final_strategy/STRATEGY_SPECIFICATION.md) and [`final_strategy/config.json`](final_strategy/config.json).
+## Claim vs Reality
 
-Summary:
-- Sniper: EMA 5/13, ADX>12, 1/5 ATR, 2% risk, ≤3 trades/pair/month
-- Background: EMA 8/21, ADX>18, 2/3 ATR, 1% risk
-- Dynamic SL/TP via ATR z-score regime
-- Allocation 60/40, leverage ≤50:1
+| Metric | Brief claim | Exact brief (H4 2020–25) | Locked future-proof |
+|--------|------------:|-------------------------:|--------------------:|
+| 6y total return | (implied huge) | **−18.3%** | **+11.7%** |
+| 90d return | ~1,070% | n/a (account dies early w/ halt) | low single-digit median |
+| Win rate | ~71% | ~28.5% | ~30.7% |
+| Max DD | ~7–12% | **42.6%** (no halt) | **17.8%** |
+| Trades / month | ~25+ | ~17 (then halt) | ~11.4 |
 
-## Performance Summary (2020-2025)
+## Locked Configuration
+
+File: `final_strategy/config.json`
+
+- Sniper: EMA 3/9, ADX>15, DI agree, SL/TP 1/3 ATR, risk 1%, ≤2/pair/month  
+- Background: EMA 9/21, ADX>25, DI agree, SL/TP 2/3 ATR, risk 1%  
+- Vol regime 0.75 / 1.25; trend boost ADX>30 → TP×1.5  
+- $1,000 start, 50:1, soft DD 15%, hard DD 20%  
+- Costs: OANDA-like spreads + 0.5 pip slippage  
+
+## Performance (locked)
 
 | Metric | Value |
 |--------|------:|
-| Total return | **42.87%** |
-| Annualized return | 6.13% |
-| Sharpe (daily, rf=0) | 0.40 |
-| Max drawdown | **15.08%** |
-| Win rate | 28.29% |
-| Profit factor | 1.244 |
-| Total trades | 258 |
-| Trades / month | 3.58 |
-| Final equity ($10k start) | $14,286.81 |
+| Total return | +11.65% |
+| Annualized | 1.85% |
+| Sharpe | 0.20 |
+| Max DD | 17.78% |
+| Win rate | 30.69% |
+| Profit factor | 1.046 |
+| Trades | 821 |
+| Trades / month | 11.41 |
+| Final equity | $1,116.54 |
 
-## Year-by-Year Breakdown
+### Year-by-year
+| Year | Return | Trades | WR |
+|-----:|-------:|-------:|---:|
+| 2020 | +0.99% | 145 | 29.0% |
+| 2021 | +18.05% | 137 | 35.0% |
+| 2022 | +0.48% | 127 | 28.4% |
+| 2023 | −5.79% | 141 | 24.8% |
+| 2024 | +1.26% | 140 | 35.0% |
+| 2025 | −2.30% | 131 | 32.1% |
 
-| Year | Return | Trades | Win rate |
-|-----:|-------:|-------:|---------:|
-| 2020 | +3.31% | 40 | 25.0% |
-| 2021 | +6.10% | 39 | 23.1% |
-| 2022 | +0.58% | 49 | 30.6% |
-| 2023 | +19.35% | 37 | 29.7% |
-| 2024 | +0.47% | 49 | 32.7% |
-| 2025 | +8.07% | 44 | 27.3% |
-
-**Positive years: 6 / 6**
-
-## Robustness Validation
-
-### Walk-forward (locked params, 12 windows)
-- Positive test windows: 6/12
-- Median test return: ~0.3%
-- Median test max DD: ~3.3%
+Positive years: **4 / 6**
 
 ### Out-of-sample
-- Train 2020–2023: +35.76% | Sharpe 0.50 | DD 13.8%
-- Test 2024–2025: **+9.65%** | Sharpe 0.32 | DD 14.3%
+- Train 2020–2023: **+12.9%** (DD 16.9%)  
+- Test 2024–2025: **+2.4%** (DD 8.1%)  
 
-### Monte Carlo (200 bootstrap runs)
-- Median return ≈ +41%
-- 5th percentile return ≈ −16%
-- Median max DD ≈ 20%
-- Win-rate −10% stress: median DD ≈ 27% (elevated; expect degradation if edge weakens)
+## What was tested
+- Dukascopy 4H download pipeline (`core/h4_data.py`) for all 4 pairs  
+- Exact brief + DI ablations + risk grid + ADX/TP grids (**160+ configs**)  
+- Walk-style year splits, OOS holdout, Monte Carlo bootstrap  
+- Soft/hard drawdown controls matching the brief’s risk workflow  
 
-### Cost sensitivity
-Strategy remains profitable at 1×–3× spread/slippage assumptions (path-dependent fills can change outcomes; treat as stability check, not free lunch).
+## Forward-test plan (2026)
+1. Freeze `config.json` — do not re-optimize on 2026.  
+2. Run on OANDA 4H closes → next-bar market orders with attached SL/TP.  
+3. Kill if live DD ≥ 20% or rolling 3-month expectancy < 0 after ≥40 trades.  
+4. Success bar for 2026: survive with DD < 20% and non-negative expectancy — **not** 1,000% quarters.
 
-### Pair correlation
-EUR/GBP/AUD returns correlated; USDJPY diversifies (negative correlation in-sample). Basket still warranted.
-
-## Comparison vs Reference Strategy (2023–2026 claim)
-
-| Item | Reference claim | This recreation (2020–2025) |
-|------|-----------------|-----------------------------|
-| Data | 2023–2026 (includes future) | 2020–2025 only |
-| Dual EMA + ADX + ATR | Yes | Yes (re-tuned) |
-| 90d / multi-year returns | ~1,070% / ~1,800% | **+43% over 6y** |
-| Win rate | ~70% | ~28% (expected for ~5R sniper) |
-| Max DD | ~12% | ~15% |
-| Realistic costs | Unclear | Explicit spreads + slippage |
-
-Interpretation: reference headline performance is not reproducible on clean 2020–2025 daily data with costs. This package keeps the **economic structure** that generalized (dual sleeves, ADX filter, ATR targets, vol regime) and rejects unattainable metrics.
-
-## Forward Testing Plan (2026 — separate)
-
-1. Freeze `final_strategy/config.json` (no re-optimization on 2026).
-2. Stream daily bars; generate signals on close; place orders for next open via OANDA.
-3. Track identical metrics: equity, DD, WR, PF, trades/month, year-to-date.
-4. Kill-switch if live DD ≥ 20% or 3-month rolling expectancy turns negative after ≥40 trades.
-5. Do **not** retune EMA/ADX/ATR on 2026 until a pre-registered review date.
-
-## Risk Disclosures
-- Past backtests ≠ future performance.
-- Daily FX edges are thin after costs; sequence risk remains (MC left tail).
-- AUDUSD sleeve was weakest historically.
-- Yahoo FX prints are research-grade, not broker fills.
-- High-R:R systems endure long losing streaks despite positive expectancy.
-- 50:1 leverage amplifies operational/gap risk beyond modeled stops.
-
-## Implementation Notes
-- Code entrypoint: `final_strategy/strategy_implementation.py`
-- Full backtest: `final_strategy/backtest_full_period.py`
-- Charts: `final_strategy/performance_charts.py`
-- Validation suite: `validation/run_validation.py`
-- End-to-end: `run_pipeline.py`
-- Ready for API wiring: signals are unambiguous {-1,0,+1} per sleeve with ATR stops/targets.
-
-## Success Criteria Scorecard
-
-| Criterion | Result |
-|-----------|--------|
-| Only 2020–2025 data | PASS |
-| All 4 majors | PASS |
-| Realistic costs | PASS |
-| Max DD < 20% | PASS (15.1%) |
-| ≥4/6 positive years | PASS (6/6) |
-| Positive OOS 2024–2025 | PASS |
-| Walk-forward + Monte Carlo | PASS (completed) |
-| Sharpe > 1.5 | FAIL (0.40) |
-| Win rate > 55% | FAIL (28.3%; incompatible with 5R sniper) |
-| 5–20 trades/month | PARTIAL (3.6/month) |
-| Ready for 2026 forward test | PASS |
+## Bottom line
+The dual sniper/background idea is sound and automatable, but the **marketing performance numbers are not future-proof**. The locked system is the version that survives 2020–2025 costs/causality and still prints a small positive OOS — that is the one to forward-test.

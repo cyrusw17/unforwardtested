@@ -85,6 +85,8 @@ class Backtester:
         partial_fraction: float = 0.5,
         max_bars_held: int = 30,
         allow_dual_positions: bool = True,
+        soft_drawdown_pct: float = 0.0,
+        soft_risk_mult: float = 0.5,
     ):
         self.initial_capital = initial_capital
         self.leverage = leverage
@@ -98,6 +100,8 @@ class Backtester:
         self.partial_fraction = partial_fraction
         self.max_bars_held = max_bars_held
         self.allow_dual_positions = allow_dual_positions
+        self.soft_drawdown_pct = soft_drawdown_pct
+        self.soft_risk_mult = soft_risk_mult
 
     def _cost_price(self, pair: str) -> float:
         spread = self.spreads.get(pair, 0.00015)
@@ -341,6 +345,9 @@ class Backtester:
                     sl_mult = float(bar.get(f"{strat}_sl_atr_mult", 1.0))
                     tp_mult = float(bar.get(f"{strat}_tp_atr_mult", 2.0))
                     risk_pct = float(bar.get(f"{strat}_risk_pct", 1.0))
+                    # Soft stop: cut risk when live drawdown breaches soft threshold.
+                    if self.soft_drawdown_pct > 0 and dd_pct >= self.soft_drawdown_pct:
+                        risk_pct *= self.soft_risk_mult
                     regime = str(bar.get("regime", "normal"))
 
                     open_px = float(bar["Open"])

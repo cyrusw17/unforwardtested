@@ -70,12 +70,10 @@ def main():
     fig.savefig(ART / "monthly_returns_2020_2025.png", dpi=140)
     plt.close(fig)
 
-    # Yearly bars
+    # Yearly bars — start from first equity point (initial capital)
     years = sorted(eq.index.year.unique())
     yrets = []
     prev = float(eq.iloc[0])
-    # use initial capital style: first point may already be capital
-    prev = 10000.0
     for y in years:
         end = float(eq[eq.index.year == y].iloc[-1])
         yrets.append((y, (end / prev - 1) * 100))

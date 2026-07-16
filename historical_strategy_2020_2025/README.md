@@ -1,23 +1,19 @@
 # Historical Forex Strategy Package (2020–2025)
 
-Recreates and validates a dual EMA forex strategy using **only 2020–2025 data** (no 2026 look-ahead).
+Implements and validates the dual sniper/background EMA strategy using **only 2020–2025 Dukascopy 4H data** (no 2026 look-ahead).
 
 ## Quick Start
 
 ```bash
 pip install -r ../requirements.txt
-python run_pipeline.py
-```
-
-Or step-by-step:
-
-```bash
-python research/run_market_analysis.py
-python development/test_strategy_variants.py
-python development/optimize_parameters.py
-python validation/run_validation.py
 python final_strategy/backtest_full_period.py
 python final_strategy/performance_charts.py
+```
+
+Or full pipeline:
+
+```bash
+python run_pipeline.py
 ```
 
 ## Layout
@@ -25,24 +21,26 @@ python final_strategy/performance_charts.py
 ```
 historical_strategy_2020_2025/
 ├── research/               # Market analysis + strategy concepts
-├── development/            # Variant tests, grid search, CSVs
-├── validation/             # Walk-forward, OOS, Monte Carlo, stress
+├── development/            # Variant tests, H4 sweeps, claim checks
+├── validation/             # OOS, Monte Carlo, yearly breakdown
 ├── final_strategy/         # Locked spec, config, implementation, charts
 ├── FINAL_REPORT.md         # Executive results + forward-test plan
 └── run_pipeline.py         # End-to-end runner
 ```
 
-## Locked Result (snapshot)
+## Locked Result (H4 future-proof)
 
-- Total return 2020–2025: **+42.9%**
-- Max DD: **15.1%**
-- Positive years: **6/6**
-- OOS 2024–2025: **+9.7%**
-- Sharpe / win-rate ambition targets: not met under realistic daily costs (see report)
+- Total return 2020–2025: **+11.7%**
+- Max DD: **17.8%** (hard halt 20%, soft cut 15%)
+- Positive years: **4/6**
+- OOS 2024–2025: **+2.4%**
+- Exact brief params: **−18%** (not tradeable)
+- Claimed ~1,070% / 90d and ~71% WR: **not reproducible**
 
 ## Core Library
 
 Shared engine lives in `/workspace/core/`:
-- `data_handler.py` — Yahoo fetch + hard 2025-12-31 cap
+- `h4_data.py` — Dukascopy freeserv 4H download + cache (hard 2025-12-31 cap)
+- `data_handler.py` — Yahoo daily fetch + hard date cap
 - `indicators.py` — EMA/ADX/ATR/RSI/...
-- `backtest.py` — multi-pair portfolio backtester
+- `backtest.py` — multi-pair portfolio backtester (soft/hard DD)

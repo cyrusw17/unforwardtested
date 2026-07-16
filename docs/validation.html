@@ -22,14 +22,14 @@
       <div class="section-head">
         <p class="eyebrow">Robustness</p>
         <h1>Validation</h1>
-        <p class="lede">Walk-forward, out-of-sample, Monte Carlo, and cost checks — all inside 2020–2025.</p>
+        <p class="lede">Config sweeps, OOS holdout, Monte Carlo, and claim checks — all inside 2020–2025 Dukascopy 4H.</p>
       </div>
       <div class="badge-row">
-        <span class="badge pass">6/6 positive years</span>
-        <span class="badge pass">OOS +9.65%</span>
+        <span class="badge pass">4/6 positive years</span>
+        <span class="badge pass">OOS +2.35%</span>
         <span class="badge pass">DD halt 20%</span>
         <span class="badge fail">Sharpe target miss</span>
-        <span class="badge fail">WR target miss</span>
+        <span class="badge fail">Claimed 71% WR miss</span>
       </div>
     </section>
 
@@ -38,48 +38,37 @@
         <div class="panel">
           <h3>Out-of-sample</h3>
           <table>
-            <tr><th>Train 2020–2023</th><td class="num pos">+35.76%</td></tr>
-            <tr><th>Train Sharpe / DD</th><td class="num">0.50 / 13.8%</td></tr>
-            <tr><th>Test 2024–2025</th><td class="num pos">+9.65%</td></tr>
-            <tr><th>Test Sharpe / DD</th><td class="num">0.32 / 14.3%</td></tr>
+            <tr><th>Train 2020–2023</th><td class="num pos">+12.86%</td></tr>
+            <tr><th>Train Sharpe / DD</th><td class="num">0.29 / 16.9%</td></tr>
+            <tr><th>Test 2024–2025</th><td class="num pos">+2.35%</td></tr>
+            <tr><th>Test Sharpe / DD</th><td class="num">0.13 / 8.1%</td></tr>
           </table>
         </div>
         <div class="panel">
-          <h3>Walk-forward</h3>
+          <h3>Monte Carlo (200 bootstrap)</h3>
           <table>
-            <tr><th>Windows</th><td class="num">12</td></tr>
-            <tr><th>Positive tests</th><td class="num">6 / 12</td></tr>
-            <tr><th>Median test return</th><td class="num">+0.33%</td></tr>
-            <tr><th>Median test DD</th><td class="num">3.26%</td></tr>
+            <tr><th>Median return</th><td class="num">~+10.3%</td></tr>
+            <tr><th>5th pct return</th><td class="num neg">~−27.0%</td></tr>
+            <tr><th>Median max DD</th><td class="num">~20.5%</td></tr>
+            <tr><th>Configs swept</th><td class="num">160+</td></tr>
           </table>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="grid-2b">
-        <div class="panel">
-          <h3>Monte Carlo (200 runs)</h3>
-          <table>
-            <tr><th>Median return</th><td class="num">~+40.9%</td></tr>
-            <tr><th>5th pct return</th><td class="num neg">~−16.4%</td></tr>
-            <tr><th>Median max DD</th><td class="num">~19.9%</td></tr>
-            <tr><th>WR−10% stress median DD</th><td class="num">~26.8%</td></tr>
-          </table>
-        </div>
-        <div class="panel">
-          <h3>vs reference claim</h3>
-          <table>
-            <tr><th>Reference window</th><td>2023–2026</td></tr>
-            <tr><th>Claimed multi-year return</th><td class="num">~1,800%</td></tr>
-            <tr><th>This recreation</th><td class="num">+43% / 6y</td></tr>
-            <tr><th>Claimed win rate</th><td class="num">~70%</td></tr>
-            <tr><th>This recreation</th><td class="num">~28%</td></tr>
-          </table>
-          <p style="margin:0.85rem 0 0;color:var(--ink-soft);font-size:0.92rem">
-            Same economic idea (dual sleeves + ADX + ATR). Extreme headline stats did not survive a no-lookahead, cost-aware rebuild.
-          </p>
-        </div>
+      <div class="panel">
+        <h3>Claim vs reality</h3>
+        <table>
+          <tr><th>Brief 90-day return</th><td class="num">~1,070%</td></tr>
+          <tr><th>Exact brief on H4 2020–25</th><td class="num neg">−18.3% (DD 42.6%)</td></tr>
+          <tr><th>Locked future-proof</th><td class="num pos">+11.7% / 6y</td></tr>
+          <tr><th>Claimed win rate</th><td class="num">~71%</td></tr>
+          <tr><th>Observed win rate</th><td class="num">~31%</td></tr>
+        </table>
+        <p style="margin:0.85rem 0 0;color:var(--ink-soft);font-size:0.92rem">
+          Same economic idea (dual sleeves + ADX + ATR). Extreme headline stats did not survive causal fills, costs, and full 2020–2025 regimes.
+        </p>
       </div>
     </section>
 
@@ -90,7 +79,7 @@
       </div>
       <ul class="rule-list">
         <li><strong>1. Freeze</strong> Locked parameters only — no re-optimization on live year data.</li>
-        <li><strong>2. Execute</strong> Signal on daily close → order for next open via OANDA bridge.</li>
+        <li><strong>2. Execute</strong> Signal on 4H close → order for next open via OANDA.</li>
         <li><strong>3. Monitor</strong> Equity, DD, PF, trades/month vs backtest baselines.</li>
         <li><strong>4. Kill-switch</strong> Live DD ≥ 20%, or 3-month expectancy &lt; 0 after ≥40 trades.</li>
       </ul>
