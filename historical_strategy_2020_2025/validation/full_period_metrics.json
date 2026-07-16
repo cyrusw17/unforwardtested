@@ -1,0 +1,13 @@
+{
+  "total_return_pct": 42.87,
+  "annualized_return_pct": 6.13,
+  "max_drawdown_pct": 15.08,
+  "sharpe": 0.4,
+  "win_rate": 28.29,
+  "total_trades": 258,
+  "trades_per_month": 3.58,
+  "profit_factor": 1.244,
+  "final_equity": 14286.81,
+  "years": 6.0,
+  "avg_trade_pnl": 16.62
+}

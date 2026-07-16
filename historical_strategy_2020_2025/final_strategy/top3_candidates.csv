@@ -1,0 +1,4 @@
+config,score,pos_years,total_return_pct,annualized_return_pct,max_drawdown_pct,sharpe,win_rate,total_trades,trades_per_month,profit_factor,final_equity,years,avg_trade_pnl
+no_rsi,49.423,6,42.87,6.13,15.08,0.4,28.29,258,3.58,1.244,14286.81,6.0,16.62
+final_locked,49.423,6,42.87,6.13,15.08,0.4,28.29,258,3.58,1.244,14286.81,6.0,16.62
+conservative_risk,48.294,6,35.08,5.14,10.9,0.425,28.29,258,3.58,1.265,13508.2,6.0,13.6
