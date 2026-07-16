@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Unforwardtested — Residual Momentum × Liquidity Sweep</title>
+  <title>Unforwardtested — All-Era Robust Strategy</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -23,61 +23,55 @@
         <img src="assets/equity_curve.png" alt="" />
       </div>
       <div class="hero-copy">
-        <p class="eyebrow">Dukascopy 4H · 2020–2025 · No 2026 data</p>
+        <p class="eyebrow">Dukascopy 4H · 2018–2025 · Multi-era gates · No 2026</p>
         <h1>Unforwardtested</h1>
         <p class="lede">
-          Residual momentum meets liquidity-sweep confluence — a selective dual system locked for a clean 2026 forward test.
+          Locked only if it holds up on prior, COVID, train, and OOS eras — not just the window it was tuned on.
         </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="performance.html">View performance</a>
-          <a class="btn btn-ghost" href="strategy.html">Read the rules</a>
+          <a class="btn btn-ghost" href="validation.html">See era gates</a>
         </div>
       </div>
     </header>
 
     <section class="section">
       <div class="section-head">
-        <h2>Locked outcome</h2>
-        <p>$1,000 start · 50:1 leverage · OANDA-like costs · four majors</p>
+        <h2>All-era locked outcome</h2>
+        <p>$1,000 · 50:1 · residual × liquidity sweep · sniper-only · 421 configs tested, 6 passed</p>
       </div>
       <div class="metric-strip">
-        <div class="metric"><div class="label">Total return</div><div class="value good">+13.5%</div></div>
-        <div class="metric"><div class="label">Max drawdown</div><div class="value">4.8%</div></div>
-        <div class="metric"><div class="label">Positive years</div><div class="value good">5 / 6</div></div>
-        <div class="metric"><div class="label">OOS 2024–25</div><div class="value good">+4.3%</div></div>
+        <div class="metric"><div class="label">2018–2025 return</div><div class="value good">+13.6%</div></div>
+        <div class="metric"><div class="label">Max drawdown</div><div class="value">4.7%</div></div>
+        <div class="metric"><div class="label">Profit factor</div><div class="value good">1.98</div></div>
+        <div class="metric"><div class="label">OOS 2024–25</div><div class="value good">+3.9%</div></div>
       </div>
       <div class="badge-row">
-        <span class="badge pass">DD 4.8%</span>
-        <span class="badge pass">PF 1.54</span>
-        <span class="badge pass">OOS +4.3%</span>
-        <span class="badge pass">No EMA entry</span>
-        <span class="badge partial">~1.3 trades / month</span>
-        <span class="badge fail">Sharpe 0.44 (target 1.5)</span>
+        <span class="badge pass">2018–19 −1.1% (not −9%)</span>
+        <span class="badge pass">2020 −0.6%</span>
+        <span class="badge pass">2021–23 +11.4%</span>
+        <span class="badge pass">2024–25 +3.9%</span>
+        <span class="badge partial">~0.3 trades / month</span>
       </div>
     </section>
 
     <section class="section">
       <div class="grid-2">
         <div class="panel">
-          <h3>Equity path</h3>
-          <img src="assets/equity_curve.png" alt="Equity curve 2020 to 2025" />
+          <h3>Equity path (2018–2025)</h3>
+          <img src="assets/equity_curve.png" alt="Equity curve" />
         </div>
         <div>
           <ul class="rule-list">
-            <li><strong>Residual momentum</strong> Pair return minus rolling basket beta — idiosyncratic push</li>
-            <li><strong>Liquidity sweep</strong> Pierce swing extreme, reclaim with rejection wick</li>
-            <li><strong>Confluence entry</strong> Both must agree with DI direction before risk is taken</li>
+            <li><strong>Hard gates</strong> Must clear floors on every era before ranking</li>
+            <li><strong>Entry</strong> Residual momentum + liquidity-sweep reclaim + DI</li>
+            <li><strong>Sniper-only</strong> Background sleeve removed — it failed prior regimes</li>
           </ul>
-          <p style="margin:1rem 0 0;color:var(--ink-soft)">
-            Prior EMA dual locked at +11.7% with 17.8% DD. This model improves return and cuts drawdown roughly 4×.
-          </p>
         </div>
       </div>
     </section>
 
-    <footer class="footer">
-      Research package for forward testing — not financial advice.
-    </footer>
+    <footer class="footer">Research for forward testing — not financial advice.</footer>
   </div>
 </body>
 </html>
