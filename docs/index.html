@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unforwardtested — 2020–2025 Dual EMA Strategy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="index.html">Unforwardtested</a>
+      <div class="nav-links">
+        <a class="active" href="index.html">Overview</a>
+        <a href="strategy.html">Strategy</a>
+        <a href="performance.html">Performance</a>
+        <a href="validation.html">Validation</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-visual" aria-hidden="true">
+        <img src="assets/equity_curve.png" alt="" />
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow">2020–2025 · No 2026 data</p>
+        <h1>Unforwardtested</h1>
+        <p class="lede">
+          A dual EMA forex system rebuilt only on 2020–2025 majors — ready for a clean 2026 forward test.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="performance.html">View performance</a>
+          <a class="btn btn-ghost" href="strategy.html">Read the rules</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Full-sample outcome</h2>
+        <p>$10,000 start · 50:1 leverage · OANDA-like costs · EURUSD, GBPUSD, USDJPY, AUDUSD</p>
+      </div>
+      <div class="metric-strip">
+        <div class="metric">
+          <div class="label">Total return</div>
+          <div class="value good">+42.9%</div>
+        </div>
+        <div class="metric">
+          <div class="label">Max drawdown</div>
+          <div class="value">15.1%</div>
+        </div>
+        <div class="metric">
+          <div class="label">Positive years</div>
+          <div class="value good">6 / 6</div>
+        </div>
+        <div class="metric">
+          <div class="label">OOS 2024–25</div>
+          <div class="value good">+9.7%</div>
+        </div>
+      </div>
+      <div class="badge-row">
+        <span class="badge pass">DD &lt; 20%</span>
+        <span class="badge pass">No 2026 leakage</span>
+        <span class="badge pass">OOS profitable</span>
+        <span class="badge fail">Sharpe 0.40 (target 1.5)</span>
+        <span class="badge fail">Win rate 28% (target 55%)</span>
+        <span class="badge partial">~3.6 trades / month</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Equity path</h3>
+          <img src="assets/equity_curve.png" alt="Equity curve 2020 to 2025" />
+        </div>
+        <div>
+          <ul class="rule-list">
+            <li>
+              <strong>Sniper sleeve (60%)</strong>
+              EMA 5/13 · ADX &gt; 12 · 1 / 5 ATR · 2% risk · max 3 / pair / month
+            </li>
+            <li>
+              <strong>Background sleeve (40%)</strong>
+              EMA 8/21 · ADX &gt; 18 · 2 / 3 ATR · 1% risk
+            </li>
+            <li>
+              <strong>Regime targets</strong>
+              ATR z-score tightens in high vol, widens in low vol
+            </li>
+          </ul>
+          <p style="margin:1rem 0 0;color:var(--ink-soft)">
+            Reference claims of extreme 2023–2026 returns were not reproducible on honest 2020–2025 daily data with costs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Research package for forward testing — not financial advice.
+      <a href="https://github.com/cyrusw17/unforwardtested/pull/1">PR #1</a>
+    </footer>
+  </div>
+</body>
+</html>

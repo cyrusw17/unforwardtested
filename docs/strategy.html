@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Strategy — Unforwardtested</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="index.html">Unforwardtested</a>
+      <div class="nav-links">
+        <a href="index.html">Overview</a>
+        <a class="active" href="strategy.html">Strategy</a>
+        <a href="performance.html">Performance</a>
+        <a href="validation.html">Validation</a>
+      </div>
+    </nav>
+
+    <section class="section" style="padding-top:2rem">
+      <div class="section-head">
+        <p class="eyebrow">Specification</p>
+        <h1>Dual EMA vol-regime system</h1>
+        <p class="lede">Causal signals on daily closes, filled next open. Four majors, 50:1 leverage cap, 20% portfolio DD halt.</p>
+      </div>
+
+      <div class="grid-2b">
+        <div class="panel">
+          <h3>Sniper</h3>
+          <table>
+            <tr><th>Entry</th><td>EMA(5) crosses EMA(13)</td></tr>
+            <tr><th>Filters</th><td>ADX&gt;12, DI agrees, RSI not extreme</td></tr>
+            <tr><th>Stop / Target</th><td>1.0 / 5.0 ATR × regime</td></tr>
+            <tr><th>Risk</th><td>2% of sniper capital</td></tr>
+            <tr><th>Cap</th><td>≤3 new trades / pair / month</td></tr>
+          </table>
+        </div>
+        <div class="panel">
+          <h3>Background</h3>
+          <table>
+            <tr><th>Entry</th><td>EMA(8) crosses EMA(21)</td></tr>
+            <tr><th>Filters</th><td>ADX&gt;18, DI agrees, RSI bounds</td></tr>
+            <tr><th>Stop / Target</th><td>2.0 / 3.0 ATR × regime</td></tr>
+            <tr><th>Risk</th><td>1% of background capital</td></tr>
+            <tr><th>Cap</th><td>None</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Volatility regime</h2>
+        <p>ATR z-score (50-bar) scales stops and targets so risk adapts across COVID, hike, and chop regimes.</p>
+      </div>
+      <ul class="rule-list">
+        <li><strong>High vol (z ≥ 1.0)</strong> Multiply SL/TP by 0.75 — tighter targets</li>
+        <li><strong>Normal</strong> Standard ATR multiples</li>
+        <li><strong>Low vol (z ≤ −1.0)</strong> Multiply SL/TP by 1.35 — more room</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Execution assumptions</h2>
+        <p>Built for OANDA-style automation; see <code>oanda_signal_bridge.py</code> in the repo.</p>
+      </div>
+      <div class="panel">
+        <table>
+          <tr><th>Signal timing</th><td>Close of bar N</td></tr>
+          <tr><th>Fill</th><td>Open of bar N+1</td></tr>
+          <tr><th>Same-bar SL+TP</th><td>Stop first (conservative)</td></tr>
+          <tr><th>Costs</th><td>~1.2–1.5 pip spread + 0.75 pip slippage</td></tr>
+          <tr><th>Data window</th><td>2020-01-01 → 2025-12-31 only</td></tr>
+          <tr><th>Allocation</th><td>60% sniper / 40% background</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="performance.html">Next: Performance charts →</a>
+    </footer>
+  </div>
+</body>
+</html>

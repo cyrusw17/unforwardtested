@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Performance — Unforwardtested</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="index.html">Unforwardtested</a>
+      <div class="nav-links">
+        <a href="index.html">Overview</a>
+        <a href="strategy.html">Strategy</a>
+        <a class="active" href="performance.html">Performance</a>
+        <a href="validation.html">Validation</a>
+      </div>
+    </nav>
+
+    <section class="section" style="padding-top:2rem">
+      <div class="section-head">
+        <p class="eyebrow">2020–2025 backtest</p>
+        <h1>Performance</h1>
+        <p class="lede">Locked config on four majors with realistic costs. Starting equity $10,000.</p>
+      </div>
+      <div class="metric-strip">
+        <div class="metric"><div class="label">Total return</div><div class="value good">+42.87%</div></div>
+        <div class="metric"><div class="label">Annualized</div><div class="value">6.13%</div></div>
+        <div class="metric"><div class="label">Sharpe</div><div class="value warn">0.40</div></div>
+        <div class="metric"><div class="label">Max DD</div><div class="value">15.08%</div></div>
+      </div>
+      <div class="metric-strip" style="margin-top:0.85rem">
+        <div class="metric"><div class="label">Win rate</div><div class="value">28.29%</div></div>
+        <div class="metric"><div class="label">Profit factor</div><div class="value">1.244</div></div>
+        <div class="metric"><div class="label">Trades</div><div class="value">258</div></div>
+        <div class="metric"><div class="label">Per month</div><div class="value">3.58</div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h3>Equity curve</h3>
+        <img src="assets/equity_curve.png" alt="Equity curve" />
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2b">
+        <div class="panel">
+          <h3>Drawdown</h3>
+          <img src="assets/drawdown.png" alt="Drawdown chart" />
+        </div>
+        <div class="panel">
+          <h3>Yearly returns</h3>
+          <img src="assets/yearly_returns.png" alt="Yearly returns chart" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h3>Monthly returns</h3>
+        <img src="assets/monthly_returns.png" alt="Monthly returns chart" />
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Year-by-year</h2>
+        <p>All six calendar years finished positive under the locked parameters.</p>
+      </div>
+      <div class="panel">
+        <table>
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th class="num">Return</th>
+              <th class="num">End equity</th>
+              <th class="num">Trades</th>
+              <th class="num">Win rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2020</td><td class="num pos">+3.31%</td><td class="num">$10,330.89</td><td class="num">40</td><td class="num">25.0%</td></tr>
+            <tr><td>2021</td><td class="num pos">+6.10%</td><td class="num">$10,961.07</td><td class="num">39</td><td class="num">23.1%</td></tr>
+            <tr><td>2022</td><td class="num pos">+0.58%</td><td class="num">$11,024.65</td><td class="num">49</td><td class="num">30.6%</td></tr>
+            <tr><td>2023</td><td class="num pos">+19.35%</td><td class="num">$13,158.05</td><td class="num">37</td><td class="num">29.7%</td></tr>
+            <tr><td>2024</td><td class="num pos">+0.47%</td><td class="num">$13,219.37</td><td class="num">49</td><td class="num">32.7%</td></tr>
+            <tr><td>2025</td><td class="num pos">+8.07%</td><td class="num">$14,286.81</td><td class="num">44</td><td class="num">27.3%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="validation.html">Next: Validation →</a>
+    </footer>
+  </div>
+</body>
+</html>
