@@ -21,28 +21,49 @@
     <section class="section" style="padding-top:2rem">
       <div class="section-head">
         <p class="eyebrow">Specification</p>
-        <h1>Future-proofed dual system</h1>
-        <p class="lede">Causal signals on 4H closes, filled next open. Four majors, 50:1 leverage cap, soft 15% / hard 20% DD controls.</p>
+        <h1>Residual momentum × liquidity sweep</h1>
+        <p class="lede">No EMA cross. Entries require idiosyncratic residual strength plus a reclaimed swing sweep.</p>
       </div>
 
       <div class="grid-2b">
         <div class="panel">
-          <h3>Sniper</h3>
+          <h3>Residual momentum</h3>
           <table>
-            <tr><th>Entry</th><td>EMA(3) crosses EMA(9)</td></tr>
-            <tr><th>Filters</th><td>ADX&gt;15, +DI/−DI agrees</td></tr>
-            <tr><th>Stop / Target</th><td>1.0 / 3.0 ATR × regime</td></tr>
-            <tr><th>Risk</th><td>1% of sniper capital</td></tr>
-            <tr><th>Cap</th><td>≤2 new trades / pair / month</td></tr>
+            <tr><th>Factor</th><td>Equal-weight majors log-return</td></tr>
+            <tr><th>Residual</th><td>r − β·factor (β=60)</td></tr>
+            <tr><th>Long mom / z</th><td>8-bar sum · sniper z≥1.25 · bg z≥0.75</td></tr>
+            <tr><th>Short mom / z</th><td>4-bar sum · sniper z≤−1.25 · bg z≤−0.75</td></tr>
           </table>
         </div>
         <div class="panel">
-          <h3>Background</h3>
+          <h3>Liquidity sweep</h3>
           <table>
-            <tr><th>Entry</th><td>EMA(9) crosses EMA(21)</td></tr>
-            <tr><th>Filters</th><td>ADX&gt;25, +DI/−DI agrees</td></tr>
-            <tr><th>Stop / Target</th><td>2.0 / 3.0 ATR × regime</td></tr>
-            <tr><th>Risk</th><td>1% of background capital</td></tr>
+            <tr><th>Long swing</th><td>18-bar prior low pierce + reclaim</td></tr>
+            <tr><th>Short swing</th><td>24-bar prior high pierce + reclaim</td></tr>
+            <tr><th>Wick quality</th><td>≥ 0.1 ATR rejection</td></tr>
+            <tr><th>Persistence</th><td>Sniper same-bar · Background 2 bars</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2b">
+        <div class="panel">
+          <h3>Sniper (60%)</h3>
+          <table>
+            <tr><th>Risk</th><td>1.5% of sleeve</td></tr>
+            <tr><th>Stop</th><td>Beyond sweep wick (cap 2.25 ATR)</td></tr>
+            <tr><th>Target</th><td>4.0 ATR × regime</td></tr>
+            <tr><th>Cap</th><td>≤3 / pair / month</td></tr>
+          </table>
+        </div>
+        <div class="panel">
+          <h3>Background (40%)</h3>
+          <table>
+            <tr><th>Risk</th><td>1.0% of sleeve</td></tr>
+            <tr><th>Stop</th><td>Beyond sweep wick</td></tr>
+            <tr><th>Target</th><td>2.5 ATR × regime</td></tr>
             <tr><th>Cap</th><td>None</td></tr>
           </table>
         </div>
@@ -51,32 +72,8 @@
 
     <section class="section">
       <div class="section-head">
-        <h2>Volatility regime</h2>
-        <p>ATR z-score (50-bar) scales stops and targets so risk adapts across COVID, hike, and chop regimes.</p>
-      </div>
-      <ul class="rule-list">
-        <li><strong>High vol (z &gt; 1.5)</strong> Multiply SL/TP by 0.75 — tighter targets</li>
-        <li><strong>Normal</strong> Standard ATR multiples</li>
-        <li><strong>Low vol (z &lt; −1.0)</strong> Multiply SL/TP by 1.25 — more room</li>
-        <li><strong>Trend boost</strong> If ADX &gt; 30, take-profit × 1.5</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>Execution assumptions</h2>
-        <p>Built for OANDA-style automation on 4H bars. Config: <code>final_strategy/config.json</code>.</p>
-      </div>
-      <div class="panel">
-        <table>
-          <tr><th>Signal timing</th><td>Close of 4H bar N</td></tr>
-          <tr><th>Fill</th><td>Open of bar N+1</td></tr>
-          <tr><th>Same-bar SL+TP</th><td>Stop first (conservative)</td></tr>
-          <tr><th>Costs</th><td>~1.2–1.5 pip spread + 0.5 pip slippage</td></tr>
-          <tr><th>Data window</th><td>2020-01-01 → 2025-12-31 only (Dukascopy H4)</td></tr>
-          <tr><th>Allocation</th><td>60% sniper / 40% background · $1,000 start</td></tr>
-          <tr><th>Drawdown</th><td>Soft 15% (risk ×0.5) · Hard halt 20%</td></tr>
-        </table>
+        <h2>Execution</h2>
+        <p>4H close signal → next open fill. Soft DD 15% halves risk; hard halt at 20%.</p>
       </div>
     </section>
 

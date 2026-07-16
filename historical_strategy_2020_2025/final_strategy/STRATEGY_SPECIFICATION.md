@@ -1,64 +1,53 @@
-# Strategy Specification — Future-Proofed Dual System
+# Strategy Specification — Residual Momentum × Liquidity Sweep
 
 ## Name
-`very_conservative_2pct_dual_futureproof`
+`residual_momentum_liquidity_sweep`
 
-## What was requested
-The “2% Very Conservative Dual Strategy” brief (EMA 3/9 + 9/21, ADX 10/20, 1/5 and 2/3 ATR, 2%/1% risk, 4H, $1,000, 50:1).
+## Why the entry model changed
+EMA cross is a lagged trend toggle. The locked system replaces it with **confluence**:
 
-## What honest H4 testing showed
-On **Dukascopy 4H, 2020-01-01 → 2025-12-31**, with OANDA-like costs and **no 2026 data**:
+1. **Residual momentum** — idiosyncratic strength after removing the equal-weight majors basket factor  
+2. **Liquidity sweep** — pierce a prior swing extreme, then reclaim with a rejection wick  
+3. **DI / mild ADX** — direction must agree; skip dead ranges  
 
-| Variant | Result |
-|---------|--------|
-| Exact brief (no DI, ADX 10/20, sniper TP 5, risk 2%/1%) | **−18.3%**, max DD **42.6%**, WR ~28.5% |
-| Claimed 90-day return | **~1,070%** |
-| Observed median 90-day return (locked system) | **low single digits** |
-| Claimed win rate | **~71%** |
-| Observed win rate | **~31%** |
+## Rules (locked)
 
-The brief’s headline projections are **not reproducible** under causal fills + costs on full 2020–2025 4H data. Configs that looked great on 2023–2026-only windows fail when COVID/hike years are included.
+### Residual momentum
+- Factor: equal-weight mean log-return of EURUSD/GBPUSD/USDJPY/AUDUSD  
+- Residual: rolling OLS `r − β·factor` (β lookback 60)  
+- Long momentum sum: **8** bars → z-score  
+- Short momentum sum: **4** bars → z-score  
+- Sniper z-threshold: **±1.25**  
+- Background z-threshold: **±0.75**
 
-## Locked future-proof rules (kept structure, fixed edge)
+### Liquidity sweep
+- Long swing lookback: **18** bars  
+- Short swing lookback: **24** bars  
+- Bullish: Low < prior swing low, Close reclaims above it, lower wick ≥ 0.1 ATR  
+- Bearish: High > prior swing high, Close reclaims below it, upper wick ≥ 0.1 ATR  
+- Sniper: same-bar sweep only  
+- Background: sweep may persist **2** bars  
 
-### Capital
-- Start: **$1,000**
-- Leverage cap: **50:1**
-- Allocation: **60% sniper / 40% background**
-- Soft DD 15% → cut risk ×0.5  
-- Hard DD halt: **20%**
+### Dual sleeves
+| Sleeve | Risk | SL / TP | Cap |
+|--------|-----:|---------|-----|
+| Sniper (60%) | 1.5% | sweep-stop / 4.0 ATR | ≤3 / pair / month |
+| Background (40%) | 1.0% | sweep-stop / 2.5 ATR | none |
 
-### Sniper
-- EMA **3/9** cross
-- ADX **> 15** (brief: 10)
-- **+DI/−DI must agree** (new, required)
-- SL **1.0 ATR**, TP **3.0 ATR** (brief TP: 5.0)
-- Risk **1.0%** of sniper capital (brief: 2.0% — 2% failed OOS / hit halt)
-- Max **2** trades / pair / month
-
-### Background
-- EMA **9/21** cross
-- ADX **> 25** (brief: 20)
-- DI agreement required
-- SL **2.0 ATR**, TP **3.0 ATR**
-- Risk **1.0%** of background capital
-- No monthly cap
-
-### Regime / boost
-- ATR z-score 50: high if z>1.5 (×0.75), low if z<−1.0 (×1.25)
-- If ADX > 30: take-profit ×1.5
-
-### Execution
-- Signal on 4H close → fill next 4H open
-- Same-bar SL+TP → stop first
-- Spread ~1.2–1.5 pips + **0.5 pip** slippage
+- Sweep stop: beyond wick ±0.1 ATR, capped at 2.25 ATR  
+- Vol regime: z>1.5 → ×0.75, z<−1.0 → ×1.25  
+- Soft DD 15% (risk ×0.5) · Hard halt 20%  
+- $1,000 · 50:1 · OANDA-like spread + 0.5 pip slippage  
+- Signal on 4H close → fill next open  
 
 ## Locked performance (2020–2025 H4)
 See `full_period_metrics.json` / `FINAL_REPORT.md`.
 
-## Why these changes are “future-proof”
-1. Validated across **crisis + hike + chop** years (not only 2023+ trend).  
-2. **Causal DI** (filter before signal shift — no look-ahead).  
-3. Positive **2024–2025 OOS** after train on 2020–2023.  
-4. DD stays under live 20% halt without early account death.  
-5. Trade frequency (~11/month) is automatable on OANDA 4H.
+## vs prior EMA lock
+| | EMA dual | Residual × Sweep |
+|--|---------:|-----------------:|
+| Return | +11.7% | **+13.5%** |
+| Max DD | 17.8% | **4.8%** |
+| Sharpe | 0.20 | **0.44** |
+| OOS 2024–25 | +2.4% | **+4.3%** |
+| PF | 1.05 | **1.54** |

@@ -1,13 +1,13 @@
 {
-  "total_return_pct": 11.65,
-  "annualized_return_pct": 1.85,
-  "max_drawdown_pct": 17.78,
-  "sharpe": 0.199,
-  "win_rate": 30.69,
-  "total_trades": 821,
-  "trades_per_month": 11.41,
-  "profit_factor": 1.046,
-  "final_equity": 1116.54,
+  "total_return_pct": 13.54,
+  "annualized_return_pct": 2.14,
+  "max_drawdown_pct": 4.76,
+  "sharpe": 0.443,
+  "win_rate": 36.84,
+  "total_trades": 95,
+  "trades_per_month": 1.32,
+  "profit_factor": 1.543,
+  "final_equity": 1135.42,
   "years": 6.0,
-  "avg_trade_pnl": 0.14
+  "avg_trade_pnl": 1.43
 }

@@ -22,14 +22,13 @@
       <div class="section-head">
         <p class="eyebrow">Robustness</p>
         <h1>Validation</h1>
-        <p class="lede">Config sweeps, OOS holdout, Monte Carlo, and claim checks — all inside 2020–2025 Dukascopy 4H.</p>
+        <p class="lede">Forward-edge study, 76-config sweep, OOS holdout, Monte Carlo — all inside 2020–2025.</p>
       </div>
       <div class="badge-row">
-        <span class="badge pass">4/6 positive years</span>
-        <span class="badge pass">OOS +2.35%</span>
-        <span class="badge pass">DD halt 20%</span>
-        <span class="badge fail">Sharpe target miss</span>
-        <span class="badge fail">Claimed 71% WR miss</span>
+        <span class="badge pass">5/6 positive years</span>
+        <span class="badge pass">OOS +4.25%</span>
+        <span class="badge pass">DD 4.76%</span>
+        <span class="badge pass">Beats EMA lock</span>
       </div>
     </section>
 
@@ -38,19 +37,17 @@
         <div class="panel">
           <h3>Out-of-sample</h3>
           <table>
-            <tr><th>Train 2020–2023</th><td class="num pos">+12.86%</td></tr>
-            <tr><th>Train Sharpe / DD</th><td class="num">0.29 / 16.9%</td></tr>
-            <tr><th>Test 2024–2025</th><td class="num pos">+2.35%</td></tr>
-            <tr><th>Test Sharpe / DD</th><td class="num">0.13 / 8.1%</td></tr>
+            <tr><th>Train 2020–2023</th><td class="num pos">+8.91%</td></tr>
+            <tr><th>Test 2024–2025</th><td class="num pos">+4.25%</td></tr>
+            <tr><th>Test DD / Sharpe</th><td class="num">2.47% / 0.63</td></tr>
           </table>
         </div>
         <div class="panel">
-          <h3>Monte Carlo (200 bootstrap)</h3>
+          <h3>Monte Carlo (200)</h3>
           <table>
-            <tr><th>Median return</th><td class="num">~+10.3%</td></tr>
-            <tr><th>5th pct return</th><td class="num neg">~−27.0%</td></tr>
-            <tr><th>Median max DD</th><td class="num">~20.5%</td></tr>
-            <tr><th>Configs swept</th><td class="num">160+</td></tr>
+            <tr><th>Median return</th><td class="num">~+14.5%</td></tr>
+            <tr><th>5th pct return</th><td class="num">~−0.5%</td></tr>
+            <tr><th>Median max DD</th><td class="num">~4.4%</td></tr>
           </table>
         </div>
       </div>
@@ -58,35 +55,30 @@
 
     <section class="section">
       <div class="panel">
-        <h3>Claim vs reality</h3>
+        <h3>vs EMA dual (previous lock)</h3>
         <table>
-          <tr><th>Brief 90-day return</th><td class="num">~1,070%</td></tr>
-          <tr><th>Exact brief on H4 2020–25</th><td class="num neg">−18.3% (DD 42.6%)</td></tr>
-          <tr><th>Locked future-proof</th><td class="num pos">+11.7% / 6y</td></tr>
-          <tr><th>Claimed win rate</th><td class="num">~71%</td></tr>
-          <tr><th>Observed win rate</th><td class="num">~31%</td></tr>
+          <tr><th>EMA return / DD</th><td class="num">+11.7% / 17.8%</td></tr>
+          <tr><th>Residual×Sweep return / DD</th><td class="num pos">+13.5% / 4.8%</td></tr>
+          <tr><th>EMA OOS</th><td class="num">+2.4%</td></tr>
+          <tr><th>Residual×Sweep OOS</th><td class="num pos">+4.3%</td></tr>
         </table>
-        <p style="margin:0.85rem 0 0;color:var(--ink-soft);font-size:0.92rem">
-          Same economic idea (dual sleeves + ADX + ATR). Extreme headline stats did not survive causal fills, costs, and full 2020–2025 regimes.
-        </p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head">
         <h2>Forward-test plan (2026)</h2>
-        <p>Freeze <code>config.json</code>. Do not retune on 2026 until a pre-registered review.</p>
+        <p>Freeze <code>config.json</code>. Do not retune on 2026.</p>
       </div>
       <ul class="rule-list">
-        <li><strong>1. Freeze</strong> Locked parameters only — no re-optimization on live year data.</li>
-        <li><strong>2. Execute</strong> Signal on 4H close → order for next open via OANDA.</li>
-        <li><strong>3. Monitor</strong> Equity, DD, PF, trades/month vs backtest baselines.</li>
-        <li><strong>4. Kill-switch</strong> Live DD ≥ 20%, or 3-month expectancy &lt; 0 after ≥40 trades.</li>
+        <li><strong>1. Freeze</strong> Locked residual/sweep parameters only.</li>
+        <li><strong>2. Execute</strong> 4H close signal → next open with sweep-stop + ATR target.</li>
+        <li><strong>3. Kill-switch</strong> Live DD ≥ 20%, or 3-month expectancy &lt; 0 after ≥40 trades.</li>
       </ul>
     </section>
 
     <footer class="footer">
-      Full markdown report in the repo: <code>historical_strategy_2020_2025/FINAL_REPORT.md</code>
+      Full report: <code>historical_strategy_2020_2025/FINAL_REPORT.md</code>
     </footer>
   </div>
 </body>
