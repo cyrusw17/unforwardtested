@@ -16,7 +16,7 @@ import pandas as pd
 
 from historical_strategy_2020_2025.final_strategy.strategy_implementation import (
     StrategyConfig,
-    prepare_pair_signals,
+    build_signal_frames,
 )
 
 
