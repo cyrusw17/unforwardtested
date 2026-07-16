@@ -1,24 +1,19 @@
 # unforwardtested
 
-Forex strategy research package: implement the dual sniper/background system on **2020–2025 Dukascopy 4H data only**, then forward-test later on 2026.
+Forex research package: **residual momentum × liquidity-sweep** dual system on Dukascopy 4H (**2020–2025 only**), ready for 2026 forward test.
 
-## Main package
+## Live report
+https://cyrusw17.github.io/unforwardtested/
 
-See [`historical_strategy_2020_2025/README.md`](historical_strategy_2020_2025/README.md) and the executive report [`historical_strategy_2020_2025/FINAL_REPORT.md`](historical_strategy_2020_2025/FINAL_REPORT.md).
-
-Browsable HTML report: [`docs/index.html`](docs/index.html).
+## Locked snapshot
+- Entry: residual momentum + liquidity sweep confluence (not EMA cross)
+- Result: **+13.5%** / 6y · max DD **4.8%** · OOS 2024–25 **+4.3%** · PF **1.54**
+- Config: `historical_strategy_2020_2025/final_strategy/config.json`
 
 ```bash
 pip install -r requirements.txt
 python historical_strategy_2020_2025/final_strategy/backtest_full_period.py
 ```
 
-## Locked snapshot
-
-- Config: `historical_strategy_2020_2025/final_strategy/config.json`
-- Result: **+11.7%** over 2020–2025, max DD **17.8%**, OOS 2024–25 **+2.4%**
-- Exact marketing brief on the same data: **−18%** (DD ~43%)
-
 ## Hard constraint
-
-Strategy development **must not** use any data after `2025-12-31`. Enforced in `core/h4_data.py` and `core/data_handler.py`.
+No data after `2025-12-31` (`core/h4_data.py`).
