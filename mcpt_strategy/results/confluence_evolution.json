@@ -1,0 +1,161 @@
+{
+  "total_tested": 13,
+  "total_passed": 0,
+  "target_p_value": 0.1,
+  "all_results": [
+    {
+      "strategy": "Confluence V1 (EMA+RSI+ADX+Structure) - All Required",
+      "params": {
+        "ema_fast": 20,
+        "ema_slow": 50,
+        "require_all": true
+      },
+      "real_wf_pf": 1.0027797794282234,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V1 (EMA+RSI+ADX+Structure) - Majority",
+      "params": {
+        "ema_fast": 20,
+        "ema_slow": 50,
+        "require_all": false
+      },
+      "real_wf_pf": 1.0189985191658497,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V1 (EMA+RSI+ADX+Structure) - Fast EMAs",
+      "params": {
+        "ema_fast": 10,
+        "ema_slow": 30,
+        "require_all": false
+      },
+      "real_wf_pf": 1.0261377277395112,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V1 (EMA+RSI+ADX+Structure) - Slow EMAs",
+      "params": {
+        "ema_fast": 30,
+        "ema_slow": 80,
+        "require_all": false
+      },
+      "real_wf_pf": 1.0003343390419164,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V2 (EMA+OrderBlock+ADX) - Standard",
+      "params": {
+        "ema_fast": 20,
+        "ema_slow": 50,
+        "ob_lookback": 20
+      },
+      "real_wf_pf": 0.9885817456479896,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V2 (EMA+OrderBlock+ADX) - Long Lookback",
+      "params": {
+        "ema_fast": 20,
+        "ema_slow": 50,
+        "ob_lookback": 40
+      },
+      "real_wf_pf": 0.9902275513647837,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V3 (EMA+RSI+Sweeps) - Standard",
+      "params": {
+        "ema_period": 50,
+        "rsi_period": 14,
+        "sweep_lookback": 20
+      },
+      "real_wf_pf": 1.0022539533303343,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V3 (EMA+RSI+Sweeps) - Sensitive",
+      "params": {
+        "ema_period": 30,
+        "rsi_period": 10,
+        "sweep_lookback": 15
+      },
+      "real_wf_pf": 1.0343791758682326,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V4 (EMA+OB+FVG) - With FVG",
+      "params": {
+        "ema_fast": 20,
+        "ema_slow": 50,
+        "fvg_confirm": true
+      },
+      "real_wf_pf": 0.9825762787313684,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V4 (EMA+OB+FVG) - No FVG",
+      "params": {
+        "ema_fast": 20,
+        "ema_slow": 50,
+        "fvg_confirm": false
+      },
+      "real_wf_pf": 0.9842962065337809,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V5 (Triple+) - 2 Required",
+      "params": {
+        "ema_period": 50,
+        "min_confluence": 2
+      },
+      "real_wf_pf": 1.0089801282122022,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V5 (Triple+) - 3 Required",
+      "params": {
+        "ema_period": 50,
+        "min_confluence": 3
+      },
+      "real_wf_pf": 1.0060374965277856,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    },
+    {
+      "strategy": "Confluence V5 (Triple+) - Fast EMA, 2 Required",
+      "params": {
+        "ema_period": 30,
+        "min_confluence": 2
+      },
+      "real_wf_pf": 1.0044277807187818,
+      "p_value": 1.0,
+      "passed": false,
+      "skipped": true
+    }
+  ],
+  "winners": []
+}
