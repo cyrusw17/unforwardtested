@@ -1,0 +1,12 @@
+{
+  "winners": [],
+  "best_overall": {
+    "pair": "USDJPY",
+    "fast": 8,
+    "slow": 20,
+    "p_value": 0.11,
+    "annual_return": 4.018269224613191,
+    "profit_factor": 1.0364791151003707
+  },
+  "total_tested": 144
+}

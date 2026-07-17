@@ -1,0 +1,95 @@
+{
+  "pair": "EURUSD",
+  "target_annual_return": 0.06,
+  "successful_count": 0,
+  "total_tested": 2,
+  "results": [
+    {
+      "strategy": "RSI Mean Reversion (Aggressive)",
+      "params": {
+        "rsi_period": 10,
+        "rsi_oversold": 15,
+        "rsi_overbought": 75,
+        "hold_bars": 5
+      },
+      "train_metrics": {
+        "total_return": 0.142485181066629,
+        "annual_return": 0.020033290929851955,
+        "annual_return_pct": 2.0033290929851955,
+        "profit_factor": 1.207042424128897,
+        "sharpe_ratio": 0.854834144527676,
+        "max_drawdown": -0.038173374700357685,
+        "max_drawdown_pct": -3.8173374700357683,
+        "win_rate": 6.313404904954201,
+        "trades": 269,
+        "years": 6.715608465608466
+      },
+      "test_metrics": {
+        "total_return": -0.006957320410943768,
+        "annual_return": -0.0024221096700501876,
+        "annual_return_pct": -0.24221096700501876,
+        "profit_factor": 0.9785008480194446,
+        "sharpe_ratio": -0.09610115076187199,
+        "max_drawdown": -0.03383886130500782,
+        "max_drawdown_pct": -3.383886130500782,
+        "win_rate": 5.6525735294117645,
+        "trades": 111,
+        "years": 2.878968253968254
+      },
+      "mcpt": {
+        "real_pf": 0.9785008480194446,
+        "p_value": 0.67,
+        "permuted_pfs_mean": 1.0404639855230184,
+        "permuted_pfs_std": 0.1444536564684634,
+        "passed": false
+      },
+      "meets_return_target": false,
+      "meets_mcpt": false,
+      "success": false
+    },
+    {
+      "strategy": "Momentum + Filters (Relaxed)",
+      "params": {
+        "fast_ma": 10,
+        "slow_ma": 20,
+        "rsi_min": 35,
+        "rsi_max": 60,
+        "adx_min": 20
+      },
+      "train_metrics": {
+        "total_return": 0.3968760244607803,
+        "annual_return": 0.05102972291640717,
+        "annual_return_pct": 5.102972291640717,
+        "profit_factor": 1.1749629164996396,
+        "sharpe_ratio": 1.1991007595258152,
+        "max_drawdown": -0.030857894202503046,
+        "max_drawdown_pct": -3.0857894202503044,
+        "win_rate": 18.014379986210972,
+        "trades": 1712,
+        "years": 6.715608465608466
+      },
+      "test_metrics": {
+        "total_return": -0.01265673763897679,
+        "annual_return": -0.004414560821996316,
+        "annual_return_pct": -0.4414560821996316,
+        "profit_factor": 0.9833957275689963,
+        "sharpe_ratio": -0.10908512931178306,
+        "max_drawdown": -0.0922628104117373,
+        "max_drawdown_pct": -9.22628104117373,
+        "win_rate": 13.993566176470587,
+        "trades": 603,
+        "years": 2.878968253968254
+      },
+      "mcpt": {
+        "real_pf": 0.9833957275689963,
+        "p_value": 0.55,
+        "permuted_pfs_mean": 1.0006205665325827,
+        "permuted_pfs_std": 0.08049370835811463,
+        "passed": false
+      },
+      "meets_return_target": false,
+      "meets_mcpt": false,
+      "success": false
+    }
+  ]
+}
