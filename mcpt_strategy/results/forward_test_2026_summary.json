@@ -1,0 +1,13 @@
+{
+  "initial_capital": 1000.0,
+  "final_equity": 902.7767618179901,
+  "total_return_pct": -9.722323818200994,
+  "max_drawdown": -152.90791607282586,
+  "max_drawdown_pct": -15.290791607282586,
+  "total_trades": 22,
+  "win_rate": 13.636363636363635,
+  "profit_factor": 0.4693053122222967,
+  "failed": false,
+  "failure_threshold": 400.0,
+  "num_trades": 22
+}
