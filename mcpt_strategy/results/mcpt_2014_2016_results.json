@@ -1,0 +1,23 @@
+{
+  "period": "2014-01-01 00:00:00 to 2016-12-30 20:00:00",
+  "bars": 4698,
+  "years": 2.9952087611225187,
+  "real_metrics": {
+    "total_return": 0.29845800995187255,
+    "annual_return": 0.09111313604292715,
+    "annual_return_pct": 9.111313604292715,
+    "profit_factor": 1.5728964385129125,
+    "sharpe_ratio": 1.6107661058392193,
+    "max_drawdown": -0.03553287914039635,
+    "max_drawdown_pct": -3.553287914039635,
+    "win_rate": 61.03678929765886,
+    "trades": 598,
+    "years": 2.9952087611225187
+  },
+  "real_pf": 1.5728964385129125,
+  "p_value": 0.63,
+  "permuted_mean": 1.6931237931447933,
+  "permuted_std": 0.3169878351570491,
+  "passed": false,
+  "reason": "p-value 0.6300 >= 0.05"
+}
