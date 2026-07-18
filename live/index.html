@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Paper Trader — Enhanced ICT v2 (AUD/USD)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../index.html">&larr; Back to Unforwardtested overview</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot" id="live-dot"></span>
+      <div>
+        <h1>Live Paper Trader</h1>
+        <p class="sub">Enhanced ICT v2 &middot; AUD/USD &middot; Daily Signal, Live Mark-to-Market</p>
+      </div>
+    </div>
+    <div class="meta-pills">
+      <div class="pill"><span class="pill-label">Leverage</span><span class="pill-value" id="meta-leverage">—</span></div>
+      <div class="pill"><span class="pill-label">Started</span><span class="pill-value" id="meta-start">—</span></div>
+      <div class="pill"><span class="pill-label">Last Updated</span><span class="pill-value" id="meta-updated">—</span></div>
+    </div>
+  </header>
+
+  <section class="stats-grid">
+    <div class="stat-card highlight">
+      <span class="stat-label">Equity</span>
+      <span class="stat-value" id="stat-equity">$0.00</span>
+      <span class="stat-sub" id="stat-equity-pct">+0.00%</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Balance (Realized)</span>
+      <span class="stat-value" id="stat-balance">$0.00</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Unrealized P&amp;L</span>
+      <span class="stat-value" id="stat-unrealized">$0.00</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Open Position</span>
+      <span class="stat-value" id="stat-position">FLAT</span>
+      <span class="stat-sub" id="stat-position-detail">—</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Total Trades</span>
+      <span class="stat-value" id="stat-trades">0</span>
+      <span class="stat-sub" id="stat-winrate">0% win rate</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Max Drawdown</span>
+      <span class="stat-value" id="stat-drawdown">0.00%</span>
+    </div>
+  </section>
+
+  <section class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-header">
+        <h2>AUD/USD Live Price</h2>
+        <span class="chart-price" id="live-price">—</span>
+      </div>
+      <div class="chart-container"><canvas id="priceChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-header">
+        <h2>Account Equity</h2>
+        <span class="chart-price" id="equity-change">—</span>
+      </div>
+      <div class="chart-container"><canvas id="equityChart"></canvas></div>
+    </div>
+  </section>
+
+  <section class="table-card">
+    <h2>Trade Log</h2>
+    <div class="table-wrap">
+      <table id="trades-table">
+        <thead>
+          <tr>
+            <th>#</th><th>Dir</th><th>Entry Time</th><th>Entry</th><th>Exit Time</th><th>Exit</th>
+            <th>Size (lots)</th><th>Conviction</th><th>P&amp;L</th><th>Reason</th>
+          </tr>
+        </thead>
+        <tbody id="trades-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>
+      Fully automated paper trading simulation. Strategy validated via Monte Carlo Permutation Testing
+      (p = 0.004, 500 permutations) on out-of-sample 2025&ndash;2026 data before this live test began.
+      Position sizing scales with signal conviction (0&ndash;2.5x), risk-based sizing with realistic OANDA
+      spread/slippage costs. This is a simulation — no real money is traded.
+    </p>
+  </footer>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -7,8 +7,19 @@ from pathlib import Path
 from datetime import datetime, timezone
 from typing import Optional, Dict, List
 
-DATA_DIR = Path(__file__).parent.parent / 'docs' / 'live' / 'data'
-DATA_DIR.mkdir(parents=True, exist_ok=True)
+# This repo serves GitHub Pages from the repository ROOT (not /docs), but
+# also keeps a duplicate copy of the site under /docs for browsing on
+# GitHub itself. Both /live/data and /docs/live/data must stay in sync --
+# we write to both on every save.
+REPO_ROOT = Path(__file__).parent.parent
+DATA_DIRS = [
+    REPO_ROOT / 'live' / 'data',
+    REPO_ROOT / 'docs' / 'live' / 'data',
+]
+for d in DATA_DIRS:
+    d.mkdir(parents=True, exist_ok=True)
+
+DATA_DIR = DATA_DIRS[1]  # canonical read location
 
 STATE_FILE = DATA_DIR / 'state.json'
 TRADES_FILE = DATA_DIR / 'trades.json'
@@ -28,8 +39,11 @@ def load_json(path: Path, default):
 
 
 def save_json(path: Path, data):
-    with open(path, 'w') as f:
-        json.dump(data, f, indent=2, default=str)
+    """Write `data` as JSON to `path`'s filename in every DATA_DIRS mirror."""
+    filename = path.name
+    for d in DATA_DIRS:
+        with open(d / filename, 'w') as f:
+            json.dump(data, f, indent=2, default=str)
 
 
 def load_state() -> Optional[Dict]:
