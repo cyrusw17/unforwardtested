@@ -1,0 +1,742 @@
+{
+  "all_candidates": [
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 3
+      },
+      "metrics": {
+        "total_return": 0.26525520046243867,
+        "annual_return": 0.1602018574816242,
+        "annual_return_pct": 16.02018574816242,
+        "profit_factor": 1.9308567319902887,
+        "sharpe_ratio": 2.1508272293576542,
+        "max_drawdown": -0.02756662311718233,
+        "max_drawdown_pct": -2.756662311718233,
+        "win_rate": 25.376884422110553,
+        "trades": 201,
+        "trades_per_year": 126.94736842105264,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 5.81144294680657
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 5
+      },
+      "metrics": {
+        "total_return": 0.26525520046243867,
+        "annual_return": 0.1602018574816242,
+        "annual_return_pct": 16.02018574816242,
+        "profit_factor": 1.9308567319902887,
+        "sharpe_ratio": 2.1508272293576542,
+        "max_drawdown": -0.02756662311718233,
+        "max_drawdown_pct": -2.756662311718233,
+        "win_rate": 25.376884422110553,
+        "trades": 201,
+        "trades_per_year": 126.94736842105264,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 5.81144294680657
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.26525520046243867,
+        "annual_return": 0.1602018574816242,
+        "annual_return_pct": 16.02018574816242,
+        "profit_factor": 1.9308567319902887,
+        "sharpe_ratio": 2.1508272293576542,
+        "max_drawdown": -0.02756662311718233,
+        "max_drawdown_pct": -2.756662311718233,
+        "win_rate": 25.376884422110553,
+        "trades": 201,
+        "trades_per_year": 126.94736842105264,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 5.81144294680657
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 7,
+        "structure_length": 3
+      },
+      "metrics": {
+        "total_return": 0.2487421485777046,
+        "annual_return": 0.1506153696317285,
+        "annual_return_pct": 15.06153696317285,
+        "profit_factor": 1.8354559491991551,
+        "sharpe_ratio": 2.020750832007986,
+        "max_drawdown": -0.03167537980487484,
+        "max_drawdown_pct": -3.1675379804874835,
+        "win_rate": 25.376884422110553,
+        "trades": 207,
+        "trades_per_year": 130.73684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 4.7549664932052
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 7,
+        "structure_length": 5
+      },
+      "metrics": {
+        "total_return": 0.2487421485777046,
+        "annual_return": 0.1506153696317285,
+        "annual_return_pct": 15.06153696317285,
+        "profit_factor": 1.8354559491991551,
+        "sharpe_ratio": 2.020750832007986,
+        "max_drawdown": -0.03167537980487484,
+        "max_drawdown_pct": -3.1675379804874835,
+        "win_rate": 25.376884422110553,
+        "trades": 207,
+        "trades_per_year": 130.73684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 4.7549664932052
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 7,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.2487421485777046,
+        "annual_return": 0.1506153696317285,
+        "annual_return_pct": 15.06153696317285,
+        "profit_factor": 1.8354559491991551,
+        "sharpe_ratio": 2.020750832007986,
+        "max_drawdown": -0.03167537980487484,
+        "max_drawdown_pct": -3.1675379804874835,
+        "win_rate": 25.376884422110553,
+        "trades": 207,
+        "trades_per_year": 130.73684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 4.7549664932052
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 3,
+        "structure_length": 3
+      },
+      "metrics": {
+        "total_return": 0.2149651339115093,
+        "annual_return": 0.13085969414066434,
+        "annual_return_pct": 13.085969414066433,
+        "profit_factor": 1.737357038041689,
+        "sharpe_ratio": 1.7891466740641828,
+        "max_drawdown": -0.04580363800043147,
+        "max_drawdown_pct": -4.580363800043147,
+        "win_rate": 24.371859296482413,
+        "trades": 192,
+        "trades_per_year": 121.26315789473685,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.856971626127856
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 3,
+        "structure_length": 5
+      },
+      "metrics": {
+        "total_return": 0.2149651339115093,
+        "annual_return": 0.13085969414066434,
+        "annual_return_pct": 13.085969414066433,
+        "profit_factor": 1.737357038041689,
+        "sharpe_ratio": 1.7891466740641828,
+        "max_drawdown": -0.04580363800043147,
+        "max_drawdown_pct": -4.580363800043147,
+        "win_rate": 24.371859296482413,
+        "trades": 192,
+        "trades_per_year": 121.26315789473685,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.856971626127856
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 3,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.2149651339115093,
+        "annual_return": 0.13085969414066434,
+        "annual_return_pct": 13.085969414066433,
+        "profit_factor": 1.737357038041689,
+        "sharpe_ratio": 1.7891466740641828,
+        "max_drawdown": -0.04580363800043147,
+        "max_drawdown_pct": -4.580363800043147,
+        "win_rate": 24.371859296482413,
+        "trades": 192,
+        "trades_per_year": 121.26315789473685,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.856971626127856
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 2.0,
+        "ob_lookback": 5,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.17609021776100398,
+        "annual_return": 0.10787005494409807,
+        "annual_return_pct": 10.787005494409808,
+        "profit_factor": 1.6906287648779532,
+        "sharpe_ratio": 1.5596153096149257,
+        "max_drawdown": -0.033721025154061335,
+        "max_drawdown_pct": -3.3721025154061337,
+        "win_rate": 20.603015075376884,
+        "trades": 206,
+        "trades_per_year": 130.10526315789474,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 3.1988960730366847
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 7,
+        "structure_length": 3
+      },
+      "metrics": {
+        "total_return": 0.10711967034945324,
+        "annual_return": 0.06638090074502112,
+        "annual_return_pct": 6.638090074502112,
+        "profit_factor": 1.8472485015368203,
+        "sharpe_ratio": 1.8273593703257849,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.572864321608039,
+        "trades": 160,
+        "trades_per_year": 101.05263157894737,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.8984000457368757
+      },
+      "quick_p_value": 0.1
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 7,
+        "structure_length": 5
+      },
+      "metrics": {
+        "total_return": 0.10711967034945324,
+        "annual_return": 0.06638090074502112,
+        "annual_return_pct": 6.638090074502112,
+        "profit_factor": 1.8472485015368203,
+        "sharpe_ratio": 1.8273593703257849,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.572864321608039,
+        "trades": 160,
+        "trades_per_year": 101.05263157894737,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.8984000457368757
+      },
+      "quick_p_value": 0.1
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 7,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.10711967034945324,
+        "annual_return": 0.06638090074502112,
+        "annual_return_pct": 6.638090074502112,
+        "profit_factor": 1.8472485015368203,
+        "sharpe_ratio": 1.8273593703257849,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.572864321608039,
+        "trades": 160,
+        "trades_per_year": 101.05263157894737,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.8984000457368757
+      },
+      "quick_p_value": 0.1
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 5,
+        "structure_length": 3
+      },
+      "metrics": {
+        "total_return": 0.0968781280939226,
+        "annual_return": 0.06013991247057682,
+        "annual_return_pct": 6.013991247057682,
+        "profit_factor": 1.7411953556895794,
+        "sharpe_ratio": 1.6585515449625732,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.321608040201006,
+        "trades": 159,
+        "trades_per_year": 100.42105263157895,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.625898761526004
+      },
+      "quick_p_value": 0.1
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 5,
+        "structure_length": 5
+      },
+      "metrics": {
+        "total_return": 0.0968781280939226,
+        "annual_return": 0.06013991247057682,
+        "annual_return_pct": 6.013991247057682,
+        "profit_factor": 1.7411953556895794,
+        "sharpe_ratio": 1.6585515449625732,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.321608040201006,
+        "trades": 159,
+        "trades_per_year": 100.42105263157895,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.625898761526004
+      },
+      "quick_p_value": 0.1
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 5,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.0968781280939226,
+        "annual_return": 0.06013991247057682,
+        "annual_return_pct": 6.013991247057682,
+        "profit_factor": 1.7411953556895794,
+        "sharpe_ratio": 1.6585515449625732,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.321608040201006,
+        "trades": 159,
+        "trades_per_year": 100.42105263157895,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.625898761526004
+      },
+      "quick_p_value": 0.1
+    }
+  ],
+  "promising": [
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 3
+      },
+      "metrics": {
+        "total_return": 0.26525520046243867,
+        "annual_return": 0.1602018574816242,
+        "annual_return_pct": 16.02018574816242,
+        "profit_factor": 1.9308567319902887,
+        "sharpe_ratio": 2.1508272293576542,
+        "max_drawdown": -0.02756662311718233,
+        "max_drawdown_pct": -2.756662311718233,
+        "win_rate": 25.376884422110553,
+        "trades": 201,
+        "trades_per_year": 126.94736842105264,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 5.81144294680657
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 5
+      },
+      "metrics": {
+        "total_return": 0.26525520046243867,
+        "annual_return": 0.1602018574816242,
+        "annual_return_pct": 16.02018574816242,
+        "profit_factor": 1.9308567319902887,
+        "sharpe_ratio": 2.1508272293576542,
+        "max_drawdown": -0.02756662311718233,
+        "max_drawdown_pct": -2.756662311718233,
+        "win_rate": 25.376884422110553,
+        "trades": 201,
+        "trades_per_year": 126.94736842105264,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 5.81144294680657
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.26525520046243867,
+        "annual_return": 0.1602018574816242,
+        "annual_return_pct": 16.02018574816242,
+        "profit_factor": 1.9308567319902887,
+        "sharpe_ratio": 2.1508272293576542,
+        "max_drawdown": -0.02756662311718233,
+        "max_drawdown_pct": -2.756662311718233,
+        "win_rate": 25.376884422110553,
+        "trades": 201,
+        "trades_per_year": 126.94736842105264,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 5.81144294680657
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 7,
+        "structure_length": 3
+      },
+      "metrics": {
+        "total_return": 0.2487421485777046,
+        "annual_return": 0.1506153696317285,
+        "annual_return_pct": 15.06153696317285,
+        "profit_factor": 1.8354559491991551,
+        "sharpe_ratio": 2.020750832007986,
+        "max_drawdown": -0.03167537980487484,
+        "max_drawdown_pct": -3.1675379804874835,
+        "win_rate": 25.376884422110553,
+        "trades": 207,
+        "trades_per_year": 130.73684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 4.7549664932052
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 7,
+        "structure_length": 5
+      },
+      "metrics": {
+        "total_return": 0.2487421485777046,
+        "annual_return": 0.1506153696317285,
+        "annual_return_pct": 15.06153696317285,
+        "profit_factor": 1.8354559491991551,
+        "sharpe_ratio": 2.020750832007986,
+        "max_drawdown": -0.03167537980487484,
+        "max_drawdown_pct": -3.1675379804874835,
+        "win_rate": 25.376884422110553,
+        "trades": 207,
+        "trades_per_year": 130.73684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 4.7549664932052
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 7,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.2487421485777046,
+        "annual_return": 0.1506153696317285,
+        "annual_return_pct": 15.06153696317285,
+        "profit_factor": 1.8354559491991551,
+        "sharpe_ratio": 2.020750832007986,
+        "max_drawdown": -0.03167537980487484,
+        "max_drawdown_pct": -3.1675379804874835,
+        "win_rate": 25.376884422110553,
+        "trades": 207,
+        "trades_per_year": 130.73684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 4.7549664932052
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 3,
+        "structure_length": 3
+      },
+      "metrics": {
+        "total_return": 0.2149651339115093,
+        "annual_return": 0.13085969414066434,
+        "annual_return_pct": 13.085969414066433,
+        "profit_factor": 1.737357038041689,
+        "sharpe_ratio": 1.7891466740641828,
+        "max_drawdown": -0.04580363800043147,
+        "max_drawdown_pct": -4.580363800043147,
+        "win_rate": 24.371859296482413,
+        "trades": 192,
+        "trades_per_year": 121.26315789473685,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.856971626127856
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 3,
+        "structure_length": 5
+      },
+      "metrics": {
+        "total_return": 0.2149651339115093,
+        "annual_return": 0.13085969414066434,
+        "annual_return_pct": 13.085969414066433,
+        "profit_factor": 1.737357038041689,
+        "sharpe_ratio": 1.7891466740641828,
+        "max_drawdown": -0.04580363800043147,
+        "max_drawdown_pct": -4.580363800043147,
+        "win_rate": 24.371859296482413,
+        "trades": 192,
+        "trades_per_year": 121.26315789473685,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.856971626127856
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 3,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.2149651339115093,
+        "annual_return": 0.13085969414066434,
+        "annual_return_pct": 13.085969414066433,
+        "profit_factor": 1.737357038041689,
+        "sharpe_ratio": 1.7891466740641828,
+        "max_drawdown": -0.04580363800043147,
+        "max_drawdown_pct": -4.580363800043147,
+        "win_rate": 24.371859296482413,
+        "trades": 192,
+        "trades_per_year": 121.26315789473685,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.856971626127856
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "AUDUSD=X",
+      "params": {
+        "entry_threshold": 2.0,
+        "ob_lookback": 5,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.17609021776100398,
+        "annual_return": 0.10787005494409807,
+        "annual_return_pct": 10.787005494409808,
+        "profit_factor": 1.6906287648779532,
+        "sharpe_ratio": 1.5596153096149257,
+        "max_drawdown": -0.033721025154061335,
+        "max_drawdown_pct": -3.3721025154061337,
+        "win_rate": 20.603015075376884,
+        "trades": 206,
+        "trades_per_year": 130.10526315789474,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 3.1988960730366847
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 7,
+        "structure_length": 3
+      },
+      "metrics": {
+        "total_return": 0.10711967034945324,
+        "annual_return": 0.06638090074502112,
+        "annual_return_pct": 6.638090074502112,
+        "profit_factor": 1.8472485015368203,
+        "sharpe_ratio": 1.8273593703257849,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.572864321608039,
+        "trades": 160,
+        "trades_per_year": 101.05263157894737,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.8984000457368757
+      },
+      "quick_p_value": 0.1
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 7,
+        "structure_length": 5
+      },
+      "metrics": {
+        "total_return": 0.10711967034945324,
+        "annual_return": 0.06638090074502112,
+        "annual_return_pct": 6.638090074502112,
+        "profit_factor": 1.8472485015368203,
+        "sharpe_ratio": 1.8273593703257849,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.572864321608039,
+        "trades": 160,
+        "trades_per_year": 101.05263157894737,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.8984000457368757
+      },
+      "quick_p_value": 0.1
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 7,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.10711967034945324,
+        "annual_return": 0.06638090074502112,
+        "annual_return_pct": 6.638090074502112,
+        "profit_factor": 1.8472485015368203,
+        "sharpe_ratio": 1.8273593703257849,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.572864321608039,
+        "trades": 160,
+        "trades_per_year": 101.05263157894737,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.8984000457368757
+      },
+      "quick_p_value": 0.1
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 5,
+        "structure_length": 3
+      },
+      "metrics": {
+        "total_return": 0.0968781280939226,
+        "annual_return": 0.06013991247057682,
+        "annual_return_pct": 6.013991247057682,
+        "profit_factor": 1.7411953556895794,
+        "sharpe_ratio": 1.6585515449625732,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.321608040201006,
+        "trades": 159,
+        "trades_per_year": 100.42105263157895,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.625898761526004
+      },
+      "quick_p_value": 0.1
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 5,
+        "structure_length": 5
+      },
+      "metrics": {
+        "total_return": 0.0968781280939226,
+        "annual_return": 0.06013991247057682,
+        "annual_return_pct": 6.013991247057682,
+        "profit_factor": 1.7411953556895794,
+        "sharpe_ratio": 1.6585515449625732,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.321608040201006,
+        "trades": 159,
+        "trades_per_year": 100.42105263157895,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.625898761526004
+      },
+      "quick_p_value": 0.1
+    },
+    {
+      "pair": "EURAUD=X",
+      "params": {
+        "entry_threshold": 2.5,
+        "ob_lookback": 5,
+        "structure_length": 7
+      },
+      "metrics": {
+        "total_return": 0.0968781280939226,
+        "annual_return": 0.06013991247057682,
+        "annual_return_pct": 6.013991247057682,
+        "profit_factor": 1.7411953556895794,
+        "sharpe_ratio": 1.6585515449625732,
+        "max_drawdown": -0.02290260133091626,
+        "max_drawdown_pct": -2.290260133091626,
+        "win_rate": 14.321608040201006,
+        "trades": 159,
+        "trades_per_year": 100.42105263157895,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.625898761526004
+      },
+      "quick_p_value": 0.1
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "params": {
+    "entry_threshold": 1.5,
+    "max_score_cap": 4.0,
+    "ob_lookback": 5,
+    "structure_length": 3,
+    "max_position": 2.5
+  },
+  "mcpt_result": {
+    "real_metrics": {
+      "total_return": 0.3039685965523957,
+      "annual_return": 0.18249767131730388,
+      "annual_return_pct": 18.249767131730387,
+      "profit_factor": 2.114169203856724,
+      "sharpe_ratio": 1.495270154582361,
+      "max_drawdown": -0.03772859006571547,
+      "max_drawdown_pct": -3.772859006571547,
+      "win_rate": 25.376884422110553,
+      "trades": 246,
+      "trades_per_year": 155.3684210526316,
+      "years": 1.5833333333333333,
+      "calmar_ratio": 4.837118773837834
+    },
+    "real_pf": 2.114169203856724,
+    "p_value": 0.004,
+    "permuted_mean": 1.0568572410535706,
+    "permuted_std": 0.22350123768630065,
+    "permuted_better_count": 1,
+    "n_permutations": 500,
+    "passed": true
+  }
+}

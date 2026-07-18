@@ -1,0 +1,383 @@
+[
+  {
+    "pair": "AUDUSD=X",
+    "test_metrics": {
+      "total_return": 0.162467080346961,
+      "annual_return": 0.09974766954426806,
+      "annual_return_pct": 9.974766954426805,
+      "profit_factor": 2.189394507786864,
+      "sharpe_ratio": 1.6249548980523132,
+      "max_drawdown": -0.021613329977864193,
+      "max_drawdown_pct": -2.1613329977864195,
+      "win_rate": 13.316582914572864,
+      "trades": 153,
+      "trades_per_year": 96.63157894736842,
+      "years": 1.5833333333333333,
+      "calmar_ratio": 4.615099554137516
+    },
+    "data_points": 2225,
+    "test_points": 399,
+    "quick_p_value": 0.03333333333333333
+  },
+  {
+    "pair": "USDCHF=X",
+    "test_metrics": {
+      "total_return": 0.05314800252352736,
+      "annual_return": 0.033331158114772164,
+      "annual_return_pct": 3.3331158114772164,
+      "profit_factor": 1.7172162131316153,
+      "sharpe_ratio": 1.0986841406182422,
+      "max_drawdown": -0.02543509558759255,
+      "max_drawdown_pct": -2.543509558759255,
+      "win_rate": 7.8085642317380355,
+      "trades": 89,
+      "trades_per_year": 56.35175879396985,
+      "years": 1.5793650793650793,
+      "calmar_ratio": 1.310439663966955
+    },
+    "data_points": 2224,
+    "test_points": 398
+  },
+  {
+    "pair": "USDJPY=X",
+    "test_metrics": {
+      "total_return": 0.0498409657734209,
+      "annual_return": 0.031275470935872685,
+      "annual_return_pct": 3.1275470935872685,
+      "profit_factor": 1.7172332697380654,
+      "sharpe_ratio": 1.0018588599135874,
+      "max_drawdown": -0.027252275528879544,
+      "max_drawdown_pct": -2.7252275528879544,
+      "win_rate": 6.54911838790932,
+      "trades": 87,
+      "trades_per_year": 55.085427135678394,
+      "years": 1.5793650793650793,
+      "calmar_ratio": 1.1476278706609184
+    },
+    "data_points": 2224,
+    "test_points": 398
+  },
+  {
+    "pair": "EURAUD=X",
+    "test_metrics": {
+      "total_return": 0.04918601450663984,
+      "annual_return": 0.030789522505874745,
+      "annual_return_pct": 3.0789522505874745,
+      "profit_factor": 1.7168912393842661,
+      "sharpe_ratio": 1.219203786876377,
+      "max_drawdown": -0.010855495073968657,
+      "max_drawdown_pct": -1.0855495073968657,
+      "win_rate": 7.035175879396985,
+      "trades": 92,
+      "trades_per_year": 58.10526315789474,
+      "years": 1.5833333333333333,
+      "calmar_ratio": 2.8363075378945766
+    },
+    "data_points": 2226,
+    "test_points": 399
+  },
+  {
+    "pair": "EURUSD=X",
+    "test_metrics": {
+      "total_return": 0.04561750202527204,
+      "annual_return": 0.028646666135581755,
+      "annual_return_pct": 2.8646666135581755,
+      "profit_factor": 1.5824901430189628,
+      "sharpe_ratio": 1.0473590539577697,
+      "max_drawdown": -0.021597402852895464,
+      "max_drawdown_pct": -2.1597402852895464,
+      "win_rate": 7.304785894206549,
+      "trades": 95,
+      "trades_per_year": 60.150753768844226,
+      "years": 1.5793650793650793,
+      "calmar_ratio": 1.3263940266660919
+    },
+    "data_points": 2224,
+    "test_points": 398
+  },
+  {
+    "pair": "AUDCHF=X",
+    "test_metrics": {
+      "total_return": 0.038985571750274284,
+      "annual_return": 0.02444871260157999,
+      "annual_return_pct": 2.444871260157999,
+      "profit_factor": 1.3964064960054625,
+      "sharpe_ratio": 0.5872965295820479,
+      "max_drawdown": -0.029102849443912504,
+      "max_drawdown_pct": -2.9102849443912504,
+      "win_rate": 6.030150753768844,
+      "trades": 75,
+      "trades_per_year": 47.36842105263158,
+      "years": 1.5833333333333333,
+      "calmar_ratio": 0.8400796852795448
+    },
+    "data_points": 2226,
+    "test_points": 399
+  },
+  {
+    "pair": "NZDUSD=X",
+    "test_metrics": {
+      "total_return": 0.023198659262387844,
+      "annual_return": 0.014589824919598815,
+      "annual_return_pct": 1.4589824919598815,
+      "profit_factor": 1.0925294066000664,
+      "sharpe_ratio": 0.24200955890565046,
+      "max_drawdown": -0.055552727554584735,
+      "max_drawdown_pct": -5.555272755458473,
+      "win_rate": 13.06532663316583,
+      "trades": 149,
+      "trades_per_year": 94.10526315789474,
+      "years": 1.5833333333333333,
+      "calmar_ratio": 0.262630217485959
+    },
+    "data_points": 2225,
+    "test_points": 399
+  },
+  {
+    "pair": "AUDNZD=X",
+    "test_metrics": {
+      "total_return": 0.016553905502159294,
+      "annual_return": 0.010423454800207566,
+      "annual_return_pct": 1.0423454800207566,
+      "profit_factor": 1.4632965301898209,
+      "sharpe_ratio": 0.7026249549454333,
+      "max_drawdown": -0.012892757795752607,
+      "max_drawdown_pct": -1.2892757795752607,
+      "win_rate": 5.025125628140704,
+      "trades": 76,
+      "trades_per_year": 48.0,
+      "years": 1.5833333333333333,
+      "calmar_ratio": 0.808473638094828
+    },
+    "data_points": 2226,
+    "test_points": 399
+  },
+  {
+    "pair": "USDCAD=X",
+    "test_metrics": {
+      "total_return": 0.01589366262770242,
+      "annual_return": 0.010008924437639122,
+      "annual_return_pct": 1.0008924437639122,
+      "profit_factor": 1.3661571295828294,
+      "sharpe_ratio": 0.6028800109540094,
+      "max_drawdown": -0.0102298986677965,
+      "max_drawdown_pct": -1.02298986677965,
+      "win_rate": 5.276381909547738,
+      "trades": 84,
+      "trades_per_year": 53.05263157894737,
+      "years": 1.5833333333333333,
+      "calmar_ratio": 0.9783991770267481
+    },
+    "data_points": 2225,
+    "test_points": 399
+  },
+  {
+    "pair": "CADJPY=X",
+    "test_metrics": {
+      "total_return": 0.011064598532165792,
+      "annual_return": 0.0069915792366854745,
+      "annual_return_pct": 0.6991579236685475,
+      "profit_factor": 1.1530227182328074,
+      "sharpe_ratio": 0.3038004604426344,
+      "max_drawdown": -0.041978364082337016,
+      "max_drawdown_pct": -4.197836408233702,
+      "win_rate": 5.793450881612091,
+      "trades": 89,
+      "trades_per_year": 56.35175879396985,
+      "years": 1.5793650793650793,
+      "calmar_ratio": 0.16655197003323147
+    },
+    "data_points": 2225,
+    "test_points": 398
+  },
+  {
+    "pair": "EURGBP=X",
+    "test_metrics": {
+      "total_return": 0.010876227675171046,
+      "annual_return": 0.006855501724717383,
+      "annual_return_pct": 0.6855501724717383,
+      "profit_factor": 1.3128159799442698,
+      "sharpe_ratio": 0.4907279205211112,
+      "max_drawdown": -0.011541979891554088,
+      "max_drawdown_pct": -1.1541979891554088,
+      "win_rate": 5.276381909547738,
+      "trades": 74,
+      "trades_per_year": 46.73684210526316,
+      "years": 1.5833333333333333,
+      "calmar_ratio": 0.5939623694660859
+    },
+    "data_points": 2226,
+    "test_points": 399
+  },
+  {
+    "pair": "GBPJPY=X",
+    "test_metrics": {
+      "total_return": 0.009274474704419333,
+      "annual_return": 0.0058623331269576084,
+      "annual_return_pct": 0.5862333126957608,
+      "profit_factor": 1.1433707926224788,
+      "sharpe_ratio": 0.2836291940357612,
+      "max_drawdown": -0.03396317243269209,
+      "max_drawdown_pct": -3.396317243269209,
+      "win_rate": 6.045340050377834,
+      "trades": 83,
+      "trades_per_year": 52.55276381909548,
+      "years": 1.5793650793650793,
+      "calmar_ratio": 0.17260852585474834
+    },
+    "data_points": 2225,
+    "test_points": 398
+  },
+  {
+    "pair": "AUDCAD=X",
+    "test_metrics": {
+      "total_return": 0.00354911318502249,
+      "annual_return": 0.002240082050596337,
+      "annual_return_pct": 0.2240082050596337,
+      "profit_factor": 1.0492162853897669,
+      "sharpe_ratio": 0.10237035223191866,
+      "max_drawdown": -0.02952574723488362,
+      "max_drawdown_pct": -2.952574723488362,
+      "win_rate": 7.035175879396985,
+      "trades": 93,
+      "trades_per_year": 58.73684210526316,
+      "years": 1.5833333333333333,
+      "calmar_ratio": 0.0758687674447663
+    },
+    "data_points": 2226,
+    "test_points": 399
+  },
+  {
+    "pair": "EURNZD=X",
+    "test_metrics": {
+      "total_return": 0.0007507010299336869,
+      "annual_return": 0.000474061423104466,
+      "annual_return_pct": 0.0474061423104466,
+      "profit_factor": 1.0098293142925039,
+      "sharpe_ratio": 0.021371089406767227,
+      "max_drawdown": -0.029183437054236094,
+      "max_drawdown_pct": -2.9183437054236094,
+      "win_rate": 5.527638190954774,
+      "trades": 78,
+      "trades_per_year": 49.26315789473684,
+      "years": 1.5833333333333333,
+      "calmar_ratio": 0.01624419434295708
+    },
+    "data_points": 2226,
+    "test_points": 399
+  },
+  {
+    "pair": "AUDJPY=X",
+    "test_metrics": {
+      "total_return": -0.004491907610169044,
+      "annual_return": -0.0028464704662477525,
+      "annual_return_pct": -0.28464704662477525,
+      "profit_factor": 0.9554613381530024,
+      "sharpe_ratio": -0.09503903414385177,
+      "max_drawdown": -0.056742105043301905,
+      "max_drawdown_pct": -5.6742105043301905,
+      "win_rate": 6.045340050377834,
+      "trades": 89,
+      "trades_per_year": 56.35175879396985,
+      "years": 1.5793650793650793,
+      "calmar_ratio": -0.05016504876009641
+    },
+    "data_points": 2225,
+    "test_points": 398
+  },
+  {
+    "pair": "NZDJPY=X",
+    "test_metrics": {
+      "total_return": -0.006786698000323721,
+      "annual_return": -0.0043024708939761735,
+      "annual_return_pct": -0.43024708939761735,
+      "profit_factor": 0.9345475015602861,
+      "sharpe_ratio": -0.16380387796086818,
+      "max_drawdown": -0.0348377850272481,
+      "max_drawdown_pct": -3.4837785027248103,
+      "win_rate": 7.5566750629722925,
+      "trades": 98,
+      "trades_per_year": 62.050251256281406,
+      "years": 1.5793650793650793,
+      "calmar_ratio": -0.12350012753712755
+    },
+    "data_points": 2224,
+    "test_points": 398
+  },
+  {
+    "pair": "EURJPY=X",
+    "test_metrics": {
+      "total_return": -0.01164342805600993,
+      "annual_return": -0.00738804902142598,
+      "annual_return_pct": -0.738804902142598,
+      "profit_factor": 0.821121824013606,
+      "sharpe_ratio": -0.4055547487454902,
+      "max_drawdown": -0.02401775063504452,
+      "max_drawdown_pct": -2.401775063504452,
+      "win_rate": 5.037783375314862,
+      "trades": 81,
+      "trades_per_year": 51.28643216080402,
+      "years": 1.5793650793650793,
+      "calmar_ratio": -0.3076078661024155
+    },
+    "data_points": 2225,
+    "test_points": 398
+  },
+  {
+    "pair": "GBPAUD=X",
+    "test_metrics": {
+      "total_return": -0.019470544635298292,
+      "annual_return": -0.01234168844321104,
+      "annual_return_pct": -1.234168844321104,
+      "profit_factor": 0.7224039981236152,
+      "sharpe_ratio": -0.6551248720639186,
+      "max_drawdown": -0.03775445981361214,
+      "max_drawdown_pct": -3.775445981361214,
+      "win_rate": 4.271356783919598,
+      "trades": 83,
+      "trades_per_year": 52.42105263157895,
+      "years": 1.5833333333333333,
+      "calmar_ratio": -0.32689352474224304
+    },
+    "data_points": 2226,
+    "test_points": 399
+  },
+  {
+    "pair": "NZDCAD=X",
+    "test_metrics": {
+      "total_return": -0.020172008524704466,
+      "annual_return": -0.012787998106278509,
+      "annual_return_pct": -1.2787998106278509,
+      "profit_factor": 0.8540649831120694,
+      "sharpe_ratio": -0.41432901995960336,
+      "max_drawdown": -0.045014647973519534,
+      "max_drawdown_pct": -4.501464797351954,
+      "win_rate": 9.045226130653267,
+      "trades": 142,
+      "trades_per_year": 89.6842105263158,
+      "years": 1.5833333333333333,
+      "calmar_ratio": -0.2840852629526553
+    },
+    "data_points": 2225,
+    "test_points": 399
+  },
+  {
+    "pair": "GBPUSD=X",
+    "test_metrics": {
+      "total_return": -0.024593370130556846,
+      "annual_return": -0.015642721723948094,
+      "annual_return_pct": -1.5642721723948094,
+      "profit_factor": 0.8564467531949467,
+      "sharpe_ratio": -0.44503041938400434,
+      "max_drawdown": -0.0609066693125056,
+      "max_drawdown_pct": -6.09066693125056,
+      "win_rate": 10.579345088161208,
+      "trades": 153,
+      "trades_per_year": 96.87437185929649,
+      "years": 1.5793650793650793,
+      "calmar_ratio": -0.2568310153964743
+    },
+    "data_points": 2224,
+    "test_points": 398
+  }
+]
