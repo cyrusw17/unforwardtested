@@ -1,24 +1,46 @@
 {
   "meta": {
-    "pair": "AUD/USD",
-    "strategy": "Enhanced ICT v2 (conviction-weighted position sizing)",
+    "pairs": [
+      "GBPJPY=X",
+      "NZDCAD=X"
+    ],
+    "pair_display": {
+      "GBPJPY=X": "GBP/JPY",
+      "NZDCAD=X": "NZD/CAD"
+    },
+    "strategy": "Causal 2-Pair ICT Portfolio (GBP/JPY + NZD/CAD, no-lookahead, walk-forward MCPT p=0.024, 4.0x scaled)",
     "starting_balance": 100000.0,
     "leverage": 100.0,
-    "start_time": "2026-07-10T00:00:00Z",
-    "last_updated": "2026-07-18T19:39:49Z",
-    "last_daily_bar_processed": "2026-07-18"
+    "scale": 4.0,
+    "start_time": "2026-07-09T00:00:00Z",
+    "last_updated": "2026-07-18T20:25:22Z",
+    "last_daily_bar_processed": {
+      "GBPJPY=X": "2026-07-17",
+      "NZDCAD=X": "2026-07-18"
+    }
   },
   "account": {
-    "balance": 100000.0,
-    "equity": 100000.0,
+    "balance": 98247.17,
+    "equity": 98247.17,
     "unrealized_pnl": 0.0,
-    "peak_equity": 100000.0,
-    "max_drawdown_pct": 0.0,
-    "total_trades": 0,
-    "wins": 0,
-    "losses": 0,
-    "win_rate": 0.0
+    "peak_equity": 101378.31,
+    "max_drawdown_pct": -3.089,
+    "total_trades": 7,
+    "wins": 2,
+    "losses": 5,
+    "win_rate": 28.6
   },
-  "open_position": null,
-  "next_trade_id": 1
+  "open_positions": {
+    "GBPJPY=X": {
+      "id": 8,
+      "pair": "GBPJPY=X",
+      "direction": "short",
+      "notional_usd": 198273.44,
+      "entry_price": 218.4810028076172,
+      "entry_time": "2026-07-17T21:00:00Z",
+      "signal": -1.0
+    },
+    "NZDCAD=X": null
+  },
+  "next_trade_id": 9
 }

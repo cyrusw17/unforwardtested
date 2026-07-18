@@ -1,5 +1,10 @@
 const REFRESH_MS = 60_000;
 
+const LEG_META = {
+  'GBPJPY=X': { display: 'GBP/JPY', color: '#4d9dff', chartId: 'priceChartGBPJPY', priceId: 'live-price-gbpjpy', posId: 'stat-position-gbpjpy', posDetailId: 'stat-position-detail-gbpjpy' },
+  'NZDCAD=X': { display: 'NZD/CAD', color: '#a06dff', chartId: 'priceChartNZDCAD', priceId: 'live-price-nzdcad', posId: 'stat-position-nzdcad', posDetailId: 'stat-position-detail-nzdcad' },
+};
+
 function fmtMoney(v) {
   const sign = v < 0 ? '-' : '';
   return sign + '$' + Math.abs(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -22,35 +27,38 @@ async function fetchJSON(path) {
   return res.json();
 }
 
-let priceChart, equityChart;
+const priceCharts = {};
+let equityChart;
 
-function buildTradeMarkers(trades) {
+function buildTradeMarkers(trades, pair) {
   const entries = [], exits = [];
   for (const t of trades) {
+    if (t.pair !== pair) continue;
     entries.push({ x: new Date(t.entry_time).getTime(), y: t.entry_price, dir: t.direction });
     exits.push({ x: new Date(t.exit_time).getTime(), y: t.exit_price, pnl: t.pnl });
   }
   return { entries, exits };
 }
 
-function renderPriceChart(priceHistory, trades) {
-  const points = priceHistory.map(p => ({ x: new Date(p.t).getTime(), y: p.c }));
-  const { entries, exits } = buildTradeMarkers(trades);
+function renderPriceChart(pair, priceHistory, trades) {
+  const meta = LEG_META[pair];
+  const points = (priceHistory[pair] || []).map(p => ({ x: new Date(p.t).getTime(), y: p.c }));
+  const { entries, exits } = buildTradeMarkers(trades, pair);
 
   const longEntries = entries.filter(e => e.dir === 'long');
   const shortEntries = entries.filter(e => e.dir === 'short');
 
-  const ctx = document.getElementById('priceChart').getContext('2d');
-  if (priceChart) priceChart.destroy();
-  priceChart = new Chart(ctx, {
+  const ctx = document.getElementById(meta.chartId).getContext('2d');
+  if (priceCharts[pair]) priceCharts[pair].destroy();
+  priceCharts[pair] = new Chart(ctx, {
     type: 'line',
     data: {
       datasets: [
         {
-          label: 'AUD/USD',
+          label: meta.display,
           data: points,
-          borderColor: '#4d9dff',
-          backgroundColor: 'rgba(77,157,255,0.08)',
+          borderColor: meta.color,
+          backgroundColor: meta.color + '14',
           borderWidth: 1.6,
           pointRadius: 0,
           fill: true,
@@ -175,13 +183,13 @@ function renderTradesTable(trades) {
     const dirClass = t.direction === 'long' ? 'dir-long' : 'dir-short';
     tr.innerHTML = `
       <td>${t.id}</td>
+      <td>${t.display || t.pair}</td>
       <td class="${dirClass}">${t.direction.toUpperCase()}</td>
       <td>${fmtTime(t.entry_time)}</td>
       <td>${t.entry_price.toFixed(5)}</td>
       <td>${fmtTime(t.exit_time)}</td>
       <td>${t.exit_price.toFixed(5)}</td>
-      <td>${t.size_lots}</td>
-      <td>${t.signal_strength.toFixed(2)}x</td>
+      <td>${fmtMoney(t.notional_usd)}</td>
       <td class="${pnlClass}">${fmtMoney(t.pnl)} (${fmtPct(t.pnl_pct)})</td>
       <td>${t.reason}</td>
     `;
@@ -212,7 +220,7 @@ async function loadAndRender() {
     const pnl = equity - startBal;
     const pnlPct = (pnl / startBal) * 100;
 
-    document.getElementById('meta-leverage').textContent = `1:${state.meta.leverage.toFixed(0)}`;
+    document.getElementById('meta-leverage').textContent = `${state.meta.scale.toFixed(1)}x (of 1:${state.meta.leverage.toFixed(0)} available)`;
     document.getElementById('meta-start').textContent = fmtTime(state.meta.start_time);
     document.getElementById('meta-updated').textContent = fmtTime(state.meta.last_updated);
 
@@ -221,25 +229,28 @@ async function loadAndRender() {
     setText('stat-balance', fmtMoney(state.account.balance));
     setText('stat-unrealized', fmtMoney(state.account.unrealized_pnl), state.account.unrealized_pnl >= 0 ? 'pos' : 'neg');
 
-    if (state.open_position) {
-      const p = state.open_position;
-      setText('stat-position', p.direction.toUpperCase(), p.direction === 'long' ? 'pos' : 'neg');
-      setText('stat-position-detail', `${p.size_lots} lots @ ${p.entry_price.toFixed(5)} (${p.signal_strength.toFixed(2)}x conviction)`);
-    } else {
-      setText('stat-position', 'FLAT');
-      setText('stat-position-detail', 'No open position');
+    for (const pair of state.meta.pairs) {
+      const meta = LEG_META[pair];
+      const pos = state.open_positions[pair];
+      if (pos) {
+        setText(meta.posId, pos.direction.toUpperCase(), pos.direction === 'long' ? 'pos' : 'neg');
+        setText(meta.posDetailId, `${fmtMoney(pos.notional_usd)} notional @ ${pos.entry_price.toFixed(5)}`);
+      } else {
+        setText(meta.posId, 'FLAT');
+        setText(meta.posDetailId, 'No open position');
+      }
+      if (priceHistory[pair] && priceHistory[pair].length) {
+        document.getElementById(meta.priceId).textContent = priceHistory[pair][priceHistory[pair].length - 1].c.toFixed(5);
+      }
+      renderPriceChart(pair, priceHistory, trades);
     }
 
     setText('stat-trades', state.account.total_trades);
     setText('stat-winrate', `${state.account.win_rate}% win rate`);
     setText('stat-drawdown', fmtPct(state.account.max_drawdown_pct), 'neg');
 
-    if (priceHistory.length) {
-      document.getElementById('live-price').textContent = priceHistory[priceHistory.length - 1].c.toFixed(5);
-    }
     document.getElementById('equity-change').textContent = `${fmtMoney(pnl)} (${fmtPct(pnlPct)})`;
 
-    renderPriceChart(priceHistory, trades);
     renderEquityChart(equityCurve, startBal);
     renderTradesTable(trades);
   } catch (err) {

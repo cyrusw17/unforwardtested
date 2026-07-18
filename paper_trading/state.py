@@ -62,11 +62,12 @@ def save_trades(trades: List[Dict]):
     save_json(TRADES_FILE, trades)
 
 
-def load_price_history() -> List[Dict]:
-    return load_json(PRICE_HISTORY_FILE, [])
+def load_price_history() -> Dict[str, List[Dict]]:
+    """{pair: [{'t','o','h','l','c'}, ...]} -- one series per traded pair."""
+    return load_json(PRICE_HISTORY_FILE, {})
 
 
-def save_price_history(history: List[Dict]):
+def save_price_history(history: Dict[str, List[Dict]]):
     save_json(PRICE_HISTORY_FILE, history)
 
 

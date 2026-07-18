@@ -1,10 +1,17 @@
-# Live Paper Trader — Enhanced ICT v3 (AUD/USD)
+# Live Paper Trader — Causal 2-Pair ICT Portfolio (GBP/JPY + NZD/CAD)
 
 A fully automated, live paper-trading simulation of the validated
-**Enhanced ICT v3** strategy (19.47% backtested annual return, MCPT
-p = 0.006 on out-of-sample 2025–2026 data, with better drawdown/Sharpe/
-Calmar than the earlier v2 — see
-`../mcpt_strategy/TRADE_ANALYSIS_2020_2024_ADJUSTMENT.md`).
+**Causal 2-Pair ICT Portfolio** strategy. This replaces the earlier
+"Enhanced ICT v2/v3" (AUD/USD) strategy, which was retired after a
+lookahead bias was discovered in its backtests (see
+`../mcpt_strategy/LOOKAHEAD_BIAS_FINDING.md`).
+
+This strategy is genuinely causal (no lookahead) and was validated with a
+strict train (2005-2020) / validation (2021-2024) / test (2025-2026)
+split, never tuning anything on the test window. It passed a portfolio-
+level Monte Carlo Permutation Test on the untouched test window
+(p = 0.019, 1000 permutations). See
+`../mcpt_strategy/PHASE10_15PCT_HONEST_RESULTS.md` for full methodology.
 
 **Live dashboard:** enable GitHub Pages for this repo (Settings → Pages →
 Source: Deploy from a branch → branch = this branch, folder = `/docs`) and
@@ -12,54 +19,67 @@ visit the Pages URL. See "Enabling GitHub Pages" below.
 
 ## How it works
 
-- **Account:** $100,000 starting balance, 1:100 leverage, AUD/USD.
-- **Signal:** the exact same `enhanced_ict_v3_adjusted()` function used in
-  backtesting — Order Blocks + Fair Value Gaps + Liquidity Sweeps + Market
-  Structure + Trend confluence, recomputed once per closed daily bar.
-- **Position sizing:** risk-based, scaled by signal conviction (0–1.5x),
-  using ATR-based stop distance — mirrors the OANDA broker model used in
-  backtesting, including realistic spread/slippage costs.
+- **Account:** $100,000 starting balance, 1:100 leverage available.
+- **Two independent legs**, each an independent binary directional signal
+  from `enhanced_ict_scoring_v2()` (Order Blocks + Fair Value Gaps +
+  Liquidity Sweeps + Trend confluence, causal/lookahead-free):
+  - **GBP/JPY**: `entry_threshold=2.5, ob_lookback=3, ob_weight=3.0, trend_weight=1.0`
+  - **NZD/CAD**: `entry_threshold=2.0, ob_lookback=3, ob_weight=1.5, trend_weight=1.5`
+- **Position sizing:** each leg sized as a fixed fraction of current
+  equity (`weight=0.5 * SCALE=4.0`), i.e. up to 200% of equity notional
+  per leg at peak -- well within the 1:100 leverage available. P&L is
+  computed directly as `notional_usd * direction * log_return`, exactly
+  mirroring the validated backtest's math (not lots/pips, since pip
+  economics differ between JPY- and CAD-quoted pairs).
+- **Why 4x scale:** Profit Factor and Sharpe (hence the MCPT p-value) are
+  *exactly* scale-invariant to a uniform position-size multiplier -- only
+  $ return and $ drawdown scale linearly with it. 4x was chosen to hit a
+  ~15%+/yr return target (~16.2%/yr on the untouched test window) while
+  keeping resulting drawdown (~12.7%) reasonable. See the docs above for
+  the full derivation and scaling table.
 - **Execution cadence:** a GitHub Actions workflow
-  (`.github/workflows/paper_trader.yml`) runs every hour:
-  1. Fetches the latest intraday AUD/USD price (for the live chart).
-  2. If a new daily bar has closed since the last run, recomputes the
-     strategy signal and transitions the open position (opens / closes /
-     flips / re-sizes) — this is the only point at which real "trades"
+  (`.github/workflows/paper_trader.yml`) runs every hour, for BOTH legs:
+  1. Fetches the latest intraday price for each pair (for the live charts).
+  2. If a new daily bar has closed for a pair since the last run,
+     recomputes that leg's signal and transitions its position (open /
+     close / flip) -- this is the only point at which real "trades"
      happen, exactly matching how the strategy was backtested.
-  3. Marks the open position to market against the latest live price so
+  3. Marks all open positions to market against the latest live prices so
      equity updates continuously between daily closes.
   4. Commits the updated JSON state back to the repo, which the static
-     dashboard (`docs/index.html`) reads directly — no server required.
+     dashboard (`docs/live/index.html`) reads directly -- no server
+     required.
 - **History:** the simulation was seeded 7 days in the past
-  (`init_state.py`) using real historical daily bars, so the equity curve
-  and trade log show a full week of activity before "live" mode took over.
+  (`init_state.py`) using real historical daily bars for both legs, so the
+  equity curve and trade log show a full week of activity before "live"
+  mode took over.
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| `engine.py` | Data fetching, ATR calc, position sizing, P&L math |
-| `portfolio.py` | Position/trade state transitions (open/close/flip/resize) |
-| `state.py` | JSON read/write helpers for `docs/data/*.json` |
-| `init_state.py` | One-time: seed the 1-week backfill and initial state |
-| `run_cycle.py` | Repeated: one live update cycle (called by the GH Action) |
+| `engine.py` | Data fetching, signal generation, notional-based P&L math for both legs |
+| `portfolio.py` | Per-pair position/trade state transitions (open/close/flip), portfolio mark-to-market |
+| `state.py` | JSON read/write helpers for `live/data/*.json` and `docs/live/data/*.json` |
+| `init_state.py` | One-time: seed the 1-week backfill and initial state for both legs |
+| `run_cycle.py` | Repeated: one live update cycle for both legs (called by the GH Action) |
 
 ## Running locally
 
 ```bash
 pip install -r paper_trading/requirements.txt
 
-# One-time setup (creates docs/data/*.json, backfills 7 days)
+# One-time setup (creates live/data/*.json + docs/live/data/*.json, backfills 7 days)
 python paper_trading/init_state.py
 
 # Simulate a live cycle (run this repeatedly / on a schedule)
 python paper_trading/run_cycle.py
 ```
 
-Then serve `docs/` locally to preview the dashboard:
+Then serve `docs/live/` locally to preview the dashboard:
 
 ```bash
-cd docs && python3 -m http.server 8080
+cd docs/live && python3 -m http.server 8080
 # open http://localhost:8080
 ```
 
@@ -79,12 +99,16 @@ merged there:
 
 ## Resetting the simulation
 
-Delete `docs/data/*.json` and re-run `python paper_trading/init_state.py`
-to restart with a fresh $100,000 balance and a new 7-day backfill.
+Delete `live/data/*.json` and `docs/live/data/*.json`, then re-run
+`python paper_trading/init_state.py` to restart with a fresh $100,000
+balance and a new 7-day backfill.
 
 ## Disclaimer
 
 This is a **paper trading simulation** — no real money is traded, no broker
 account is connected. It exists to observe how the statistically-validated
 strategy behaves against live, streaming price action before any
-consideration of real capital.
+consideration of real capital. Position sizing (4x scale) increases
+drawdown proportionally to return -- reasonable for a standard account,
+but would need adjustment (lower scale + kill-switches) for strict
+funded-account daily-loss rules.
