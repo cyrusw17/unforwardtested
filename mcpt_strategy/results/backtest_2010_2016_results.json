@@ -1,12 +1,12 @@
 {
-  "period": "2016-01-03 20:00:00+00:00 to 2016-12-30 20:00:00+00:00",
-  "years": 0.9911019849418207,
+  "period": "2010-01-01 00:00:00 to 2016-12-30 20:00:00",
+  "years": 6.995208761122519,
   "starting_balance": 100000,
-  "final_balance": 96270.38814551903,
-  "total_withdrawn": 42615.13248566163,
-  "total_profit": 38885.520631180654,
-  "total_trades": 84,
-  "annual_profit": 39234.63096833904,
-  "annual_return_pct": 39.23463096833904,
-  "total_withdrawals": 22
+  "final_balance": 91243.52017922014,
+  "total_withdrawn": 200676.9833011066,
+  "total_profit": 191920.50348032673,
+  "total_trades": 616,
+  "annual_profit": 27435.993697138685,
+  "annual_return_pct": 27.435993697138684,
+  "total_withdrawals": 123
 }

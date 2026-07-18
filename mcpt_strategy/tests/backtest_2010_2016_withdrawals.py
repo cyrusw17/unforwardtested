@@ -328,69 +328,29 @@ def main():
     print("Account: $100,000")
     print("Withdrawal Rule: Withdraw anything > $101,000 at end of each week\n")
     
-    # Try to load cached 2016-2024 data first (we know it exists)
+    # Load the 2010-2016 data
     cache_dir = Path(__file__).parent.parent / 'data' / 'forex_cache'
+    cache_file = cache_dir / 'EURUSD_2010_2016_4h.parquet'
     
-    # Check what data we have
-    cache_2016_2024 = cache_dir / 'EURUSD_2016_2024_4h.parquet'
+    if not cache_file.exists():
+        print("2010-2016 data not found. Fetching...")
+        import subprocess
+        result = subprocess.run(
+            [sys.executable, str(Path(__file__).parent.parent / 'data' / 'fetch_historical_data.py')],
+            capture_output=True,
+            text=True
+        )
+        print(result.stdout)
+        if result.returncode != 0:
+            print(f"ERROR: Failed to fetch data\n{result.stderr}")
+            return
     
-    if cache_2016_2024.exists():
-        print("Found 2016-2024 data. Checking if 2010-2016 is included...")
-        df_2016_2024 = pd.read_parquet(cache_2016_2024)
-        
-        min_year = df_2016_2024.index.min().year
-        max_year = df_2016_2024.index.max().year
-        
-        print(f"Available data: {min_year} to {max_year}")
-        
-        if min_year <= 2010:
-            print("Great! 2010-2016 data is already available.")
-            ohlc = df_2016_2024[(df_2016_2024.index.year >= 2010) & 
-                                (df_2016_2024.index.year <= 2016)]
-        else:
-            print(f"\n⚠️  Data only goes back to {min_year}, not 2010.")
-            print(f"Will attempt to fetch older data...")
-            
-            # Try to fetch using yfinance
-            try:
-                import yfinance as yf
-                print("\nFetching 2010-2016 data using Yahoo Finance...")
-                ticker = "EURUSD=X"
-                df = yf.download(ticker, start="2010-01-01", end="2016-12-31", 
-                               interval='1h', progress=True)
-                
-                if not df.empty:
-                    # Resample to 4H
-                    ohlc = df.resample('4H').agg({
-                        'Open': 'first',
-                        'High': 'max',
-                        'Low': 'min',
-                        'Close': 'last',
-                        'Volume': 'sum'
-                    }).dropna()
-                    
-                    ohlc.columns = [c.capitalize() for c in ohlc.columns]
-                    
-                    # Save to cache
-                    cache_file = cache_dir / 'EURUSD_2010_2016_4h.parquet'
-                    ohlc.to_parquet(cache_file)
-                    print(f"Data cached to {cache_file}")
-                else:
-                    print("Failed to fetch data. Using available data from 2016 onwards.")
-                    ohlc = df_2016_2024[df_2016_2024.index.year <= 2016]
-            except ImportError:
-                print("\nyfinance not installed. Installing...")
-                import subprocess
-                subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", "yfinance"])
-                print("Please run the script again.")
-                return
-            except Exception as e:
-                print(f"Error fetching data: {e}")
-                print("Using available data from 2016 onwards.")
-                ohlc = df_2016_2024[df_2016_2024.index.year <= 2016]
-    else:
-        print("No cached data found. Attempting to fetch...")
-        ohlc = fetch_2010_2016_data()
+    if not cache_file.exists():
+        print("ERROR: Data file still not found after fetch attempt")
+        return
+    
+    print(f"Loading 2010-2016 data from {cache_file}")
+    ohlc = pd.read_parquet(cache_file)
     
     if ohlc.empty:
         print("ERROR: No data available for testing.")
