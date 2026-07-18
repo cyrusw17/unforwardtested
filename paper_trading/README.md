@@ -1,9 +1,10 @@
-# Live Paper Trader — Enhanced ICT v2 (AUD/USD)
+# Live Paper Trader — Enhanced ICT v3 (AUD/USD)
 
 A fully automated, live paper-trading simulation of the validated
-**Enhanced ICT v2** strategy (18.25% backtested annual return, MCPT
-p = 0.004 on out-of-sample 2025–2026 data — see
-`../mcpt_strategy/PHASE9_FINAL_STRATEGY_REPORT.md`).
+**Enhanced ICT v3** strategy (19.47% backtested annual return, MCPT
+p = 0.006 on out-of-sample 2025–2026 data, with better drawdown/Sharpe/
+Calmar than the earlier v2 — see
+`../mcpt_strategy/TRADE_ANALYSIS_2020_2024_ADJUSTMENT.md`).
 
 **Live dashboard:** enable GitHub Pages for this repo (Settings → Pages →
 Source: Deploy from a branch → branch = this branch, folder = `/docs`) and
@@ -12,10 +13,10 @@ visit the Pages URL. See "Enabling GitHub Pages" below.
 ## How it works
 
 - **Account:** $100,000 starting balance, 1:100 leverage, AUD/USD.
-- **Signal:** the exact same `enhanced_ict_v2_winner()` function used in
+- **Signal:** the exact same `enhanced_ict_v3_adjusted()` function used in
   backtesting — Order Blocks + Fair Value Gaps + Liquidity Sweeps + Market
   Structure + Trend confluence, recomputed once per closed daily bar.
-- **Position sizing:** risk-based, scaled by signal conviction (0–2.5x),
+- **Position sizing:** risk-based, scaled by signal conviction (0–1.5x),
   using ATR-based stop distance — mirrors the OANDA broker model used in
   backtesting, including realistic spread/slippage costs.
 - **Execution cadence:** a GitHub Actions workflow

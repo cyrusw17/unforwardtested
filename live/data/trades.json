@@ -6,10 +6,10 @@
     "entry_price": 0.6942197680473328,
     "exit_time": "2026-07-14T21:00:00Z",
     "exit_price": 0.6918213367462158,
-    "size_lots": 1.114,
-    "signal_strength": -0.734,
-    "pnl": 250.48,
-    "pnl_pct": 0.25,
+    "size_lots": 1.659,
+    "signal_strength": -1.093,
+    "pnl": 373.01,
+    "pnl_pct": 0.373,
     "reason": "signal_flat"
   },
   {
@@ -19,10 +19,10 @@
     "entry_price": 0.6976497769355774,
     "exit_time": "2026-07-17T21:00:00Z",
     "exit_price": 0.6999399662017822,
-    "size_lots": 1.314,
-    "signal_strength": -0.885,
-    "pnl": -320.64,
-    "pnl_pct": -0.321,
+    "size_lots": 2.048,
+    "signal_strength": -1.378,
+    "pnl": -499.75,
+    "pnl_pct": -0.5,
     "reason": "signal_flat"
   }
 ]

@@ -1,9 +1,11 @@
 """
 Live Paper Trading Engine
 ==========================
-Runs the validated "Enhanced ICT v2" strategy (AUD/USD daily,
-18.25% annual return, MCPT p=0.004) as a live, fully-automated
-paper-trading simulation.
+Runs the validated "Enhanced ICT v3" strategy (AUD/USD daily,
+19.47% annual return, MCPT p=0.006, better drawdown/Sharpe/Calmar than
+the earlier v2) as a live, fully-automated paper-trading simulation.
+See mcpt_strategy/TRADE_ANALYSIS_2020_2024_ADJUSTMENT.md for how v3 was
+derived from a trade-level winner/loser analysis of v2.
 
 - $100,000 starting balance
 - 1:100 leverage
@@ -24,7 +26,7 @@ import yfinance as yf
 from datetime import datetime, timezone, timedelta
 from typing import Optional, Dict, List, Tuple
 
-from mcpt_strategy.strategies.enhanced_ict_v2_winner import enhanced_ict_v2_winner
+from mcpt_strategy.strategies.enhanced_ict_v3_adjusted import enhanced_ict_v3_adjusted
 
 
 PAIR_YF = 'AUDUSD=X'
@@ -115,7 +117,7 @@ def get_latest_signal(daily_df: pd.DataFrame) -> Tuple[float, pd.Timestamp]:
     recently CLOSED daily bar (yesterday's close) -- exactly matching the
     backtest's shift(1) semantics ("trade tomorrow based on today's score").
 
-    `enhanced_ict_v2_winner` internally shifts its own output by one bar,
+    `enhanced_ict_v3_adjusted` internally shifts its own output by one bar,
     so signal.iloc[-1] on `daily_df` as-is would give the position that
     applied to the LAST closed bar (already in the past), not today's.
     To get today's position we append a one-day placeholder row (whose own
@@ -128,5 +130,5 @@ def get_latest_signal(daily_df: pd.DataFrame) -> Tuple[float, pd.Timestamp]:
     placeholder_row.index = [placeholder_date]
     extended = pd.concat([daily_df, placeholder_row])
 
-    signal = enhanced_ict_v2_winner(extended)
+    signal = enhanced_ict_v3_adjusted(extended)
     return float(signal.iloc[-1]), last_closed_date

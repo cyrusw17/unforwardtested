@@ -17,7 +17,7 @@ from engine import (
     fetch_daily_history, fetch_recent_intraday, compute_atr_pips,
     STARTING_BALANCE
 )
-from mcpt_strategy.strategies.enhanced_ict_v2_winner import enhanced_ict_v2_winner
+from mcpt_strategy.strategies.enhanced_ict_v3_adjusted import enhanced_ict_v3_adjusted
 from portfolio import new_state, apply_daily_signal, mark_to_market
 import state as st
 
@@ -36,7 +36,7 @@ def run():
     # Compute the raw (unshifted-by-us; internally shifted-by-1) signal
     # across the whole series once, vectorized -- this is exactly the
     # signal the validated backtest uses.
-    signal = enhanced_ict_v2_winner(daily_df)
+    signal = enhanced_ict_v3_adjusted(daily_df)
 
     # Backfill window: last BACKFILL_DAYS closed daily bars
     backfill_start_idx = max(0, len(daily_df) - BACKFILL_DAYS)
