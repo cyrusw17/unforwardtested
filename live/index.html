@@ -15,6 +15,18 @@
 
   <a class="back-link" href="../index.html">&larr; Back to Unforwardtested overview</a>
 
+  <div class="warning-banner">
+    <strong>⚠ Strategy under re-validation.</strong> A lookahead bias was found in the
+    Order Block indicator used by this strategy's backtests (it used up to 4 bars of
+    future price data to score historical bars). Once fixed, the strategy's backtested
+    edge collapsed and it no longer passes Monte Carlo Permutation Testing. Live signal
+    generation itself does not look ahead (it only ever sees real-time data), but the
+    statistical validation that originally justified running this strategy has been
+    invalidated. Trading is effectively suspended (see console/latest commit) while a
+    genuinely validated replacement is searched for. No real money is at risk — this is
+    a paper simulation.
+  </div>
+
   <header class="topbar">
     <div class="brand">
       <span class="dot" id="live-dot"></span>
@@ -94,10 +106,13 @@
 
   <footer class="footer">
     <p>
-      Fully automated paper trading simulation. Strategy validated via Monte Carlo Permutation Testing
-      (p = 0.004, 500 permutations) on out-of-sample 2025&ndash;2026 data before this live test began.
-      Position sizing scales with signal conviction (0&ndash;2.5x), risk-based sizing with realistic OANDA
-      spread/slippage costs. This is a simulation — no real money is traded.
+      Fully automated paper trading simulation. <strong>Update:</strong> the MCPT p-value
+      and return figures this strategy was originally deployed with were produced by a
+      backtest containing a lookahead bug (see banner above and
+      <code>mcpt_strategy/LOOKAHEAD_BIAS_FINDING.md</code> in the repo). Trading is
+      currently paused pending a validated replacement. Position sizing scales with
+      signal conviction, risk-based sizing with realistic OANDA spread/slippage costs.
+      This is a simulation — no real money is traded.
     </p>
   </footer>
 

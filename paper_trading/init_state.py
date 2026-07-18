@@ -24,6 +24,10 @@ import state as st
 
 BACKFILL_DAYS = 7
 
+# See run_cycle.py: trading is paused pending a validated replacement
+# strategy (lookahead bias found in the original signal's backtests).
+TRADING_PAUSED = True
+
 
 def run():
     print("Initializing live paper trading state...")
@@ -50,7 +54,7 @@ def run():
     print(f"\nSimulating {len(backfill_dates)} days from {backfill_dates[0].date()}...")
 
     for date in backfill_dates:
-        sig = float(signal.loc[date])
+        sig = 0.0 if TRADING_PAUSED else float(signal.loc[date])
         close_price = float(daily_df.loc[date, 'Close'])
         time_iso = pd.Timestamp(date).strftime('%Y-%m-%dT21:00:00Z')  # approx daily close time (UTC)
 

@@ -50,7 +50,29 @@ class ICTIndicators:
     """Core ICT indicator calculations used by the scoring engine"""
 
     @staticmethod
-    def order_blocks_with_strength(ohlc: pd.DataFrame, lookback: int = 5, body_mult: float = 1.2) -> Tuple[pd.Series, pd.Series]:
+    def order_blocks_with_strength(ohlc: pd.DataFrame, lookback: int = 5, body_mult: float = 1.2,
+                                    causal: bool = True) -> Tuple[pd.Series, pd.Series]:
+        """
+        NOTE (lookahead fix): the original implementation of this function
+        (causal=False) assigned a displacement candle's `strength` BACK onto
+        the historical opposite-colored candle that preceded it, e.g.
+        `bullish_ob.iloc[i - j] = strength.iloc[i]` for j >= 1. That backdates
+        information onto a bar before it could actually be known -- at the
+        time of bar `i-j`, nobody yet knows a strong displacement candle will
+        appear up to `lookback-1` bars later. This IS lookahead bias, verified
+        empirically (values change when future bars are added/removed).
+
+        The fix (causal=True, the default): attribute the order-block
+        strength to the CONFIRMING bar (`i`) itself -- i.e., "as of today's
+        close, a strong displacement candle has just confirmed the most
+        recent opposite candle as an order block" -- rather than backdating
+        it. This uses only information available at bar `i`, and downstream
+        the strategy already applies an additional `.shift(1)` before
+        trading on it, so there is no lookahead in the final signal.
+
+        `causal=False` is kept only to reproduce the original (buggy)
+        historical results for comparison purposes.
+        """
         bullish_ob = pd.Series(0.0, index=ohlc.index)
         bearish_ob = pd.Series(0.0, index=ohlc.index)
 
@@ -68,12 +90,18 @@ class ICTIndicators:
             if strong_bullish.iloc[i]:
                 for j in range(1, min(lookback, i)):
                     if close.iloc[i - j] < open_price.iloc[i - j]:
-                        bullish_ob.iloc[i - j] = strength.iloc[i]
+                        if causal:
+                            bullish_ob.iloc[i] = strength.iloc[i]
+                        else:
+                            bullish_ob.iloc[i - j] = strength.iloc[i]
                         break
             if strong_bearish.iloc[i]:
                 for j in range(1, min(lookback, i)):
                     if close.iloc[i - j] > open_price.iloc[i - j]:
-                        bearish_ob.iloc[i - j] = strength.iloc[i]
+                        if causal:
+                            bearish_ob.iloc[i] = strength.iloc[i]
+                        else:
+                            bearish_ob.iloc[i - j] = strength.iloc[i]
                         break
 
         return bullish_ob, bearish_ob

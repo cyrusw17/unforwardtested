@@ -5,20 +5,20 @@
     "starting_balance": 100000.0,
     "leverage": 100.0,
     "start_time": "2026-07-10T00:00:00Z",
-    "last_updated": "2026-07-18T18:57:53Z",
+    "last_updated": "2026-07-18T19:39:49Z",
     "last_daily_bar_processed": "2026-07-18"
   },
   "account": {
-    "balance": 99873.26,
-    "equity": 99873.26,
+    "balance": 100000.0,
+    "equity": 100000.0,
     "unrealized_pnl": 0.0,
-    "peak_equity": 100373.01,
-    "max_drawdown_pct": -0.645,
-    "total_trades": 2,
-    "wins": 1,
-    "losses": 1,
-    "win_rate": 50.0
+    "peak_equity": 100000.0,
+    "max_drawdown_pct": 0.0,
+    "total_trades": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0.0
   },
   "open_position": null,
-  "next_trade_id": 3
+  "next_trade_id": 1
 }

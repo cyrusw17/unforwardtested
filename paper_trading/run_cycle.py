@@ -23,6 +23,14 @@ import state as st
 MAX_PRICE_HISTORY_POINTS = 24 * 21  # ~3 weeks of hourly bars
 MAX_EQUITY_POINTS = 24 * 21
 
+# TRADING PAUSED: a lookahead bias was found in the Order Block indicator
+# this strategy's validation relied on (see
+# mcpt_strategy/LOOKAHEAD_BIAS_FINDING.md). Once fixed, the strategy no
+# longer passes MCPT. Force flat (no new positions, close anything open)
+# until a genuinely validated replacement signal is wired in here. Price
+# history / chart / equity mark-to-market continue to update normally.
+TRADING_PAUSED = True
+
 
 def run():
     print(f"[{st.now_iso()}] Starting paper trader cycle...")
@@ -71,7 +79,12 @@ def run():
         atr_pips = compute_atr_pips(daily_df)
         stop_distance = max(atr_pips * 1.5, 10.0)
 
-        print(f"  Signal strength for today: {signal_strength:+.3f} (ATR stop distance: {stop_distance:.1f} pips)")
+        if TRADING_PAUSED:
+            print(f"  TRADING PAUSED (strategy failed re-validation) -- forcing flat "
+                  f"(raw signal would have been {signal_strength:+.3f})")
+            signal_strength = 0.0
+        else:
+            print(f"  Signal strength for today: {signal_strength:+.3f} (ATR stop distance: {stop_distance:.1f} pips)")
 
         state = apply_daily_signal(
             state, signal_strength, latest_price, latest_time_iso, stop_distance, trades

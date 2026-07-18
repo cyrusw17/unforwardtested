@@ -51,7 +51,15 @@ class ICTIndicatorLib:
     """Library of ICT indicators for scoring strategies"""
     
     @staticmethod
-    def order_blocks_with_strength(ohlc: pd.DataFrame, lookback: int = 5, body_mult: float = 1.2) -> Tuple[pd.Series, pd.Series]:
+    def order_blocks_with_strength(ohlc: pd.DataFrame, lookback: int = 5, body_mult: float = 1.2,
+                                    causal: bool = True) -> Tuple[pd.Series, pd.Series]:
+        """
+        NOTE (lookahead fix): causal=False (the original behavior) backdates
+        a displacement candle's strength onto the historical opposite candle
+        that preceded it -- verified empirically to be lookahead bias (see
+        mcpt_strategy/LOOKAHEAD_BIAS_FINDING.md). causal=True (new default)
+        attributes the strength to the confirming bar itself instead.
+        """
         bullish_ob = pd.Series(0.0, index=ohlc.index)
         bearish_ob = pd.Series(0.0, index=ohlc.index)
         
@@ -69,12 +77,18 @@ class ICTIndicatorLib:
             if strong_bullish.iloc[i]:
                 for j in range(1, min(lookback, i)):
                     if close.iloc[i-j] < open_price.iloc[i-j]:
-                        bullish_ob.iloc[i-j] = strength.iloc[i]
+                        if causal:
+                            bullish_ob.iloc[i] = strength.iloc[i]
+                        else:
+                            bullish_ob.iloc[i-j] = strength.iloc[i]
                         break
             if strong_bearish.iloc[i]:
                 for j in range(1, min(lookback, i)):
                     if close.iloc[i-j] > open_price.iloc[i-j]:
-                        bearish_ob.iloc[i-j] = strength.iloc[i]
+                        if causal:
+                            bearish_ob.iloc[i] = strength.iloc[i]
+                        else:
+                            bearish_ob.iloc[i-j] = strength.iloc[i]
                         break
         
         return bullish_ob, bearish_ob
