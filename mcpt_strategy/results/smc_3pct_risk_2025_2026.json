@@ -1,0 +1,15 @@
+{
+  "period": "2025-2026",
+  "duration_years": 0.001469182078789574,
+  "initial_capital": 1000.0,
+  "final_equity": 1507.9148737199332,
+  "total_return_pct": 50.79148737199331,
+  "annual_return_pct": 114.9853437958471,
+  "max_drawdown_pct": -25.848476993078506,
+  "total_trades": 44,
+  "win_rate": 36.36363636363637,
+  "profit_factor": 1.428469510415371,
+  "max_leverage_used": 18.815212503493704,
+  "margin_calls": 0,
+  "closeouts": 0
+}
