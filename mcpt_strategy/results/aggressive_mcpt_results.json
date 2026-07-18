@@ -1,0 +1,115 @@
+{
+  "training_period": "2020-01-01 20:00:00+00:00 to 2024-12-31 20:00:00+00:00",
+  "testing_period": "2026-01-01 20:00:00+00:00 to 2026-07-17 16:00:00+00:00",
+  "results": [
+    {
+      "strategy": "Aggressive Trend Breakout",
+      "params": {
+        "trend_period": 100,
+        "breakout_period": 20,
+        "vol_lookback": 50,
+        "atr_mult": 1.5
+      },
+      "train_metrics": {
+        "total_return": -0.004919651254586932,
+        "annual_return": -0.0009241691430907917,
+        "annual_return_pct": -0.09241691430907917,
+        "profit_factor": 0.6852898999385532,
+        "sharpe_ratio": -0.250508600530789,
+        "max_drawdown": -0.010675906255348613,
+        "max_drawdown_pct": -1.0675906255348613,
+        "win_rate": 0.18601190476190474,
+        "trades": 55,
+        "trades_per_year": 10.311221326720396,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": 0.003446004747829745,
+        "annual_return": 0.005969005136816419,
+        "annual_return_pct": 0.5969005136816419,
+        "profit_factor": 1.8464384367820104,
+        "sharpe_ratio": 0.7109349051522845,
+        "max_drawdown": -0.004064183204826016,
+        "max_drawdown_pct": -0.4064183204826016,
+        "win_rate": 0.45819014891179843,
+        "trades": 11,
+        "trades_per_year": 19.029748283752863,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    },
+    {
+      "strategy": "Aggressive Trend Breakout (Strict)",
+      "params": {
+        "trend_period": 100,
+        "breakout_period": 30,
+        "vol_lookback": 50,
+        "atr_mult": 2.0
+      },
+      "train_metrics": {
+        "total_return": 0.005515934716409765,
+        "annual_return": 0.0010317998654247873,
+        "annual_return_pct": 0.10317998654247873,
+        "profit_factor": 3.4609504270680573,
+        "sharpe_ratio": 0.6288137643299302,
+        "max_drawdown": -0.0013611487946986467,
+        "max_drawdown_pct": -0.13611487946986467,
+        "win_rate": 0.11160714285714285,
+        "trades": 25,
+        "trades_per_year": 4.6869187848729075,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": 0.0009841685284786017,
+        "annual_return": 0.0017032005665262862,
+        "annual_return_pct": 0.17032005665262862,
+        "profit_factor": 1.2420374531790739,
+        "sharpe_ratio": 0.21150015483984785,
+        "max_drawdown": -0.004064183204826016,
+        "max_drawdown_pct": -0.4064183204826016,
+        "win_rate": 0.22909507445589922,
+        "trades": 7,
+        "trades_per_year": 12.109839816933638,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    },
+    {
+      "strategy": "Mean Reversion (Relaxed)",
+      "params": {
+        "lookback": 100,
+        "entry_std": 1.2,
+        "exit_std": 0.3,
+        "trend_filter": 200
+      },
+      "train_metrics": {
+        "total_return": 0.013960365108022232,
+        "annual_return": 0.0026025240257718796,
+        "annual_return_pct": 0.26025240257718796,
+        "profit_factor": 1.6641227953440003,
+        "sharpe_ratio": 0.5115753792563703,
+        "max_drawdown": -0.006502336134711559,
+        "max_drawdown_pct": -0.6502336134711559,
+        "win_rate": 0.3472222222222222,
+        "trades": 97,
+        "trades_per_year": 18.185244885306883,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": 0.011033329903833211,
+        "annual_return": 0.01916419792743751,
+        "annual_return_pct": 1.916419792743751,
+        "profit_factor": 7.498775948581991,
+        "sharpe_ratio": 2.5486711340211117,
+        "max_drawdown": -0.0016102649281198311,
+        "max_drawdown_pct": -0.1610264928119831,
+        "win_rate": 0.9163802978235969,
+        "trades": 23,
+        "trades_per_year": 39.78947368421053,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    }
+  ],
+  "passed_count": 0
+}
