@@ -1,0 +1,72 @@
+//@version=5
+strategy("SMC Order Block + Structure", overlay=true, commission_type=strategy.commission.cash_per_order, commission_value=13, slippage=3)
+
+ob_lookback = input.int(5, "Order Block Lookback", minval=2, maxval=20)
+structure_length = input.int(5, "Structure Length", minval=2, maxval=20)
+atr_period = input.int(14, "ATR Period", minval=5, maxval=50)
+atr_sl_mult = input.float(1.0, "Stop Loss (ATR)", minval=0.5, maxval=3.0, step=0.1)
+atr_tp_mult = input.float(3.0, "Take Profit (ATR)", minval=1.0, maxval=5.0, step=0.5)
+use_structure_filter = input.bool(true, "Use Structure Filter")
+
+body = math.abs(close - open)
+avg_body = ta.sma(body, 20)
+strong_bullish = close > open and body > avg_body * 1.5
+strong_bearish = close < open and body > avg_body * 1.5
+
+var bullish_ob = false
+var bearish_ob = false
+var float bull_ob_high = na
+var float bull_ob_low = na
+var float bear_ob_high = na
+var float bear_ob_low = na
+
+if strong_bullish
+    for i = 1 to ob_lookback
+        if close[i] < open[i]
+            bullish_ob := true
+            bull_ob_high := high[i]
+            bull_ob_low := low[i]
+            break
+
+if strong_bearish
+    for i = 1 to ob_lookback
+        if close[i] > open[i]
+            bearish_ob := true
+            bear_ob_high := high[i]
+            bear_ob_low := low[i]
+            break
+
+at_bull_ob = bullish_ob and low <= bull_ob_high and low >= bull_ob_low
+at_bear_ob = bearish_ob and high >= bear_ob_low and high <= bear_ob_high
+
+recent_high = ta.highest(high, structure_length)
+recent_low = ta.lowest(low, structure_length)
+
+var int structure = 0
+
+if close > recent_high[1]
+    structure := 1
+
+if close < recent_low[1]
+    structure := -1
+
+long_signal = at_bull_ob and (not use_structure_filter or structure >= 0)
+short_signal = at_bear_ob and (not use_structure_filter or structure <= 0)
+
+atr = ta.atr(atr_period)
+
+if long_signal and strategy.position_size == 0
+    stop = close - atr * atr_sl_mult
+    target = close + atr * atr_tp_mult
+    strategy.entry("Long", strategy.long)
+    strategy.exit("Exit", "Long", stop=stop, limit=target)
+
+if short_signal and strategy.position_size == 0
+    stop = close + atr * atr_sl_mult
+    target = close - atr * atr_tp_mult
+    strategy.entry("Short", strategy.short)
+    strategy.exit("Exit", "Short", stop=stop, limit=target)
+
+bgcolor(structure == 1 ? color.new(color.green, 95) : structure == -1 ? color.new(color.red, 95) : na)
+
+plot(atr, "ATR", color=color.blue, display=display.data_window)
