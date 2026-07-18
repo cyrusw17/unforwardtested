@@ -1,0 +1,73 @@
+{
+  "pair": "EURUSD",
+  "winner": {
+    "strategy": "Order Block + Structure",
+    "params": {
+      "ob_lookback": 5,
+      "use_structure": true
+    },
+    "metrics": {
+      "total_return": 0.11512043182330545,
+      "annual_return": 0.20744007179914892,
+      "annual_return_pct": 20.74400717991489,
+      "profit_factor": 6.167043260166283,
+      "sharpe_ratio": 7.624891877188988,
+      "max_drawdown": -0.004117637393610291,
+      "max_drawdown_pct": -0.41176373936102906,
+      "win_rate": 9.965635738831615,
+      "trades": 213,
+      "years": 0.578042328042328
+    },
+    "mcpt": {
+      "real_metrics": {
+        "total_return": 0.11512043182330545,
+        "annual_return": 0.20744007179914892,
+        "annual_return_pct": 20.74400717991489,
+        "profit_factor": 6.167043260166283,
+        "sharpe_ratio": 7.624891877188988,
+        "max_drawdown": -0.004117637393610291,
+        "max_drawdown_pct": -0.41176373936102906,
+        "win_rate": 9.965635738831615,
+        "trades": 213,
+        "years": 0.578042328042328
+      },
+      "real_pf": 6.167043260166283,
+      "p_value": 0.03,
+      "permuted_mean": 3.316207765494745,
+      "permuted_std": 1.0604050729839645,
+      "passed": true,
+      "reason": "success"
+    }
+  },
+  "all_results": [
+    {
+      "strategy": "Order Block + Structure",
+      "params": {
+        "ob_lookback": 5,
+        "use_structure": true
+      },
+      "result": {
+        "real_metrics": {
+          "total_return": 0.11512043182330545,
+          "annual_return": 0.20744007179914892,
+          "annual_return_pct": 20.74400717991489,
+          "profit_factor": 6.167043260166283,
+          "sharpe_ratio": 7.624891877188988,
+          "max_drawdown": -0.004117637393610291,
+          "max_drawdown_pct": -0.41176373936102906,
+          "win_rate": 9.965635738831615,
+          "trades": 213,
+          "years": 0.578042328042328
+        },
+        "real_pf": 6.167043260166283,
+        "p_value": 0.03,
+        "permuted_mean": 3.316207765494745,
+        "permuted_std": 1.0604050729839645,
+        "passed": true,
+        "reason": "success"
+      },
+      "passed": true
+    }
+  ],
+  "total_tested": 8
+}

@@ -1,0 +1,106 @@
+{
+  "training_period": "2020-01-01 20:00:00+00:00 to 2024-12-31 20:00:00+00:00",
+  "testing_period": "2026-01-01 20:00:00+00:00 to 2026-07-17 16:00:00+00:00",
+  "results": [
+    {
+      "config": "Standard 1H+4H",
+      "params": {
+        "ob_lookback_4h": 5,
+        "ob_lookback_1h": 5,
+        "structure_length": 5
+      },
+      "train_metrics": {
+        "total_return": 0.09121569471986879,
+        "annual_return": 0.01649993880560241,
+        "annual_return_pct": 1.649993880560241,
+        "profit_factor": 1.5385079419561085,
+        "sharpe_ratio": 0.9627931530274529,
+        "max_drawdown": -0.02150547899121854,
+        "max_drawdown_pct": -2.150547899121854,
+        "win_rate": 1.6865079365079365,
+        "trades": 445,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": 0.01007003632378467,
+        "annual_return": 0.01748490428584004,
+        "annual_return_pct": 1.7484904285840042,
+        "profit_factor": 2.549485051965365,
+        "sharpe_ratio": 1.6835490474169656,
+        "max_drawdown": -0.004117637393610291,
+        "max_drawdown_pct": -0.41176373936102906,
+        "win_rate": 1.4891179839633446,
+        "trades": 37,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    },
+    {
+      "config": "Aggressive 1H+4H",
+      "params": {
+        "ob_lookback_4h": 3,
+        "ob_lookback_1h": 3,
+        "structure_length": 3
+      },
+      "train_metrics": {
+        "total_return": 0.04844136440625624,
+        "annual_return": 0.008907963295595733,
+        "annual_return_pct": 0.8907963295595733,
+        "profit_factor": 1.3572489904888927,
+        "sharpe_ratio": 0.5906322561088854,
+        "max_drawdown": -0.026113378314817085,
+        "max_drawdown_pct": -2.6113378314817086,
+        "win_rate": 1.1160714285714286,
+        "trades": 319,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": 0.0028627976472654915,
+        "annual_return": 0.004957747974796423,
+        "annual_return_pct": 0.49577479747964226,
+        "profit_factor": 1.4592325839630549,
+        "sharpe_ratio": 0.613711321351374,
+        "max_drawdown": -0.004117637393610291,
+        "max_drawdown_pct": -0.41176373936102906,
+        "win_rate": 0.8018327605956471,
+        "trades": 23,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    },
+    {
+      "config": "Conservative 1H+4H",
+      "params": {
+        "ob_lookback_4h": 7,
+        "ob_lookback_1h": 7,
+        "structure_length": 7
+      },
+      "train_metrics": {
+        "total_return": 0.10806836864828684,
+        "annual_return": 0.019424797107084224,
+        "annual_return_pct": 1.9424797107084224,
+        "profit_factor": 1.609107634618125,
+        "sharpe_ratio": 1.115253552988887,
+        "max_drawdown": -0.020757723406185,
+        "max_drawdown_pct": -2.0757723406185002,
+        "win_rate": 1.9593253968253967,
+        "trades": 503,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": 0.009471685075234992,
+        "annual_return": 0.01644239692274696,
+        "annual_return_pct": 1.644239692274696,
+        "profit_factor": 2.306808879124414,
+        "sharpe_ratio": 1.5764449343976585,
+        "max_drawdown": -0.004117637393610291,
+        "max_drawdown_pct": -0.41176373936102906,
+        "win_rate": 1.718213058419244,
+        "trades": 43,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    }
+  ],
+  "passed_count": 0
+}

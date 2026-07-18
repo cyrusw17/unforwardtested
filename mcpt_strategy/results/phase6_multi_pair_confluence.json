@@ -1,0 +1,593 @@
+{
+  "candidates": [
+    {
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 0
+      },
+      "metrics": {
+        "total_return": 0.1605617818356948,
+        "annual_return": 0.0986089041460334,
+        "annual_return_pct": 9.86089041460334,
+        "profit_factor": 2.181032748208904,
+        "sharpe_ratio": 1.6199149234751147,
+        "max_drawdown": -0.026190759430081312,
+        "max_drawdown_pct": -2.619075943008131,
+        "win_rate": 13.316582914572864,
+        "trades": 129,
+        "trades_per_year": 81.47368421052632,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 3.7650265319445633
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 1
+      },
+      "metrics": {
+        "total_return": 0.1605617818356948,
+        "annual_return": 0.0986089041460334,
+        "annual_return_pct": 9.86089041460334,
+        "profit_factor": 2.181032748208904,
+        "sharpe_ratio": 1.6199149234751147,
+        "max_drawdown": -0.026190759430081312,
+        "max_drawdown_pct": -2.619075943008131,
+        "win_rate": 13.316582914572864,
+        "trades": 129,
+        "trades_per_year": 81.47368421052632,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 3.7650265319445633
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 2
+      },
+      "metrics": {
+        "total_return": 0.1560481089976158,
+        "annual_return": 0.09590840429974246,
+        "annual_return_pct": 9.590840429974246,
+        "profit_factor": 2.5180212932416417,
+        "sharpe_ratio": 1.621361659900726,
+        "max_drawdown": -0.023966850411546115,
+        "max_drawdown_pct": -2.3966850411546115,
+        "win_rate": 10.301507537688442,
+        "trades": 91,
+        "trades_per_year": 57.473684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 4.001710806920973
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 3
+      },
+      "metrics": {
+        "total_return": 0.1560481089976158,
+        "annual_return": 0.09590840429974246,
+        "annual_return_pct": 9.590840429974246,
+        "profit_factor": 2.5180212932416417,
+        "sharpe_ratio": 1.621361659900726,
+        "max_drawdown": -0.023966850411546115,
+        "max_drawdown_pct": -2.3966850411546115,
+        "win_rate": 10.301507537688442,
+        "trades": 91,
+        "trades_per_year": 57.473684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 4.001710806920973
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "params": {
+        "entry_threshold": 1.75,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 0
+      },
+      "metrics": {
+        "total_return": 0.1369515437586093,
+        "annual_return": 0.08443979367842891,
+        "annual_return_pct": 8.443979367842891,
+        "profit_factor": 2.0180120852645973,
+        "sharpe_ratio": 1.411620762247032,
+        "max_drawdown": -0.026190759430081312,
+        "max_drawdown_pct": -2.619075943008131,
+        "win_rate": 12.311557788944723,
+        "trades": 133,
+        "trades_per_year": 84.0,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 3.22402998293535
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "params": {
+        "entry_threshold": 1.75,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 1
+      },
+      "metrics": {
+        "total_return": 0.1369515437586093,
+        "annual_return": 0.08443979367842891,
+        "annual_return_pct": 8.443979367842891,
+        "profit_factor": 2.0180120852645973,
+        "sharpe_ratio": 1.411620762247032,
+        "max_drawdown": -0.026190759430081312,
+        "max_drawdown_pct": -2.619075943008131,
+        "win_rate": 12.311557788944723,
+        "trades": 133,
+        "trades_per_year": 84.0,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 3.22402998293535
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "params": {
+        "entry_threshold": 1.75,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 2
+      },
+      "metrics": {
+        "total_return": 0.13252969618306887,
+        "annual_return": 0.08177412304251064,
+        "annual_return_pct": 8.177412304251064,
+        "profit_factor": 2.302854448721105,
+        "sharpe_ratio": 1.407733339515879,
+        "max_drawdown": -0.023966850411546115,
+        "max_drawdown_pct": -2.3966850411546115,
+        "win_rate": 9.296482412060302,
+        "trades": 95,
+        "trades_per_year": 60.0,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 3.4119678488549194
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "params": {
+        "entry_threshold": 1.75,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 3
+      },
+      "metrics": {
+        "total_return": 0.13252969618306887,
+        "annual_return": 0.08177412304251064,
+        "annual_return_pct": 8.177412304251064,
+        "profit_factor": 2.302854448721105,
+        "sharpe_ratio": 1.407733339515879,
+        "max_drawdown": -0.023966850411546115,
+        "max_drawdown_pct": -2.3966850411546115,
+        "win_rate": 9.296482412060302,
+        "trades": 95,
+        "trades_per_year": 60.0,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 3.4119678488549194
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "params": {
+        "entry_threshold": 1.25,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 2
+      },
+      "metrics": {
+        "total_return": 0.1272268302882409,
+        "annual_return": 0.07857227650462684,
+        "annual_return_pct": 7.857227650462684,
+        "profit_factor": 1.9916340264963388,
+        "sharpe_ratio": 1.3092621992095421,
+        "max_drawdown": -0.03640989209017709,
+        "max_drawdown_pct": -3.6409892090177087,
+        "win_rate": 10.301507537688442,
+        "trades": 91,
+        "trades_per_year": 57.473684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.1579925672403903
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "params": {
+        "entry_threshold": 1.25,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 3
+      },
+      "metrics": {
+        "total_return": 0.1272268302882409,
+        "annual_return": 0.07857227650462684,
+        "annual_return_pct": 7.857227650462684,
+        "profit_factor": 1.9916340264963388,
+        "sharpe_ratio": 1.3092621992095421,
+        "max_drawdown": -0.03640989209017709,
+        "max_drawdown_pct": -3.6409892090177087,
+        "win_rate": 10.301507537688442,
+        "trades": 91,
+        "trades_per_year": 57.473684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.1579925672403903
+      },
+      "quick_p_value": 0.03333333333333333
+    },
+    {
+      "params": {
+        "entry_threshold": 1.25,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 0
+      },
+      "metrics": {
+        "total_return": 0.12553645960609794,
+        "annual_return": 0.07755047257828696,
+        "annual_return_pct": 7.7550472578286955,
+        "profit_factor": 1.7489208947678374,
+        "sharpe_ratio": 1.2539329499605145,
+        "max_drawdown": -0.04521415735680995,
+        "max_drawdown_pct": -4.5214157356809945,
+        "win_rate": 13.5678391959799,
+        "trades": 133,
+        "trades_per_year": 84.0,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 1.7151811979219969
+      }
+    },
+    {
+      "params": {
+        "entry_threshold": 1.25,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 1
+      },
+      "metrics": {
+        "total_return": 0.12553645960609794,
+        "annual_return": 0.07755047257828696,
+        "annual_return_pct": 7.7550472578286955,
+        "profit_factor": 1.7489208947678374,
+        "sharpe_ratio": 1.2539329499605145,
+        "max_drawdown": -0.04521415735680995,
+        "max_drawdown_pct": -4.5214157356809945,
+        "win_rate": 13.5678391959799,
+        "trades": 133,
+        "trades_per_year": 84.0,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 1.7151811979219969
+      }
+    },
+    {
+      "params": {
+        "entry_threshold": 2.0,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 2
+      },
+      "metrics": {
+        "total_return": 0.11411785582362088,
+        "annual_return": 0.07063322475130462,
+        "annual_return_pct": 7.063322475130462,
+        "profit_factor": 2.312561956216432,
+        "sharpe_ratio": 1.2784041360965137,
+        "max_drawdown": -0.023966850411546115,
+        "max_drawdown_pct": -2.3966850411546115,
+        "win_rate": 7.788944723618091,
+        "trades": 95,
+        "trades_per_year": 60.0,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.947121692605751
+      }
+    },
+    {
+      "params": {
+        "entry_threshold": 2.0,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 3
+      },
+      "metrics": {
+        "total_return": 0.11411785582362088,
+        "annual_return": 0.07063322475130462,
+        "annual_return_pct": 7.063322475130462,
+        "profit_factor": 2.312561956216432,
+        "sharpe_ratio": 1.2784041360965137,
+        "max_drawdown": -0.023966850411546115,
+        "max_drawdown_pct": -2.3966850411546115,
+        "win_rate": 7.788944723618091,
+        "trades": 95,
+        "trades_per_year": 60.0,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.947121692605751
+      }
+    },
+    {
+      "params": {
+        "entry_threshold": 2.0,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 0
+      },
+      "metrics": {
+        "total_return": 0.11310761891987209,
+        "annual_return": 0.07001998115423791,
+        "annual_return_pct": 7.001998115423791,
+        "profit_factor": 1.949243184881943,
+        "sharpe_ratio": 1.232018326569299,
+        "max_drawdown": -0.030994726650930005,
+        "max_drawdown_pct": -3.0994726650930007,
+        "win_rate": 10.552763819095476,
+        "trades": 131,
+        "trades_per_year": 82.73684210526316,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.259093359422705
+      }
+    },
+    {
+      "params": {
+        "entry_threshold": 2.0,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 1
+      },
+      "metrics": {
+        "total_return": 0.11310761891987209,
+        "annual_return": 0.07001998115423791,
+        "annual_return_pct": 7.001998115423791,
+        "profit_factor": 1.949243184881943,
+        "sharpe_ratio": 1.232018326569299,
+        "max_drawdown": -0.030994726650930005,
+        "max_drawdown_pct": -3.0994726650930007,
+        "win_rate": 10.552763819095476,
+        "trades": 131,
+        "trades_per_year": 82.73684210526316,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 2.259093359422705
+      }
+    }
+  ],
+  "final_results": [
+    {
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 0
+      },
+      "metrics": {
+        "total_return": 0.1605617818356948,
+        "annual_return": 0.0986089041460334,
+        "annual_return_pct": 9.86089041460334,
+        "profit_factor": 2.181032748208904,
+        "sharpe_ratio": 1.6199149234751147,
+        "max_drawdown": -0.026190759430081312,
+        "max_drawdown_pct": -2.619075943008131,
+        "win_rate": 13.316582914572864,
+        "trades": 129,
+        "trades_per_year": 81.47368421052632,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 3.7650265319445633
+      },
+      "full_mcpt": {
+        "real_metrics": {
+          "total_return": 0.1605617818356948,
+          "annual_return": 0.0986089041460334,
+          "annual_return_pct": 9.86089041460334,
+          "profit_factor": 2.181032748208904,
+          "sharpe_ratio": 1.6199149234751147,
+          "max_drawdown": -0.026190759430081312,
+          "max_drawdown_pct": -2.619075943008131,
+          "win_rate": 13.316582914572864,
+          "trades": 129,
+          "trades_per_year": 81.47368421052632,
+          "years": 1.5833333333333333,
+          "calmar_ratio": 3.7650265319445633
+        },
+        "real_pf": 2.181032748208904,
+        "p_value": 0.005,
+        "permuted_mean": 1.0988858633675185,
+        "permuted_std": 0.2897106151815225,
+        "permuted_better_count": 0,
+        "n_permutations": 200,
+        "passed": true
+      }
+    },
+    {
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 1
+      },
+      "metrics": {
+        "total_return": 0.1605617818356948,
+        "annual_return": 0.0986089041460334,
+        "annual_return_pct": 9.86089041460334,
+        "profit_factor": 2.181032748208904,
+        "sharpe_ratio": 1.6199149234751147,
+        "max_drawdown": -0.026190759430081312,
+        "max_drawdown_pct": -2.619075943008131,
+        "win_rate": 13.316582914572864,
+        "trades": 129,
+        "trades_per_year": 81.47368421052632,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 3.7650265319445633
+      },
+      "full_mcpt": {
+        "real_metrics": {
+          "total_return": 0.1605617818356948,
+          "annual_return": 0.0986089041460334,
+          "annual_return_pct": 9.86089041460334,
+          "profit_factor": 2.181032748208904,
+          "sharpe_ratio": 1.6199149234751147,
+          "max_drawdown": -0.026190759430081312,
+          "max_drawdown_pct": -2.619075943008131,
+          "win_rate": 13.316582914572864,
+          "trades": 129,
+          "trades_per_year": 81.47368421052632,
+          "years": 1.5833333333333333,
+          "calmar_ratio": 3.7650265319445633
+        },
+        "real_pf": 2.181032748208904,
+        "p_value": 0.005,
+        "permuted_mean": 1.0988858633675185,
+        "permuted_std": 0.2897106151815225,
+        "permuted_better_count": 0,
+        "n_permutations": 200,
+        "passed": true
+      }
+    },
+    {
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 2
+      },
+      "metrics": {
+        "total_return": 0.1560481089976158,
+        "annual_return": 0.09590840429974246,
+        "annual_return_pct": 9.590840429974246,
+        "profit_factor": 2.5180212932416417,
+        "sharpe_ratio": 1.621361659900726,
+        "max_drawdown": -0.023966850411546115,
+        "max_drawdown_pct": -2.3966850411546115,
+        "win_rate": 10.301507537688442,
+        "trades": 91,
+        "trades_per_year": 57.473684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 4.001710806920973
+      },
+      "full_mcpt": {
+        "real_metrics": {
+          "total_return": 0.1560481089976158,
+          "annual_return": 0.09590840429974246,
+          "annual_return_pct": 9.590840429974246,
+          "profit_factor": 2.5180212932416417,
+          "sharpe_ratio": 1.621361659900726,
+          "max_drawdown": -0.023966850411546115,
+          "max_drawdown_pct": -2.3966850411546115,
+          "win_rate": 10.301507537688442,
+          "trades": 91,
+          "trades_per_year": 57.473684210526315,
+          "years": 1.5833333333333333,
+          "calmar_ratio": 4.001710806920973
+        },
+        "real_pf": 2.5180212932416417,
+        "p_value": 0.005,
+        "permuted_mean": 1.1242247024082703,
+        "permuted_std": 0.3616706516107256,
+        "permuted_better_count": 0,
+        "n_permutations": 200,
+        "passed": true
+      }
+    },
+    {
+      "params": {
+        "entry_threshold": 1.5,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 3
+      },
+      "metrics": {
+        "total_return": 0.1560481089976158,
+        "annual_return": 0.09590840429974246,
+        "annual_return_pct": 9.590840429974246,
+        "profit_factor": 2.5180212932416417,
+        "sharpe_ratio": 1.621361659900726,
+        "max_drawdown": -0.023966850411546115,
+        "max_drawdown_pct": -2.3966850411546115,
+        "win_rate": 10.301507537688442,
+        "trades": 91,
+        "trades_per_year": 57.473684210526315,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 4.001710806920973
+      },
+      "full_mcpt": {
+        "real_metrics": {
+          "total_return": 0.1560481089976158,
+          "annual_return": 0.09590840429974246,
+          "annual_return_pct": 9.590840429974246,
+          "profit_factor": 2.5180212932416417,
+          "sharpe_ratio": 1.621361659900726,
+          "max_drawdown": -0.023966850411546115,
+          "max_drawdown_pct": -2.3966850411546115,
+          "win_rate": 10.301507537688442,
+          "trades": 91,
+          "trades_per_year": 57.473684210526315,
+          "years": 1.5833333333333333,
+          "calmar_ratio": 4.001710806920973
+        },
+        "real_pf": 2.5180212932416417,
+        "p_value": 0.005,
+        "permuted_mean": 1.1242247024082703,
+        "permuted_std": 0.3616706516107256,
+        "permuted_better_count": 0,
+        "n_permutations": 200,
+        "passed": true
+      }
+    },
+    {
+      "params": {
+        "entry_threshold": 1.75,
+        "ob_lookback": 5,
+        "structure_length": 3,
+        "min_aud_confluence": 0
+      },
+      "metrics": {
+        "total_return": 0.1369515437586093,
+        "annual_return": 0.08443979367842891,
+        "annual_return_pct": 8.443979367842891,
+        "profit_factor": 2.0180120852645973,
+        "sharpe_ratio": 1.411620762247032,
+        "max_drawdown": -0.026190759430081312,
+        "max_drawdown_pct": -2.619075943008131,
+        "win_rate": 12.311557788944723,
+        "trades": 133,
+        "trades_per_year": 84.0,
+        "years": 1.5833333333333333,
+        "calmar_ratio": 3.22402998293535
+      },
+      "full_mcpt": {
+        "real_metrics": {
+          "total_return": 0.1369515437586093,
+          "annual_return": 0.08443979367842891,
+          "annual_return_pct": 8.443979367842891,
+          "profit_factor": 2.0180120852645973,
+          "sharpe_ratio": 1.411620762247032,
+          "max_drawdown": -0.026190759430081312,
+          "max_drawdown_pct": -2.619075943008131,
+          "win_rate": 12.311557788944723,
+          "trades": 133,
+          "trades_per_year": 84.0,
+          "years": 1.5833333333333333,
+          "calmar_ratio": 3.22402998293535
+        },
+        "real_pf": 2.0180120852645973,
+        "p_value": 0.01,
+        "permuted_mean": 1.0972027222823082,
+        "permuted_std": 0.30600113340444546,
+        "permuted_better_count": 1,
+        "n_permutations": 200,
+        "passed": true
+      }
+    }
+  ]
+}

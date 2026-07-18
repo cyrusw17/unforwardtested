@@ -1,0 +1,13 @@
+{
+  "initial_capital": 1000.0,
+  "final_equity": 1164.5282241520513,
+  "total_return_pct": 16.45282241520513,
+  "max_drawdown": -108.6697693115052,
+  "max_drawdown_pct": -10.866976931150521,
+  "total_trades": 44,
+  "win_rate": 36.36363636363637,
+  "profit_factor": 1.5030632853561547,
+  "avg_trade": 3.739277821637525,
+  "total_spread_cost": 18.912424297390757,
+  "total_slippage_cost": 5.6737272892172275
+}

@@ -1,0 +1,272 @@
+[
+  {
+    "pair": "EURGBP=X",
+    "params": {
+      "entry_threshold": 3.5,
+      "ob_lookback": 3,
+      "ob_weight": 2.0
+    },
+    "score": 1.3204103886330734,
+    "train_pf": 1.3204103886330734,
+    "train_return": 2.3782917900668332,
+    "val_pf": 1.3307801206691323,
+    "val_return": 0.5117401145732448,
+    "val_trades": 94,
+    "val_dd": -2.9665607096957562
+  },
+  {
+    "pair": "EURCHF=X",
+    "params": {
+      "entry_threshold": 3.5,
+      "ob_lookback": 3,
+      "ob_weight": 1.5
+    },
+    "score": 1.2868404429851872,
+    "train_pf": 1.2868404429851872,
+    "train_return": 1.2691253684120385,
+    "val_pf": 1.982664173592105,
+    "val_return": 0.9908285550777274,
+    "val_trades": 68,
+    "val_dd": -0.643412953639963
+  },
+  {
+    "pair": "AUDJPY=X",
+    "params": {
+      "entry_threshold": 3.5,
+      "ob_lookback": 3,
+      "ob_weight": 2.0
+    },
+    "score": 1.2397938450399224,
+    "train_pf": 1.2397938450399224,
+    "train_return": 5.966644999258541,
+    "val_pf": 1.3104440988936148,
+    "val_return": 1.5392793804826388,
+    "val_trades": 135,
+    "val_dd": -4.294423956229387
+  },
+  {
+    "pair": "GBPJPY=X",
+    "params": {
+      "entry_threshold": 3.5,
+      "ob_lookback": 7,
+      "ob_weight": 1.5
+    },
+    "score": 1.21858034155987,
+    "train_pf": 1.21858034155987,
+    "train_return": 3.6074159364656744,
+    "val_pf": 1.2303093462147687,
+    "val_return": 0.8938678556685398,
+    "val_trades": 133,
+    "val_dd": -3.142224449401443
+  },
+  {
+    "pair": "GBPCHF=X",
+    "params": {
+      "entry_threshold": 3.0,
+      "ob_lookback": 5,
+      "ob_weight": 3.0
+    },
+    "score": 1.1459230082941734,
+    "train_pf": 1.1459230082941734,
+    "train_return": 2.697946834403142,
+    "val_pf": 1.37938333280153,
+    "val_return": 1.6116120309082493,
+    "val_trades": 200,
+    "val_dd": -2.9577842482223557
+  },
+  {
+    "pair": "USDCAD=X",
+    "params": {
+      "entry_threshold": 3.5,
+      "ob_lookback": 3,
+      "ob_weight": 3.0
+    },
+    "score": 1.1239539461251644,
+    "train_pf": 1.1347031040322217,
+    "train_return": 1.655774334036697,
+    "val_pf": 1.1239539461251644,
+    "val_return": 0.31810344329208373,
+    "val_trades": 104,
+    "val_dd": -4.040037568032514
+  },
+  {
+    "pair": "EURUSD=X",
+    "params": {
+      "entry_threshold": 3.0,
+      "ob_lookback": 5,
+      "ob_weight": 2.0
+    },
+    "score": 1.097615681545257,
+    "train_pf": 1.097615681545257,
+    "train_return": 1.547888256349128,
+    "val_pf": 1.1254631817012812,
+    "val_return": 0.5691833286096681,
+    "val_trades": 164,
+    "val_dd": -5.43879295603699
+  },
+  {
+    "pair": "EURJPY=X",
+    "params": {
+      "entry_threshold": 3.5,
+      "ob_lookback": 10,
+      "ob_weight": 2.0
+    },
+    "score": 1.095606116418703,
+    "train_pf": 1.095606116418703,
+    "train_return": 1.783225758416851,
+    "val_pf": 1.1047311581893344,
+    "val_return": 0.3817459034246795,
+    "val_trades": 163,
+    "val_dd": -3.8155441055587325
+  },
+  {
+    "pair": "GBPUSD=X",
+    "params": {
+      "entry_threshold": 3.0,
+      "ob_lookback": 3,
+      "ob_weight": 1.5
+    },
+    "score": 1.0810573145696518,
+    "train_pf": 1.1632449456448797,
+    "train_return": 1.7076620951846255,
+    "val_pf": 1.0810573145696518,
+    "val_return": 0.7591734783084059,
+    "val_trades": 298,
+    "val_dd": -5.046679300269756
+  },
+  {
+    "pair": "AUDUSD=X",
+    "params": {
+      "entry_threshold": 2.0,
+      "ob_lookback": 3,
+      "ob_weight": 3.0
+    },
+    "score": 1.075498002770563,
+    "train_pf": 1.075498002770563,
+    "train_return": 2.707396660360084,
+    "val_pf": 1.0793196913993004,
+    "val_return": 1.572053232936077,
+    "val_trades": 420,
+    "val_dd": -8.01906504478902
+  },
+  {
+    "pair": "AUDCHF=X",
+    "params": {
+      "entry_threshold": 3.0,
+      "ob_lookback": 10,
+      "ob_weight": 2.0
+    },
+    "score": 1.07151962287956,
+    "train_pf": 1.07151962287956,
+    "train_return": 1.765704205299623,
+    "val_pf": 2.0425799756452703,
+    "val_return": 4.1565100638225605,
+    "val_trades": 207,
+    "val_dd": -1.5768360373353607
+  },
+  {
+    "pair": "NZDUSD=X",
+    "params": {
+      "entry_threshold": 2.5,
+      "ob_lookback": 7,
+      "ob_weight": 2.0
+    },
+    "score": 1.067232225974971,
+    "train_pf": 1.0784580363650185,
+    "train_return": 2.68332552475794,
+    "val_pf": 1.067232225974971,
+    "val_return": 1.285535069041921,
+    "val_trades": 426,
+    "val_dd": -8.05788099720846
+  },
+  {
+    "pair": "CHFJPY=X",
+    "params": {
+      "entry_threshold": 3.5,
+      "ob_lookback": 10,
+      "ob_weight": 3.0
+    },
+    "score": 1.0594074482930576,
+    "train_pf": 1.0594074482930576,
+    "train_return": 1.2637028139885098,
+    "val_pf": 1.812896634781449,
+    "val_return": 2.67384598571212,
+    "val_trades": 190,
+    "val_dd": -2.640012786281787
+  },
+  {
+    "pair": "NZDCAD=X",
+    "params": {
+      "entry_threshold": 2.5,
+      "ob_lookback": 3,
+      "ob_weight": 2.0
+    },
+    "score": 1.0556298911695121,
+    "train_pf": 1.0556298911695121,
+    "train_return": 1.159999109041876,
+    "val_pf": 1.0755481310283157,
+    "val_return": 1.173935936892745,
+    "val_trades": 555,
+    "val_dd": -10.39399193139455
+  },
+  {
+    "pair": "GBPAUD=X",
+    "params": {
+      "entry_threshold": 3.0,
+      "ob_lookback": 10,
+      "ob_weight": 1.5
+    },
+    "score": 1.0540173256976644,
+    "train_pf": 1.0540173256976644,
+    "train_return": 0.9156582234775223,
+    "val_pf": 1.1381653090790858,
+    "val_return": 0.4664313208040838,
+    "val_trades": 150,
+    "val_dd": -7.058731165157084
+  },
+  {
+    "pair": "NZDJPY=X",
+    "params": {
+      "entry_threshold": 3.0,
+      "ob_lookback": 3,
+      "ob_weight": 3.0
+    },
+    "score": 1.0481842914218664,
+    "train_pf": 1.0783043338218425,
+    "train_return": 2.6041111505041625,
+    "val_pf": 1.0481842914218664,
+    "val_return": 0.4701978773998139,
+    "val_trades": 229,
+    "val_dd": -5.890143282581484
+  },
+  {
+    "pair": "AUDNZD=X",
+    "params": {
+      "entry_threshold": 3.5,
+      "ob_lookback": 3,
+      "ob_weight": 2.0
+    },
+    "score": 0.9842653082803028,
+    "train_pf": 1.177371786698898,
+    "train_return": 1.2658448816521561,
+    "val_pf": 0.9842653082803028,
+    "val_return": -0.025144090635009775,
+    "val_trades": 101,
+    "val_dd": -2.462318212065895
+  },
+  {
+    "pair": "USDJPY=X",
+    "params": {
+      "entry_threshold": 1.5,
+      "ob_lookback": 3,
+      "ob_weight": 1.5
+    },
+    "score": 0.9071011950148132,
+    "train_pf": 1.0571750603141499,
+    "train_return": 1.776790677953488,
+    "val_pf": 0.9071011950148132,
+    "val_return": -2.7371673403775887,
+    "val_trades": 423,
+    "val_dd": -22.145724407445666
+  }
+]

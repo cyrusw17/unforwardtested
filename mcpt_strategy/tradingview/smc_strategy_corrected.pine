@@ -1,0 +1,71 @@
+//@version=5
+strategy("SMC Order Block + Structure [CORRECTED]", overlay=true, 
+     commission_type=strategy.commission.cash_per_order, 
+     commission_value=13, 
+     slippage=3,
+     calc_on_every_tick=false,
+     calc_on_order_fills=false)
+
+ob_lookback = input.int(5, "Order Block Lookback")
+structure_length = input.int(5, "Structure Length")
+atr_period = input.int(14, "ATR Period")
+atr_sl_mult = input.float(1.0, "Stop Loss (ATR)")
+atr_tp_mult = input.float(3.0, "Take Profit (ATR)")
+
+body = math.abs(close - open)
+avg_body = ta.sma(body, 20)
+
+strong_bullish = close > open and body > avg_body * 1.5
+strong_bearish = close < open and body > avg_body * 1.5
+
+bullish_ob = false
+bearish_ob = false
+
+if strong_bullish
+    for i = 1 to ob_lookback
+        if bar_index >= i and close[i] < open[i]
+            bullish_ob := true
+            break
+
+if strong_bearish
+    for i = 1 to ob_lookback
+        if bar_index >= i and close[i] > open[i]
+            bearish_ob := true
+            break
+
+recent_high = ta.highest(high, structure_length)
+recent_low = ta.lowest(low, structure_length)
+
+structure = 0
+if close > recent_high[1]
+    structure := 1
+else if close < recent_low[1]
+    structure := -1
+
+long_condition = bullish_ob and structure >= 0
+short_condition = bearish_ob and structure <= 0
+
+atr = ta.atr(atr_period)
+
+var float long_stop = na
+var float long_target = na
+var float short_stop = na
+var float short_target = na
+
+if long_condition and strategy.position_size == 0
+    long_stop := close - (atr * atr_sl_mult)
+    long_target := close + (atr * atr_tp_mult)
+    strategy.entry("Long", strategy.long)
+    strategy.exit("LongExit", "Long", stop=long_stop, limit=long_target)
+
+if short_condition and strategy.position_size == 0
+    short_stop := close + (atr * atr_sl_mult)
+    short_target := close - (atr * atr_tp_mult)
+    strategy.entry("Short", strategy.short)
+    strategy.exit("ShortExit", "Short", stop=short_stop, limit=short_target)
+
+bgcolor(structure == 1 ? color.new(color.green, 90) : 
+     structure == -1 ? color.new(color.red, 90) : na, title="Structure")
+
+plotshape(long_condition, "Long Signal", shape.triangleup, location.belowbar, color.green, size=size.small)
+plotshape(short_condition, "Short Signal", shape.triangledown, location.abovebar, color.red, size=size.small)

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Paper Trader — Causal 2-Pair ICT Portfolio (GBP/JPY + NZD/CAD)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../index.html">&larr; Back to Unforwardtested overview</a>
+
+  <div class="success-banner">
+    <strong>✓ Re-validated, causal strategy.</strong> The original strategy on this page was
+    found to have a lookahead bug (see <code>mcpt_strategy/LOOKAHEAD_BIAS_FINDING.md</code>) and
+    was retired. This is a replacement: a 2-leg portfolio (GBP/JPY + NZD/CAD) using a
+    lookahead-free signal whose parameters were selected using <em>only</em> 2005-2024
+    data and evaluated exactly once on the untouched 2025-2026 window, where it passed a
+    portfolio-level Monte Carlo Permutation Test (p=0.019, 1000 permutations, correlation-preserving multi-market permutation). Both legs held
+    PF&gt;1.0 in every one of six sub-periods spanning 2005-2024. Position size is scaled 4x
+    (well within normal retail forex leverage) to target ~15%+/yr; see
+    <code>mcpt_strategy/PHASE10_15PCT_HONEST_RESULTS.md</code> for full methodology. No real
+    money is at risk — this is a paper simulation.
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot" id="live-dot"></span>
+      <div>
+        <h1>Live Paper Trader</h1>
+        <p class="sub">Causal 2-Pair ICT Portfolio &middot; GBP/JPY + NZD/CAD &middot; Daily Signal, Live Mark-to-Market</p>
+      </div>
+    </div>
+    <div class="meta-pills">
+      <div class="pill"><span class="pill-label">Leverage Used</span><span class="pill-value" id="meta-leverage">—</span></div>
+      <div class="pill"><span class="pill-label">Started</span><span class="pill-value" id="meta-start">—</span></div>
+      <div class="pill"><span class="pill-label">Last Updated</span><span class="pill-value" id="meta-updated">—</span></div>
+    </div>
+  </header>
+
+  <section class="stats-grid">
+    <div class="stat-card highlight">
+      <span class="stat-label">Equity</span>
+      <span class="stat-value" id="stat-equity">$0.00</span>
+      <span class="stat-sub" id="stat-equity-pct">+0.00%</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Balance (Realized)</span>
+      <span class="stat-value" id="stat-balance">$0.00</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Unrealized P&amp;L</span>
+      <span class="stat-value" id="stat-unrealized">$0.00</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Total Trades</span>
+      <span class="stat-value" id="stat-trades">0</span>
+      <span class="stat-sub" id="stat-winrate">0% win rate</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Max Drawdown</span>
+      <span class="stat-value" id="stat-drawdown">0.00%</span>
+    </div>
+  </section>
+
+  <section class="stats-grid" id="positions-grid">
+    <div class="stat-card">
+      <span class="stat-label">GBP/JPY Position</span>
+      <span class="stat-value" id="stat-position-gbpjpy">FLAT</span>
+      <span class="stat-sub" id="stat-position-detail-gbpjpy">—</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">NZD/CAD Position</span>
+      <span class="stat-value" id="stat-position-nzdcad">FLAT</span>
+      <span class="stat-sub" id="stat-position-detail-nzdcad">—</span>
+    </div>
+  </section>
+
+  <section class="charts-grid three-col">
+    <div class="chart-card">
+      <div class="chart-header">
+        <h2>GBP/JPY Live Price</h2>
+        <span class="chart-price" id="live-price-gbpjpy">—</span>
+      </div>
+      <div class="chart-container"><canvas id="priceChartGBPJPY"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-header">
+        <h2>NZD/CAD Live Price</h2>
+        <span class="chart-price" id="live-price-nzdcad">—</span>
+      </div>
+      <div class="chart-container"><canvas id="priceChartNZDCAD"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-header">
+        <h2>Account Equity</h2>
+        <span class="chart-price" id="equity-change">—</span>
+      </div>
+      <div class="chart-container"><canvas id="equityChart"></canvas></div>
+    </div>
+  </section>
+
+  <section class="table-card">
+    <h2>Trade Log</h2>
+    <div class="table-wrap">
+      <table id="trades-table">
+        <thead>
+          <tr>
+            <th>#</th><th>Pair</th><th>Dir</th><th>Entry Time</th><th>Entry</th><th>Exit Time</th><th>Exit</th>
+            <th>Notional</th><th>P&amp;L</th><th>Reason</th>
+          </tr>
+        </thead>
+        <tbody id="trades-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>
+      Fully automated paper trading simulation of a 2-leg portfolio (GBP/JPY + NZD/CAD),
+      each leg an independent binary directional ICT signal (order blocks, FVGs, liquidity
+      sweeps, trend), causal/no-lookahead, parameters selected on 2005-2024 data only and
+      validated once on 2025-2026 with a portfolio-level Monte Carlo Permutation Test
+      (p=0.019). Position size is uniformly scaled 4x to target ~15%+/yr -- this does not
+      affect statistical significance since Profit Factor/Sharpe are exactly scale-invariant
+      to a uniform position-size multiplier (only $ return and $ drawdown scale with it). See
+      <code>mcpt_strategy/PHASE10_15PCT_HONEST_RESULTS.md</code> for full methodology.
+      Realistic spread/slippage costs are charged on every round-trip.
+      This is a simulation — no real money is traded.
+    </p>
+  </footer>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>

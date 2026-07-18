@@ -1,0 +1,10 @@
+{
+  "starting_balance": 100000,
+  "final_balance": 117066.45569282261,
+  "total_profit": 17066.45569282261,
+  "profit_pct": 17.066455692822608,
+  "account_blown": false,
+  "violation_date": null,
+  "violations": [],
+  "all_rules_passed": true
+}

@@ -1,0 +1,87 @@
+//@version=5
+strategy("SMC Order Block [REALTIME]", overlay=true, commission_value=13, slippage=3)
+
+// IMPORTANT: Python backtest uses retroactive labeling which can't work in live trading
+// This version adapts the logic for real-time execution
+
+ob_lookback = input.int(5, "Order Block Lookback")
+struct_length = input.int(5, "Structure Length")
+atr_length = input.int(14, "ATR Length")
+sl_atr = input.float(1.0, "Stop Loss (ATR)")
+tp_atr = input.float(3.0, "Take Profit (ATR)")
+
+// === ORDER BLOCK DETECTION (Real-time adapted) ===
+// Instead of marking past candles, we check: "Did a strong move happen recently?"
+
+body = math.abs(close - open)
+avg_body = ta.sma(body, 20)
+
+strong_bull = close > open and body > avg_body * 1.5
+strong_bear = close < open and body > avg_body * 1.5
+
+// Check if strong move happened in last N bars
+strong_bull_recent = false
+strong_bear_recent = false
+
+for i = 1 to ob_lookback
+    if strong_bull[i]
+        strong_bull_recent := true
+    if strong_bear[i]
+        strong_bear_recent := true
+
+// Current candle characteristics
+current_bearish = close < open
+current_bullish = close > open
+
+// Order Block logic (adapted for real-time):
+// Bullish OB: Current bar is bearish AND strong bullish move happened recently
+// (This approximates "this bar will become an OB")
+bullish_ob_forming = current_bearish and strong_bull_recent
+
+// Bearish OB: Current bar is bullish AND strong bearish move happened recently
+bearish_ob_forming = current_bullish and strong_bear_recent
+
+// === MARKET STRUCTURE ===
+recent_high = ta.highest(high, struct_length)
+recent_low = ta.lowest(low, struct_length)
+
+structure = 0
+if close > recent_high[1]
+    structure := 1
+else if close < recent_low[1]
+    structure := -1
+
+// === ENTRY SIGNALS ===
+// Enter when OB is forming AND structure aligns
+long_signal = bullish_ob_forming and structure >= 0
+short_signal = bearish_ob_forming and structure <= 0
+
+// === TRADE EXECUTION ===
+atr = ta.atr(atr_length)
+
+if long_signal and strategy.position_size == 0
+    sl = close - (atr * sl_atr)
+    tp = close + (atr * tp_atr)
+    strategy.entry("Long", strategy.long)
+    strategy.exit("Exit", "Long", stop=sl, limit=tp)
+    label.new(bar_index, low, "L", color=color.green, style=label.style_label_up, 
+         textcolor=color.white, size=size.small)
+
+if short_signal and strategy.position_size == 0
+    sl = close + (atr * sl_atr)
+    tp = close - (atr * tp_atr)
+    strategy.entry("Short", strategy.short)
+    strategy.exit("Exit", "Short", stop=sl, limit=tp)
+    label.new(bar_index, high, "S", color=color.red, style=label.style_label_down, 
+         textcolor=color.white, size=size.small)
+
+// === VISUALS ===
+bgcolor(structure == 1 ? color.new(color.green, 95) : 
+     structure == -1 ? color.new(color.red, 95) : na)
+
+plotshape(strong_bull, "Strong Bull", shape.diamond, location.belowbar, color.green, size=size.tiny)
+plotshape(strong_bear, "Strong Bear", shape.diamond, location.abovebar, color.red, size=size.tiny)
+plotshape(bullish_ob_forming, "Bull OB", shape.circle, location.belowbar, 
+     color=color.new(color.blue, 50), size=size.tiny)
+plotshape(bearish_ob_forming, "Bear OB", shape.circle, location.abovebar, 
+     color=color.new(color.orange, 50), size=size.tiny)

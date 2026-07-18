@@ -1,0 +1,48 @@
+//@version=5
+strategy("SMC Simple Test", overlay=true, commission_value=13, slippage=3)
+
+// Inputs
+atr_length = input.int(14, "ATR Length")
+sl_mult = input.float(1.0, "Stop Loss ATR Multiplier")
+tp_mult = input.float(3.0, "Take Profit ATR Multiplier")
+
+// Calculate indicators
+body = math.abs(close - open)
+avg_body = ta.sma(body, 20)
+atr = ta.atr(atr_length)
+
+// Detect strong moves
+strong_bull = close > open and body > avg_body * 1.5
+strong_bear = close < open and body > avg_body * 1.5
+
+// Simple structure
+ma_fast = ta.ema(close, 10)
+ma_slow = ta.ema(close, 30)
+bull_structure = ma_fast > ma_slow
+bear_structure = ma_fast < ma_slow
+
+// Entry conditions (FIXED - check previous bar for Order Block)
+// Long: Strong bullish move happened AND we're in bullish structure
+long_signal = strong_bull[1] and bull_structure
+// Short: Strong bearish move happened AND we're in bearish structure  
+short_signal = strong_bear[1] and bear_structure
+
+// Execute trades
+if long_signal and strategy.position_size == 0
+    stop_loss = close - (atr * sl_mult)
+    take_profit = close + (atr * tp_mult)
+    strategy.entry("Long", strategy.long)
+    strategy.exit("Exit Long", "Long", stop=stop_loss, limit=take_profit)
+    label.new(bar_index, low, "L", color=color.green, style=label.style_label_up, textcolor=color.white)
+
+if short_signal and strategy.position_size == 0
+    stop_loss = close + (atr * sl_mult)
+    take_profit = close - (atr * tp_mult)
+    strategy.entry("Short", strategy.short)
+    strategy.exit("Exit Short", "Short", stop=stop_loss, limit=take_profit)
+    label.new(bar_index, high, "S", color=color.red, style=label.style_label_down, textcolor=color.white)
+
+// Visual
+plot(ma_fast, "Fast MA", color=color.blue, linewidth=1)
+plot(ma_slow, "Slow MA", color=color.orange, linewidth=1)
+bgcolor(bull_structure ? color.new(color.green, 95) : color.new(color.red, 95))

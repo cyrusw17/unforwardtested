@@ -1,0 +1,257 @@
+{
+  "training_period": "2020-01-01 20:00:00+00:00 to 2024-12-31 20:00:00+00:00",
+  "testing_period": "2026-01-01 20:00:00+00:00 to 2026-07-17 16:00:00+00:00",
+  "results": [
+    {
+      "strategy": "Trend+Momentum (50/200)",
+      "params": {
+        "fast_ma": 50,
+        "slow_ma": 200,
+        "momentum_period": 10,
+        "min_momentum": 0.005
+      },
+      "train_metrics": {
+        "total_return": 0.07677032240461679,
+        "annual_return": 0.01396351943230112,
+        "annual_return_pct": 1.396351943230112,
+        "profit_factor": 1.0792608967834751,
+        "sharpe_ratio": 0.4273482297988165,
+        "max_drawdown": -0.066254169232103,
+        "max_drawdown_pct": -6.625416923210301,
+        "win_rate": 8.668154761904761,
+        "trades": 680,
+        "trades_per_year": 127.48419094854309,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": 0.002142093619563523,
+        "annual_return": 0.0037086697057127083,
+        "annual_return_pct": 0.3708669705712708,
+        "profit_factor": 1.036143183458367,
+        "sharpe_ratio": 0.16387324352454052,
+        "max_drawdown": -0.016648796228095897,
+        "max_drawdown_pct": -1.6648796228095897,
+        "win_rate": 5.383734249713632,
+        "trades": 39,
+        "trades_per_year": 67.46910755148741,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    },
+    {
+      "strategy": "Trend+Momentum (30/100)",
+      "params": {
+        "fast_ma": 30,
+        "slow_ma": 100,
+        "momentum_period": 10,
+        "min_momentum": 0.005
+      },
+      "train_metrics": {
+        "total_return": 0.016303023424268925,
+        "annual_return": 0.003036391326590282,
+        "annual_return_pct": 0.3036391326590282,
+        "profit_factor": 1.015542440216788,
+        "sharpe_ratio": 0.08485574504832298,
+        "max_drawdown": -0.08547760461617063,
+        "max_drawdown_pct": -8.547760461617063,
+        "win_rate": 9.064980158730158,
+        "trades": 762,
+        "trades_per_year": 142.85728456292622,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": 0.01986746164491615,
+        "annual_return": 0.03461904344479305,
+        "annual_return_pct": 3.461904344479305,
+        "profit_factor": 1.2542515704980217,
+        "sharpe_ratio": 1.2252849675339816,
+        "max_drawdown": -0.013077907122990229,
+        "max_drawdown_pct": -1.3077907122990229,
+        "win_rate": 7.331042382588775,
+        "trades": 47,
+        "trades_per_year": 81.30892448512586,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    },
+    {
+      "strategy": "Trend+Momentum (20/50)",
+      "params": {
+        "fast_ma": 20,
+        "slow_ma": 50,
+        "momentum_period": 5,
+        "min_momentum": 0.003
+      },
+      "train_metrics": {
+        "total_return": 0.0005939079418257887,
+        "annual_return": 0.00011131707590994466,
+        "annual_return_pct": 0.011131707590994466,
+        "profit_factor": 1.0004865527876003,
+        "sharpe_ratio": 0.002886601616450498,
+        "max_drawdown": -0.13945754678835814,
+        "max_drawdown_pct": -13.945754678835815,
+        "win_rate": 10.52827380952381,
+        "trades": 1134,
+        "trades_per_year": 212.59863608183508,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": -0.011483277370112899,
+        "annual_return": -0.01978245784165311,
+        "annual_return_pct": -1.9782457841653112,
+        "profit_factor": 0.8553596065683715,
+        "sharpe_ratio": -0.8973956424245205,
+        "max_drawdown": -0.028464404301572155,
+        "max_drawdown_pct": -2.8464404301572155,
+        "win_rate": 6.987399770904926,
+        "trades": 99,
+        "trades_per_year": 171.26773455377574,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    },
+    {
+      "strategy": "Donchian (50/25)",
+      "params": {
+        "entry_period": 50,
+        "exit_period": 25,
+        "atr_period": 20,
+        "atr_mult": 2.0
+      },
+      "train_metrics": {
+        "total_return": 0.021107686379959745,
+        "annual_return": 0.003923692945885682,
+        "annual_return_pct": 0.3923692945885682,
+        "profit_factor": 1.216676309136146,
+        "sharpe_ratio": 0.4264927066373744,
+        "max_drawdown": -0.014251830925234257,
+        "max_drawdown_pct": -1.4251830925234257,
+        "win_rate": 1.3392857142857142,
+        "trades": 291,
+        "trades_per_year": 54.555734655920645,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": -0.001103066681736431,
+        "annual_return": -0.0019075117549028908,
+        "annual_return_pct": -0.19075117549028908,
+        "profit_factor": 0.717061853430897,
+        "sharpe_ratio": -0.450330998527444,
+        "max_drawdown": -0.0039007660187565796,
+        "max_drawdown_pct": -0.39007660187565796,
+        "win_rate": 0.3436426116838488,
+        "trades": 11,
+        "trades_per_year": 19.029748283752863,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    },
+    {
+      "strategy": "Donchian (100/50)",
+      "params": {
+        "entry_period": 100,
+        "exit_period": 50,
+        "atr_period": 20,
+        "atr_mult": 2.0
+      },
+      "train_metrics": {
+        "total_return": 0.03892121401435933,
+        "annual_return": 0.007184085017076791,
+        "annual_return_pct": 0.7184085017076791,
+        "profit_factor": 1.5434099009079663,
+        "sharpe_ratio": 0.8698454569922295,
+        "max_drawdown": -0.00991395105172134,
+        "max_drawdown_pct": -0.9913951051721339,
+        "win_rate": 1.1904761904761905,
+        "trades": 233,
+        "trades_per_year": 43.6820830750155,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": -0.0002459828407479492,
+        "annual_return": -0.00042550647895567284,
+        "annual_return_pct": -0.042550647895567284,
+        "profit_factor": 0.9191571727547603,
+        "sharpe_ratio": -0.10412667187801952,
+        "max_drawdown": -0.003043103610698955,
+        "max_drawdown_pct": -0.3043103610698955,
+        "win_rate": 0.3436426116838488,
+        "trades": 9,
+        "trades_per_year": 15.56979405034325,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    },
+    {
+      "strategy": "Weekly Momentum (30)",
+      "params": {
+        "lookback": 30,
+        "min_return": 0.015,
+        "trend_period": 100
+      },
+      "train_metrics": {
+        "total_return": -0.0074196286039324155,
+        "annual_return": -0.0013952196911276582,
+        "annual_return_pct": -0.13952196911276582,
+        "profit_factor": 0.9910979812315761,
+        "sharpe_ratio": -0.03863288197962621,
+        "max_drawdown": -0.08317937140041988,
+        "max_drawdown_pct": -8.317937140041987,
+        "win_rate": 5.828373015873016,
+        "trades": 295,
+        "trades_per_year": 55.30564166150031,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": -0.0032215462103261094,
+        "annual_return": -0.005566646198855274,
+        "annual_return_pct": -0.5566646198855274,
+        "profit_factor": 0.9370278068927216,
+        "sharpe_ratio": -0.2515942824070744,
+        "max_drawdown": -0.01664318264141404,
+        "max_drawdown_pct": -1.664318264141404,
+        "win_rate": 3.7800687285223367,
+        "trades": 23,
+        "trades_per_year": 39.78947368421053,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    },
+    {
+      "strategy": "Weekly Momentum (42)",
+      "params": {
+        "lookback": 42,
+        "min_return": 0.02,
+        "trend_period": 100
+      },
+      "train_metrics": {
+        "total_return": -0.021551803761931,
+        "annual_return": -0.004076306854808753,
+        "annual_return_pct": -0.40763068548087533,
+        "profit_factor": 0.9657293056909786,
+        "sharpe_ratio": -0.13792480104558566,
+        "max_drawdown": -0.09233802091125881,
+        "max_drawdown_pct": -9.233802091125881,
+        "win_rate": 4.104662698412699,
+        "trades": 161,
+        "trades_per_year": 30.183756974581527,
+        "years": 5.333994708994709
+      },
+      "test_metrics": {
+        "total_return": -0.009978402739651338,
+        "annual_return": -0.017199482015545775,
+        "annual_return_pct": -1.7199482015545775,
+        "profit_factor": 0.7422312681443186,
+        "sharpe_ratio": -1.0441575872603874,
+        "max_drawdown": -0.02401628559356017,
+        "max_drawdown_pct": -2.401628559356017,
+        "win_rate": 2.176403207331042,
+        "trades": 23,
+        "trades_per_year": 39.78947368421053,
+        "years": 0.578042328042328
+      },
+      "passed": false
+    }
+  ],
+  "passed_count": 0
+}

@@ -1,0 +1,28 @@
+{
+  "period": "2016",
+  "duration_years": 0.9911019849418207,
+  "initial_capital": 1000.0,
+  "final_equity": 1487.0539216613165,
+  "total_return_pct": 48.70539216613165,
+  "annual_return_pct": 49.23608546641898,
+  "max_drawdown": -101.68280015879304,
+  "max_drawdown_pct": -6.400229739909445,
+  "total_trades": 87,
+  "win_rate": 37.93103448275862,
+  "profit_factor": 1.6559526727128984,
+  "avg_trade": 5.598320938635833,
+  "total_spread_cost": 36.3255399438566,
+  "total_slippage_cost": 10.89766198315698,
+  "annual_returns": [
+    {
+      "year": 2016,
+      "start_equity": 1000.0,
+      "end_equity": 1487.0539216613165,
+      "return_pct": 48.70539216613165,
+      "trades": 87,
+      "winners": 33,
+      "losers": 54,
+      "win_rate": 37.93103448275862
+    }
+  ]
+}

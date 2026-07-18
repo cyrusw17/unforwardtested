@@ -1,0 +1,113 @@
+//@version=5
+strategy("SMC Order Block Strategy [FIXED]", overlay=true, commission_value=13, slippage=3)
+
+// === INPUTS ===
+ob_lookback = input.int(5, "Order Block Lookback")
+struct_length = input.int(5, "Structure Length")
+atr_length = input.int(14, "ATR Length")
+sl_atr = input.float(1.0, "Stop Loss (ATR)")
+tp_atr = input.float(3.0, "Take Profit (ATR)")
+
+// === ORDER BLOCK DETECTION ===
+body = math.abs(close - open)
+avg_body = ta.sma(body, 20)
+
+// Strong moves
+strong_bull = close > open and body > avg_body * 1.5
+strong_bear = close < open and body > avg_body * 1.5
+
+// Track Order Block zones
+var float bull_ob_high = na
+var float bull_ob_low = na
+var float bear_ob_high = na
+var float bear_ob_low = na
+var int bull_ob_time = na
+var int bear_ob_time = na
+
+// When we see a strong bullish move, mark the previous bearish candle as bullish OB
+if strong_bull
+    for i = 1 to ob_lookback
+        if close[i] < open[i]  // Found bearish candle
+            bull_ob_high := high[i]
+            bull_ob_low := low[i]
+            bull_ob_time := bar_index
+            break
+
+// When we see a strong bearish move, mark the previous bullish candle as bearish OB
+if strong_bear
+    for i = 1 to ob_lookback
+        if close[i] > open[i]  // Found bullish candle
+            bear_ob_high := high[i]
+            bear_ob_low := low[i]
+            bear_ob_time := bar_index
+            break
+
+// Expire old Order Blocks (after 50 bars)
+if not na(bull_ob_time) and (bar_index - bull_ob_time) > 50
+    bull_ob_high := na
+    bull_ob_low := na
+
+if not na(bear_ob_time) and (bar_index - bear_ob_time) > 50
+    bear_ob_high := na
+    bear_ob_low := na
+
+// Check if price is AT the Order Block zone NOW
+at_bull_ob = not na(bull_ob_high) and low <= bull_ob_high and high >= bull_ob_low
+at_bear_ob = not na(bear_ob_high) and low <= bear_ob_high and high >= bear_ob_low
+
+// === MARKET STRUCTURE ===
+hi = ta.highest(high, struct_length)
+lo = ta.lowest(low, struct_length)
+
+var int structure = 0
+if close > hi[1]
+    structure := 1   // Bullish
+if close < lo[1]
+    structure := -1  // Bearish
+
+// === ENTRY SIGNALS ===
+// Long: Price returns to bullish OB in bullish/neutral structure
+long_signal = at_bull_ob and structure >= 0
+
+// Short: Price returns to bearish OB in bearish/neutral structure
+short_signal = at_bear_ob and structure <= 0
+
+// === TRADE EXECUTION ===
+atr = ta.atr(atr_length)
+
+if long_signal and strategy.position_size == 0
+    sl = close - (atr * sl_atr)
+    tp = close + (atr * tp_atr)
+    strategy.entry("Long", strategy.long)
+    strategy.exit("Exit", "Long", stop=sl, limit=tp)
+
+if short_signal and strategy.position_size == 0
+    sl = close + (atr * sl_atr)
+    tp = close - (atr * tp_atr)
+    strategy.entry("Short", strategy.short)
+    strategy.exit("Exit", "Short", stop=sl, limit=tp)
+
+// === VISUALS ===
+// Draw Order Block zones
+var box bull_box = na
+var box bear_box = na
+
+if not na(bull_ob_high) and not na(bull_ob_low)
+    if not na(bull_box)
+        box.delete(bull_box)
+    bull_box := box.new(bar_index - 1, bull_ob_high, bar_index, bull_ob_low, 
+         border_color=color.green, bgcolor=color.new(color.green, 85))
+
+if not na(bear_ob_high) and not na(bear_ob_low)
+    if not na(bear_box)
+        box.delete(bear_box)
+    bear_box := box.new(bar_index - 1, bear_ob_high, bar_index, bear_ob_low, 
+         border_color=color.red, bgcolor=color.new(color.red, 85))
+
+// Structure background
+bgcolor(structure == 1 ? color.new(color.green, 95) : 
+     structure == -1 ? color.new(color.red, 95) : na)
+
+// Entry markers
+plotshape(long_signal, "Long", shape.triangleup, location.belowbar, color.green, size=size.small)
+plotshape(short_signal, "Short", shape.triangledown, location.abovebar, color.red, size=size.small)

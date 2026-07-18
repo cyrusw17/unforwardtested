@@ -1,0 +1,16 @@
+{
+  "period": "2016-2020",
+  "duration_years": 4.991101984941821,
+  "initial_capital": 1000.0,
+  "final_equity": 9231.850041219359,
+  "total_return_pct": 823.1850041219358,
+  "annual_return_pct": 56.09964914257661,
+  "max_drawdown": -561.3836511157388,
+  "max_drawdown_pct": -56.138365111573876,
+  "total_trades": 428,
+  "win_rate": 39.719626168224295,
+  "profit_factor": 1.8611998999030586,
+  "avg_trade": 19.233294488830268,
+  "total_spread_cost": 579.4475013417361,
+  "total_slippage_cost": 173.83425040252095
+}

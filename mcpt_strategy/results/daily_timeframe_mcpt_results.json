@@ -1,0 +1,182 @@
+{
+  "timeframe": "daily",
+  "pairs_tested": 4,
+  "configs_tested": 4,
+  "results": [
+    {
+      "pair": "AUD/USD",
+      "config": "Low Threshold (2.0)",
+      "params": {
+        "entry_threshold": 2.0,
+        "ob_lookback": 5,
+        "structure_length": 5
+      },
+      "train_metrics": {
+        "total_return": -0.15062190662360553,
+        "annual_return": -0.03103259214542653,
+        "annual_return_pct": -3.103259214542653,
+        "profit_factor": 0.8781550476589766,
+        "sharpe_ratio": -0.461567639383709,
+        "max_drawdown": -0.3280428018521823,
+        "max_drawdown_pct": -32.80428018521823,
+        "win_rate": 17.63803680981595,
+        "trades": 551,
+        "trades_per_year": 106.39999999999999,
+        "years": 5.178571428571429
+      },
+      "test_metrics": {
+        "total_return": 0.17081885797589447,
+        "annual_return": 0.1047312982469264,
+        "annual_return_pct": 10.47312982469264,
+        "profit_factor": 1.6588978596046147,
+        "sharpe_ratio": 1.5137862524082002,
+        "max_drawdown": -0.033721025154061335,
+        "max_drawdown_pct": -3.3721025154061337,
+        "win_rate": 20.603015075376884,
+        "trades": 208,
+        "trades_per_year": 131.3684210526316,
+        "years": 1.5833333333333333
+      },
+      "mcpt": {
+        "real_metrics": {
+          "total_return": 0.17081885797589447,
+          "annual_return": 0.1047312982469264,
+          "annual_return_pct": 10.47312982469264,
+          "profit_factor": 1.6588978596046147,
+          "sharpe_ratio": 1.5137862524082002,
+          "max_drawdown": -0.033721025154061335,
+          "max_drawdown_pct": -3.3721025154061337,
+          "win_rate": 20.603015075376884,
+          "trades": 208,
+          "trades_per_year": 131.3684210526316,
+          "years": 1.5833333333333333
+        },
+        "real_pf": 1.6588978596046147,
+        "p_value": 0.02,
+        "permuted_mean": 1.073213944209496,
+        "permuted_std": 0.23291587086909096,
+        "permuted_better_count": 1,
+        "passed": true,
+        "reason": "success"
+      },
+      "passed": true
+    },
+    {
+      "pair": "AUD/USD",
+      "config": "Med Threshold (3.0)",
+      "params": {
+        "entry_threshold": 3.0,
+        "ob_lookback": 5,
+        "structure_length": 5
+      },
+      "train_metrics": {
+        "total_return": -0.15782711557511153,
+        "annual_return": -0.032625300055116546,
+        "annual_return_pct": -3.2625300055116546,
+        "profit_factor": 0.7321600249091192,
+        "sharpe_ratio": -0.7031759988144632,
+        "max_drawdown": -0.23264613600472128,
+        "max_drawdown_pct": -23.264613600472128,
+        "win_rate": 7.592024539877301,
+        "trades": 309,
+        "trades_per_year": 59.668965517241375,
+        "years": 5.178571428571429
+      },
+      "test_metrics": {
+        "total_return": 0.162467080346961,
+        "annual_return": 0.09974766954426806,
+        "annual_return_pct": 9.974766954426805,
+        "profit_factor": 2.189394507786864,
+        "sharpe_ratio": 1.6249548980523132,
+        "max_drawdown": -0.021613329977864193,
+        "max_drawdown_pct": -2.1613329977864195,
+        "win_rate": 13.316582914572864,
+        "trades": 153,
+        "trades_per_year": 96.63157894736842,
+        "years": 1.5833333333333333
+      },
+      "mcpt": {
+        "real_metrics": {
+          "total_return": 0.162467080346961,
+          "annual_return": 0.09974766954426806,
+          "annual_return_pct": 9.974766954426805,
+          "profit_factor": 2.189394507786864,
+          "sharpe_ratio": 1.6249548980523132,
+          "max_drawdown": -0.021613329977864193,
+          "max_drawdown_pct": -2.1613329977864195,
+          "win_rate": 13.316582914572864,
+          "trades": 153,
+          "trades_per_year": 96.63157894736842,
+          "years": 1.5833333333333333
+        },
+        "real_pf": 2.189394507786864,
+        "p_value": 0.01,
+        "permuted_mean": 1.1119214034884723,
+        "permuted_std": 0.2881317878133079,
+        "permuted_better_count": 0,
+        "passed": true,
+        "reason": "success"
+      },
+      "passed": true
+    },
+    {
+      "pair": "AUD/USD",
+      "config": "High Threshold (4.0)",
+      "params": {
+        "entry_threshold": 4.0,
+        "ob_lookback": 5,
+        "structure_length": 5
+      },
+      "train_metrics": {
+        "total_return": -0.10961054871069498,
+        "annual_return": -0.022169171527056553,
+        "annual_return_pct": -2.2169171527056553,
+        "profit_factor": 0.707132360295965,
+        "sharpe_ratio": -0.5646938080026158,
+        "max_drawdown": -0.17223853633847885,
+        "max_drawdown_pct": -17.223853633847884,
+        "win_rate": 4.141104294478527,
+        "trades": 181,
+        "trades_per_year": 34.95172413793103,
+        "years": 5.178571428571429
+      },
+      "test_metrics": {
+        "total_return": 0.10721052376571616,
+        "annual_return": 0.06643616955752285,
+        "annual_return_pct": 6.643616955752285,
+        "profit_factor": 2.2997024869668863,
+        "sharpe_ratio": 1.2071952137259614,
+        "max_drawdown": -0.022051516464251852,
+        "max_drawdown_pct": -2.2051516464251852,
+        "win_rate": 7.788944723618091,
+        "trades": 91,
+        "trades_per_year": 57.473684210526315,
+        "years": 1.5833333333333333
+      },
+      "mcpt": {
+        "real_metrics": {
+          "total_return": 0.10721052376571616,
+          "annual_return": 0.06643616955752285,
+          "annual_return_pct": 6.643616955752285,
+          "profit_factor": 2.2997024869668863,
+          "sharpe_ratio": 1.2071952137259614,
+          "max_drawdown": -0.022051516464251852,
+          "max_drawdown_pct": -2.2051516464251852,
+          "win_rate": 7.788944723618091,
+          "trades": 91,
+          "trades_per_year": 57.473684210526315,
+          "years": 1.5833333333333333
+        },
+        "real_pf": 2.2997024869668863,
+        "p_value": 0.03,
+        "permuted_mean": 1.1727967533860324,
+        "permuted_std": 0.43699729618667355,
+        "permuted_better_count": 2,
+        "passed": true,
+        "reason": "success"
+      },
+      "passed": true
+    }
+  ],
+  "passed_count": 3
+}

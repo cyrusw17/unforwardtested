@@ -1,0 +1,101 @@
+//@version=5
+strategy("SMC Order Block [CORRECT LOGIC]", overlay=true, 
+     commission_type=strategy.commission.cash_per_order, 
+     commission_value=13, 
+     slippage=3)
+
+// === INPUTS ===
+ob_lookback = input.int(5, "Order Block Lookback")
+struct_length = input.int(5, "Structure Length")
+atr_length = input.int(14, "ATR Length")
+sl_atr = input.float(1.0, "Stop Loss (ATR)")
+tp_atr = input.float(3.0, "Take Profit (ATR)")
+show_marks = input.bool(true, "Show Entry Markers")
+
+// === ORDER BLOCK DETECTION ===
+// Logic: When a strong move happens, mark the PREVIOUS opposite candle as OB
+
+body = math.abs(close - open)
+avg_body = ta.sma(body, 20)
+
+// Detect strong moves
+strong_bull = close > open and body > avg_body * 1.5
+strong_bear = close < open and body > avg_body * 1.5
+
+// Mark THIS BAR as an Order Block if conditions met
+// Bullish OB: This bar will be marked if a strong bullish move happens in next 1-5 bars
+// AND this bar is bearish
+var bool[] bullish_ob_marks = array.new_bool(500, false)
+var bool[] bearish_ob_marks = array.new_bool(500, false)
+
+// When we see a strong move, mark the appropriate past candle
+if strong_bull
+    // Look back for a bearish candle
+    for i = 1 to ob_lookback
+        if close[i] < open[i]
+            // Mark that historical bar as bullish OB
+            array.set(bullish_ob_marks, bar_index % 500, true)
+            break
+
+if strong_bear
+    // Look back for a bullish candle
+    for i = 1 to ob_lookback
+        if close[i] > open[i]
+            // Mark that historical bar as bearish OB
+            array.set(bearish_ob_marks, bar_index % 500, true)
+            break
+
+// Check if CURRENT bar was marked as OB
+curr_idx = bar_index % 500
+is_bullish_ob = array.get(bullish_ob_marks, curr_idx)
+is_bearish_ob = array.get(bearish_ob_marks, curr_idx)
+
+// Clear old marks
+array.set(bullish_ob_marks, curr_idx, false)
+array.set(bearish_ob_marks, curr_idx, false)
+
+// === MARKET STRUCTURE ===
+recent_high = ta.highest(high, struct_length)
+recent_low = ta.lowest(low, struct_length)
+
+structure = 0
+if close > recent_high[1]
+    structure := 1
+else if close < recent_low[1]
+    structure := -1
+
+// === SIGNAL GENERATION ===
+// Enter on bars that were marked as OB + structure confirms
+long_condition = is_bullish_ob and structure >= 0
+short_condition = is_bearish_ob and structure <= 0
+
+// === TRADE EXECUTION ===
+atr = ta.atr(atr_length)
+
+if long_condition and strategy.position_size == 0
+    sl = close - (atr * sl_atr)
+    tp = close + (atr * tp_atr)
+    strategy.entry("Long", strategy.long)
+    strategy.exit("Exit", "Long", stop=sl, limit=tp)
+    if show_marks
+        label.new(bar_index, low, "L", color=color.green, style=label.style_label_up, 
+             textcolor=color.white, size=size.small)
+
+if short_condition and strategy.position_size == 0
+    sl = close + (atr * sl_atr)
+    tp = close - (atr * tp_atr)
+    strategy.entry("Short", strategy.short)
+    strategy.exit("Exit", "Short", stop=sl, limit=tp)
+    if show_marks
+        label.new(bar_index, high, "S", color=color.red, style=label.style_label_down, 
+             textcolor=color.white, size=size.small)
+
+// === VISUALS ===
+bgcolor(structure == 1 ? color.new(color.green, 95) : 
+     structure == -1 ? color.new(color.red, 95) : na, title="Structure")
+
+// Mark strong moves
+plotshape(strong_bull, "Strong Bull", shape.diamond, location.belowbar, 
+     color=color.new(color.green, 50), size=size.tiny)
+plotshape(strong_bear, "Strong Bear", shape.diamond, location.abovebar, 
+     color=color.new(color.red, 50), size=size.tiny)
